@@ -6,8 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="GameMessages" />
+      <Folder Include="Factories" />
       <Folder Include="GridClass" />
+      <Folder Include="Interfaces" />
       <Folder Include="MinesClass" />
       <Folder Include="ValidationClass" />
     </ItemGroup>
