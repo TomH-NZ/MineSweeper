@@ -6,7 +6,7 @@ namespace MineSweeper_v01
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("MineSweeper!");
+            Console.WriteLine("MineSweeper work in progress!");
         }
     }
 }
