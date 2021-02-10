@@ -1,75 +1,46 @@
 # MineSweeper_v01
 
-Have you ever played Minesweeper? It’s a cute little game which comes within a certain Operating System whose name we can’t really remember. Well, the goal of the game is to find all the mines within an MxN field. To help you, the game shows a number in a square which tells you how many mines there are adjacent to that square. For instance, take the following 4x4 field with 2 mines (which are represented by an * character):
+## Minesweeper For Testing
 
-~~~
-*... 
-.... 
-.*.. 
-....
-~~~
+The purpose of this exercise is to understand how to build the core of a system without any IO.
+Requirements
 
-The same field including the hint numbers described above would look like this:
+    A new game should start by specifying the difficulty of the game (all boards are squares)
+        e.g. if board has a difficulty of 4, the board has a width of 4 and a height of 4 and 4 mines
+    Mines should be placed randomly
+    The board should have two modes of display
+        Only squares revealed by the player are displayed
+        The entire revealed board is displayed
+    A player should be able to select the next square to reveal
+    If the chosen square is a mine, the game is over and the player loses
+        When the player loses, the entire revealed board is displayed
+    If the chosen square is not a mine, that square is revealed with the number of mines that surround it, these number are the hints
+    If all of the squares are revealed except mines, the player wins
 
-~~~
-*100 
-2210 
-1*10 
-1110
-~~~
+### Game Flow Example
 
-You should write a program that takes input as follows:
+A new game started with specified difficulty
 
-* The input will consist of an arbitrary number of fields.   
-* The first line of each field contains two integers n and m (0 < n,m <= 100) which stands for the number of lines and columns of the field respectively.   
-* The next n lines contains exactly m characters and represent the field.  
-* Each safe square is represented by an “.” character (without the quotes) and each mine square is represented by an “*” character (also without the quotes).  
-* The first field line where n = m = 0 represents the end of input and should not be processed.  
+Input:
 
-Your program should produce output as follows: 
+`Difficulty: 4`
 
-For each field, you must print the following message in a line alone:  
+Output:
 
-Field #x:
+Hidden
 
-Where x stands for the number of the field (starting from 1). 
+`....`  
+`....`  
+`....`  
+`....`  
 
-The next n lines should contain the field with the “.” characters replaced by the number of adjacent mines to that square. There must be an empty line between field outputs.
+Revealed
 
-This is the acceptance test input:
+`1100`  
+`*311`  
+`*3*2`  
+`122*`  
 
-~~~
-44 
-*... 
-.... 
-.*.. 
-....
-~~~
-
-~~~
-35 
-**... 
-..... 
-.*...
-~~~
-
-~~~
-00
-~~~
-
-and output:
-
-~~~
-Field #1: 
-*100 
-2210 
-1*10 
-1110
-~~~
-
-~~~
-Field #2: 
-**100 
-33200 
-1*100
-~~~
+### Stretch Goals
+1. The first player move is guaranteed to not be a mine.
+2. Add the ability for a player to flag a grid square as a mine.
