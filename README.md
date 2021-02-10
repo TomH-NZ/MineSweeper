@@ -3,7 +3,8 @@
 ## Minesweeper For Testing
 
 The purpose of this exercise is to understand how to build the core of a system without any IO.
-Requirements
+
+### Requirements
 
 * A new game should start by specifying the difficulty of the game (all boards are squares)
   - e.g. if board has a difficulty of 4, the board has a width of 4 and a height of 4 and 4 mines
