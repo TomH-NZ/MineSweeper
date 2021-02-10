@@ -6,7 +6,7 @@ namespace MineSweeper_v01
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("MineSweeper master branch!");
+            Console.WriteLine("MineSweeper Work In Progress branch!");
         }
     }
 }
