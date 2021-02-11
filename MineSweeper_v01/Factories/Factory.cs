@@ -8,5 +8,10 @@ namespace MineSweeper_v01.Factories
         {
             return new Grid(difficulty);
         }
+        
+        public static IDisplayGrid DisplayGrid(IGrid newGame)
+        {
+            return new DisplayGrid();
+        }
     }
 }

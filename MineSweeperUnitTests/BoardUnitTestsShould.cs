@@ -16,5 +16,17 @@ namespace MineSweeperUnitTests
             //Assert
             Assert.Equal(2, result.Size);
         }
+
+        [Fact]
+        public void DisplayABoardOfSizeTwoCorrectly()
+        {
+            //Arrange
+            
+            //Act
+            var result = Factory.DisplayGrid();
+            
+            //Assert
+            Assert.Equal(".. \n..\n", result);
+        }
     }
 }
