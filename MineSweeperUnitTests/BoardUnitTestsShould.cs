@@ -21,12 +21,14 @@ namespace MineSweeperUnitTests
         public void DisplayABoardOfSizeTwoCorrectly()
         {
             //Arrange
+            var newTestGame = Factory.NewGameGrid(2);
+            var newGridDisplay = Factory.DisplayGrid(newTestGame);
             
             //Act
-            var result = Factory.DisplayGrid();
+            var result = newGridDisplay;
             
             //Assert
-            Assert.Equal(".. \n..\n", result);
+            Assert.Equal("..\n..\n", result);
         }
     }
 }

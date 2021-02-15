@@ -1,14 +1,19 @@
+using System;
+using MineSweeper_v01.Interfaces;
+
 namespace MineSweeper_v01.GridClass
 {
     public class DisplayGrid : IDisplayGrid
     {
-        public void PrintGrid(IGrid grid)
+        public DisplayGrid(IGrid gameGrid)
         {
-            for (var row = 0; row < grid.Size; row++)
+            for (var row = 0; row < gameGrid.Size; row++)
             {
-                for (var column = 0; column < grid.Size; column++)
+                for (var column = 0; column < gameGrid.Size; column++)
                 {
-                    //var displayedCell = 
+                    var displayedCell = gameGrid[];
+
+                    Console.WriteLine(!displayedCell.OccupiedByMine ? "." : "+");
                 }
             }
         }
