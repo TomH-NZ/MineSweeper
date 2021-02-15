@@ -2,7 +2,7 @@ using System;
 
 namespace MineSweeper_v01.GridClass
 {
-    public class DisplayGrid
+    public class DisplayGrid : IDisplayGrid
     {
         public DisplayGrid(IGrid gameGrid)
         {
@@ -10,9 +10,9 @@ namespace MineSweeper_v01.GridClass
             {
                 for (var column = 0; column < gameGrid.Size; column++)
                 {
-                    var gameCell = gameGrid.TheGameGrid[row, column];
+                    var gameCell = gameGrid.GeneratedGame[row, column];
                     
-                    Console.Write(!gameCell.OccupiedByMine ? "." : "+");
+                    Console.Write(!gameCell.OccupiedByMine ? ". " : "+ ");
                 }
 
                 Console.WriteLine();

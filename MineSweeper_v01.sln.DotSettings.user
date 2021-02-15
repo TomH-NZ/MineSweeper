@@ -2,6 +2,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a3084d3f_002D0e61_002D4162_002Db602_002Db83fb28ebf25/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="MineSweeperUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.MineSweeperUnitTestsShould&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould.GenerateABoardOfSize2&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould.DisplayABoardOfSizeTwoCorrectly&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

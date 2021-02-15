@@ -25,10 +25,10 @@ namespace MineSweeperUnitTests
             var newTestGame = Factory.NewGameGrid(2);
             
             //Act
-            var result = new DisplayGrid(newTestGame);
+            var result = Factory.NewGridDisplay(newTestGame);
             
             //Assert
-            Assert.Equal("..\n..\n", result);
+            Assert.Equal(". . \n. . \n", result);
         }
     }
 }
