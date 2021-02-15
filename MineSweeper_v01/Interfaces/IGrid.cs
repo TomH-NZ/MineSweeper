@@ -1,7 +1,8 @@
-namespace MineSweeper_v01.Interfaces
+namespace MineSweeper_v01.GridClass
 {
     public interface IGrid
     {
-        int Size { get; }
+        int Size { get; set; }
+        Cell[,] TheGameGrid { get; set; }
     }
 }

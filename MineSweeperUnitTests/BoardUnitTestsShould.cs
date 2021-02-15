@@ -1,4 +1,5 @@
 using MineSweeper_v01.Factories;
+using MineSweeper_v01.GridClass;
 using Xunit;
 
 namespace MineSweeperUnitTests
@@ -22,10 +23,9 @@ namespace MineSweeperUnitTests
         {
             //Arrange
             var newTestGame = Factory.NewGameGrid(2);
-            var newGridDisplay = Factory.DisplayGrid(newTestGame);
             
             //Act
-            var result = newGridDisplay;
+            var result = new DisplayGrid(newTestGame);
             
             //Assert
             Assert.Equal("..\n..\n", result);

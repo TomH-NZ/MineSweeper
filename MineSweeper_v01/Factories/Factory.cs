@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using MineSweeper_v01.GridClass;
-using MineSweeper_v01.Interfaces;
 
 namespace MineSweeper_v01.Factories
 {
@@ -10,11 +8,5 @@ namespace MineSweeper_v01.Factories
         {
             return new Grid(difficulty);
         }
-        
-        public static IDisplayGrid DisplayGrid(IGrid newGame)
-        {
-            return new DisplayGrid(NewGameGrid(difficulty));
-        }
-        
     }
 }
