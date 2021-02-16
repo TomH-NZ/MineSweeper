@@ -1,4 +1,5 @@
 using System;
+using MineSweeper_v01.Interfaces;
 
 namespace MineSweeper_v01.GridClass
 {
@@ -12,7 +13,7 @@ namespace MineSweeper_v01.GridClass
                 {
                     var gameCell = gameGrid.GeneratedGame[row, column];
                     
-                    Console.Write(!gameCell.OccupiedByMine ? ". " : "+ ");
+                    Console.Write(!gameCell.IsOccupiedByMine ? ". " : "+ ");
                 }
 
                 Console.WriteLine();

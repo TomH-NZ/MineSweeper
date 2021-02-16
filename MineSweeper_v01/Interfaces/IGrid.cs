@@ -1,4 +1,6 @@
-namespace MineSweeper_v01.GridClass
+using MineSweeper_v01.GridClass;
+
+namespace MineSweeper_v01.Interfaces
 {
     public interface IGrid
     {

@@ -1,9 +1,11 @@
 
+using MineSweeper_v01.Interfaces;
+
 namespace MineSweeper_v01.GridClass
 {
     public class Grid : IGrid
     {
-        //For the game grid, [0,0] is located in the top left corner, with the largest row/column being bottom right.
+        //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
         
         public int Size { get; set; }
         public Cell[,] GeneratedGame { get; set; }

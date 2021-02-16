@@ -15,7 +15,7 @@ namespace MineSweeper_v01.MinesClass
                 var randomMineRow = new Random().Next(0, gridSize);
                 var randomMineColumn = new Random().Next(0, gridSize);
 
-                var mine = new Cell(randomMineRow, randomMineColumn) {OccupiedByMine = true};
+                var mine = new Cell(randomMineRow, randomMineColumn) {IsOccupiedByMine = true};
                 internalMineList.Add(mine);
             }
             

@@ -2,15 +2,15 @@ namespace MineSweeper_v01.GridClass
 {
     public class Cell
     {
-        public int RowValue { get; }
-        public int ColumnValue { get; }
-        public bool OccupiedByMine { get; set; }
+        public int RowLocationValue { get; }
+        public int ColumnLocationValue { get; }
+        public bool IsOccupiedByMine { get; set; }
 
         public Cell(int row, int column)
         {
-            RowValue = row;
-            ColumnValue = column;
-            OccupiedByMine = false;
+            RowLocationValue = row;
+            ColumnLocationValue = column;
+            IsOccupiedByMine = false;
         }
     }
 }
