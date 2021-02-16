@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using MineSweeper_v01.GridClass;
 
-namespace MineSweeper_v01.MinesClass //ToDo: Complete this so that it generates a random mine cell. Save cell to List<cell>
+namespace MineSweeper_v01.MinesClass 
 {
-    public class MineGenerator
+    public class MineGenerator : IMineGenerator
     {
         public List<Cell> ObjectLocations(int gridSize)
         {
