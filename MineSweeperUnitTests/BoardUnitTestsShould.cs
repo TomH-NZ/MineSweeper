@@ -1,5 +1,6 @@
 using MineSweeper_v01.Factories;
 using MineSweeper_v01.GridClass;
+using MineSweeper_v01.Interfaces;
 using Xunit;
 
 namespace MineSweeperUnitTests
@@ -18,7 +19,7 @@ namespace MineSweeperUnitTests
             Assert.Equal(2, result.Size);
         }
 
-        [Fact]
+        /*[Fact]
         public void DisplayABoardOfSizeTwoCorrectly()
         {
             //Arrange
@@ -29,6 +30,25 @@ namespace MineSweeperUnitTests
             
             //Assert
             Assert.Equal(". . \n. . \n", result);
+        }*/
+
+        private class StubForMineGeneration :IMine
+        {
+            public Cell MineCellGeneration
+            { 
+                return {Cell(0, 0)};
+            }
+        }
+        
+        [Fact]
+        public void ReturnAMineLocationCorrectly()
+        {
+            //Arrange
+            var gameBoard = Factory.NewGameGrid(2);
+
+            //Act
+
+            //Assert
         }
     }
 }
