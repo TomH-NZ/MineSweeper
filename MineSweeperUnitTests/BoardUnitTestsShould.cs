@@ -1,6 +1,5 @@
 using MineSweeper_v01.Factories;
 using MineSweeper_v01.GridClass;
-using MineSweeper_v01.Interfaces;
 using Xunit;
 
 namespace MineSweeperUnitTests
@@ -32,11 +31,11 @@ namespace MineSweeperUnitTests
             Assert.Equal(". . \n. . \n", result);
         }*/
 
-        private class StubForMineGeneration :IMine
+        private class StubForMineGeneration
         {
             public Cell MineCellGeneration
             { 
-                return {Cell(0, 0)};
+                return Cell(0, 0);
             }
         }
         
