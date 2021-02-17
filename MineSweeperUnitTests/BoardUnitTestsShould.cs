@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using MineSweeper_v01.Factories;
 using MineSweeper_v01.GridClass;
 using MineSweeper_v01.MinesClass;
@@ -8,32 +9,41 @@ namespace MineSweeperUnitTests
 {
     public class BoardUnitTestsShould
     {
-        [Fact]
-        public void GenerateABoardOfSize2()
+        [Theory]
+        [InlineData(2, 2)]
+        [InlineData(4, 4)]
+        [InlineData(10, 10)]
+        [InlineData(5, 5)]
+        public void GenerateABoardOfTheCorrectSize(int difficulty, int expected)
         {
             //Arrange
             
             //Act
-            var result = Factory.NewGameGrid(2);
+            var result = Factory.NewGameGrid(difficulty);
             
             //Assert
-            Assert.Equal(2, result.Size);
+            Assert.Equal(expected, result.Size);
         }
 
-        [Fact]
-        public void DisplayABoardOfSizeTwoCorrectly()
+        [Theory]
+        [InlineData(2, ". . \n. . \n")]
+        [InlineData(3, ". . . \n. . . \n. . . \n")]
+        [InlineData(4, ". . . . \n. . . . \n. . . . \n. . . . \n")]
+        [InlineData(5, ". . . . . \n. . . . . \n. . . . . \n. . . . . \n. . . . . \n")]
+        public void DisplayABoardWithTheCorrectDimensions(int difficulty, string expected)
         {
             //Arrange
-            var newTestGame = Factory.NewGameGrid(2);
+            var newTestGame = Factory.NewGameGrid(difficulty);
+            var newDisplay = Factory.NewGridDisplay();
             
             //Act
-            var result = Factory.NewGridDisplay(newTestGame);
+            var result = newDisplay.GenerateGameDisplay(newTestGame);
             
             //Assert
-            Assert.Equal(". . \n. . \n", result);
+            Assert.Equal(expected, result);
         }
 
-        private class StubForMineGeneration: IMineGenerator
+        /*private class StubForMineGeneration: IMineGenerator
         {
             public List<Cell> MineLocations(int gridSize)
             {
@@ -41,9 +51,9 @@ namespace MineSweeperUnitTests
                 
                 return internalMineList;
             }
-        }
+        }*/
         
-        [Fact]
+        /*[Fact]
         public void ReturnAMineLocationCorrectly()
         {
             //Arrange
@@ -52,6 +62,6 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-        }
+        }*/
     }
 }

@@ -11,9 +11,9 @@ namespace MineSweeper_v01.Factories
             return new GameGrid(size);
         }
 
-        public static IDisplayGrid NewGridDisplay(IGameGrid gameGrid)
+        public static IDisplayGrid NewGridDisplay()
         {
-            return new DisplayGrid(gameGrid);
+            return new DisplayGrid();
         }
 
         public static IMineGenerator NewMineLocations()

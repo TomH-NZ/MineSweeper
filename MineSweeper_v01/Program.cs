@@ -11,7 +11,7 @@ namespace MineSweeper_v01
             int.TryParse(Console.ReadLine(), out var selectedDifficulty);
             
             var newGame = Factory.NewGameGrid(selectedDifficulty);
-            var game = Factory.NewGridDisplay(newGame);
+            //var game = Factory.NewGridDisplay(newGame);
         }
     }
 }
