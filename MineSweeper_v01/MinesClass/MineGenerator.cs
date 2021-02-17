@@ -6,7 +6,7 @@ namespace MineSweeper_v01.MinesClass
 {
     public class MineGenerator : IMineGenerator
     {
-        public List<Cell> ObjectLocations(int gridSize)
+        public List<Cell> MineLocations(int gridSize)
         {
             var internalMineList = new List<Cell>();
 
