@@ -1,6 +1,5 @@
-using MineSweeper_v01.GridClass;
-
-namespace MineSweeper_v01.Interfaces
+// ReSharper disable once CheckNamespace
+namespace MineSweeper_v01
 {
     public interface IGameGrid
     {

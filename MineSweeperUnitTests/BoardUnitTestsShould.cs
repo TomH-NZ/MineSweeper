@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using MineSweeper_v01.Factories;
-using MineSweeper_v01.GridClass;
-using MineSweeper_v01.MinesClass;
+
+using MineSweeper_v01;
 using Xunit;
 
 namespace MineSweeperUnitTests

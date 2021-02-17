@@ -1,5 +1,4 @@
 ﻿using System;
-using MineSweeper_v01.Factories;
 
 namespace MineSweeper_v01
 {

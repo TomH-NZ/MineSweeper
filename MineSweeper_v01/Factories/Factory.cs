@@ -1,8 +1,4 @@
-using MineSweeper_v01.GridClass;
-using MineSweeper_v01.Interfaces;
-using MineSweeper_v01.MinesClass;
-
-namespace MineSweeper_v01.Factories
+namespace MineSweeper_v01
 {
     public class Factory
     {

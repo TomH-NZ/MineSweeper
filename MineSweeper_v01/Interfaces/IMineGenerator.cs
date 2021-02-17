@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using MineSweeper_v01.GridClass;
 
-namespace MineSweeper_v01.MinesClass
+// ReSharper disable once CheckNamespace
+namespace MineSweeper_v01
 {
     public interface IMineGenerator
     {

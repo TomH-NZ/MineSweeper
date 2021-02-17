@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using MineSweeper_v01.GridClass;
 
-namespace MineSweeper_v01.MinesClass // check names in namespace, look at removing 'class' from the name/directory structure.
+// ReSharper disable once CheckNamespace
+namespace MineSweeper_v01// check names in namespace, look at removing 'class' from the name/directory structure.
 {
     public class MineGenerator : IMineGenerator
     {
