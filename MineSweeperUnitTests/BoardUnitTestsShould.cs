@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using MineSweeper_v01;
 using Xunit;
 
@@ -40,15 +41,15 @@ namespace MineSweeperUnitTests
             Assert.Equal(expected, result);
         }
 
-        /*private class StubForMineGeneration: IMineGenerator
+        private class StubForMineGeneration: IMineGenerator
         {
             public List<Cell> MineLocations(int gridSize)
             {
-                var internalMineList = new List<Cell> {new Cell(0,0)}; // needed to instantiate the Cell class to be able to feed it the coords
+                var internalMineList = new List<Cell> {new Cell(0,0, CellStatus.OccupiedByMine)}; // needed to instantiate the Cell class to be able to feed it the coords
                 
                 return internalMineList;
             }
-        }*/
+        }
         
         /*[Fact]
         public void ReturnAMineLocationCorrectly()

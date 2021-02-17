@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeper_v01", "MineSweeper_v01\MineSweeper_v01.csproj", "{4CF77268-473D-42C7-A554-9851BD73BC16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeper", "MineSweeper\MineSweeper.csproj", "{4CF77268-473D-42C7-A554-9851BD73BC16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeperUnitTests", "MineSweeperUnitTests\MineSweeperUnitTests.csproj", "{1945D736-ECDF-40D8-B7F4-9B15FF1C971E}"
 EndProject

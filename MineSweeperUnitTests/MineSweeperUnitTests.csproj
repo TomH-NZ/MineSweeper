@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MineSweeper_v01\MineSweeper_v01.csproj" />
+      <ProjectReference Include="..\MineSweeper\MineSweeper.csproj" />
     </ItemGroup>
 
 </Project>

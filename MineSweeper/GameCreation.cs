@@ -1,16 +1,15 @@
-﻿using System;
+using System;
 
 namespace MineSweeper_v01
 {
-    class Program
+    public class GameCreation : IGameCreation
     {
-        static void Main(string[] args)
+        public void NewMineSweeperGame()
         {
             Console.WriteLine("Please enter a difficulty level (2 - 10):");
             int.TryParse(Console.ReadLine(), out var selectedDifficulty);
             
             var newGame = Factory.NewGameGrid(selectedDifficulty);
-            //var game = Factory.NewGridDisplay(newGame);
         }
     }
 }

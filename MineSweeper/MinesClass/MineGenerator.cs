@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 // ReSharper disable once CheckNamespace
-namespace MineSweeper_v01// check names in namespace, look at removing 'class' from the name/directory structure.
+namespace MineSweeper_v01
 {
     public class MineGenerator : IMineGenerator
     {
