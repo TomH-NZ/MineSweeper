@@ -14,7 +14,7 @@ namespace MineSweeper_v01.GridClass
             Size = size;
             GeneratedGameCell = new Cell[Size, Size];
 
-            for (var row = 0; row < Size; row++)
+            for (var row = 0; row < Size; row++) // move logic outside constructor
             {
                 for (var column = 0; column < Size; column++)
                 {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MineSweeper_v01.GridClass;
 
-namespace MineSweeper_v01.MinesClass 
+namespace MineSweeper_v01.MinesClass // check names in namespace, look at removing 'class' from the name/directory structure.
 {
     public class MineGenerator : IMineGenerator
     {

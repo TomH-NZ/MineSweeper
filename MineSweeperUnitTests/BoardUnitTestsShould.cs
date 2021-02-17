@@ -33,11 +33,11 @@ namespace MineSweeperUnitTests
             Assert.Equal(". . \n. . \n", result);
         }
 
-        /*private class StubForMineGeneration: IMineGenerator
+        private class StubForMineGeneration: IMineGenerator
         {
-            public List<Cell> ObjectLocations(int gridSize)
+            public List<Cell> MineLocations(int gridSize)
             {
-                var internalMineList = new List<Cell> {Cell[0,0]};
+                var internalMineList = new List<Cell> {new Cell(0,0)}; // needed to instantiate the Cell class to be able to feed it the coords
                 
                 return internalMineList;
             }
@@ -52,6 +52,6 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-        }*/
+        }
     }
 }

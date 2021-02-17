@@ -5,7 +5,7 @@ namespace MineSweeper_v01.GridClass
 {
     public class DisplayGrid : IDisplayGrid
     {
-        public DisplayGrid(IGameGrid gameGrid)
+        public DisplayGrid(IGameGrid gameGrid) //move logic to method outside const, output as string using Console.Write
         {
             for (var row = 0; row < gameGrid.Size; row++)
             {
