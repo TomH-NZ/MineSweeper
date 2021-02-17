@@ -20,7 +20,7 @@ namespace MineSweeperUnitTests
             Assert.Equal(2, result.Size);
         }
 
-        /*[Fact]
+        [Fact]
         public void DisplayABoardOfSizeTwoCorrectly()
         {
             //Arrange
@@ -31,13 +31,13 @@ namespace MineSweeperUnitTests
             
             //Assert
             Assert.Equal(". . \n. . \n", result);
-        }*/
+        }
 
-        private class StubForMineGeneration: IMineGenerator
+        /*private class StubForMineGeneration: IMineGenerator
         {
             public List<Cell> ObjectLocations(int gridSize)
             {
-                var internalMineList = new List<Cell> {[0,0]};
+                var internalMineList = new List<Cell> {Cell[0,0]};
                 
                 return internalMineList;
             }
@@ -52,6 +52,6 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-        }
+        }*/
     }
 }

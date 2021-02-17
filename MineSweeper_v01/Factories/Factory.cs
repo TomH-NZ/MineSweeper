@@ -6,12 +6,12 @@ namespace MineSweeper_v01.Factories
 {
     public class Factory
     {
-        public static IGrid NewGameGrid(int size)
+        public static IGameGrid NewGameGrid(int size)
         {
-            return new Grid(size);
+            return new GameGrid(size);
         }
 
-        public static IDisplayGrid NewGridDisplay(IGrid gameGrid)
+        public static IDisplayGrid NewGridDisplay(IGameGrid gameGrid)
         {
             return new DisplayGrid(gameGrid);
         }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using MineSweeper_v01.Factories;
-using MineSweeper_v01.GridClass;
 
 namespace MineSweeper_v01
 {
