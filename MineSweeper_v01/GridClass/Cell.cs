@@ -1,3 +1,4 @@
+
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
@@ -5,13 +6,14 @@ namespace MineSweeper_v01
     {
         public int RowLocationValue { get; }
         public int ColumnLocationValue { get; }
-        public bool IsOccupiedByMine { get; set; } // look at using enum for call status (mine, no mine, marked as mine)
+        private CellStatus _cellStatus;
+        
 
-        public Cell(int row, int column)
+        public Cell(int row, int column, CellStatus cellStatus)
         {
             RowLocationValue = row;
             ColumnLocationValue = column;
-            IsOccupiedByMine = false;
+            _cellStatus = cellStatus;
         }
     }
 }

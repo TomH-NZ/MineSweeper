@@ -17,7 +17,7 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    GeneratedGameCell[row, column] = new Cell(row, column);
+                    GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.NotOccupiedByMine);
                 }
             }
         }

@@ -15,7 +15,7 @@ namespace MineSweeper_v01// check names in namespace, look at removing 'class' f
                 var randomMineRow = new Random().Next(0, gridSize);
                 var randomMineColumn = new Random().Next(0, gridSize);
 
-                var mine = new Cell(randomMineRow, randomMineColumn) {IsOccupiedByMine = true};
+                var mine = new Cell(randomMineRow, randomMineColumn, CellStatus.OccupiedByMine);
                 internalMineList.Add(mine);
             }
             

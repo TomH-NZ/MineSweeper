@@ -13,14 +13,7 @@ namespace MineSweeper_v01
                 {
                     var gameCell = gameGrid.GeneratedGameCell[row, column];
                     
-                    if (!gameCell.IsOccupiedByMine)
-                    {
-                        output += ". ";
-                    }
-                    else
-                    {
-                        output += "+ ";
-                    }
+                    output += ". ";
                 }
 
                 output += "\n";
@@ -29,4 +22,4 @@ namespace MineSweeper_v01
             return output;
         }
     }
-} //move logic to method outside const, output as string using Console.Write
+}
