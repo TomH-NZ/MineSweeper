@@ -55,7 +55,6 @@ namespace MineSweeperUnitTests
         public void ReturnTheCorrectCellStatusWhenOccupiedByAMine()
         {
             //Arrange
-            var gameBoard = Factory.NewGameGrid(2);
             var rowUserInput = "0";
             var columnUserInput = "0";
             var mineLocations = new StubForMineGeneration();
