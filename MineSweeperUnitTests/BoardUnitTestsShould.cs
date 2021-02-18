@@ -52,14 +52,20 @@ namespace MineSweeperUnitTests
         }
         
         [Fact]
-        public void ReturnAMineLocationCorrectly()
+        public void ReturnTheCorrectCellStatusWhenOccupiedByAMine()
         {
             //Arrange
             var gameBoard = Factory.NewGameGrid(2);
+            var rowUserInput = "0";
+            var columnUserInput = "0";
+            var mineLocations = new StubForMineGeneration();
 
             //Act
+            var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
+            Assert.Equal(CellStatus.OccupiedByMine, result);
         }
+
     }
 }
