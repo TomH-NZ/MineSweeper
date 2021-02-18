@@ -17,5 +17,10 @@ namespace MineSweeper_v01
         {
             return new MineGenerator();
         }
+
+        public static IGameCreation NewMineSweeperGame()
+        {
+            return new GameCreation();
+        }
     }
 }

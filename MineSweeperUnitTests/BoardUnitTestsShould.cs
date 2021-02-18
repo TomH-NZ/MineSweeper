@@ -51,7 +51,7 @@ namespace MineSweeperUnitTests
             }
         }
         
-        /*[Fact]
+        [Fact]
         public void ReturnAMineLocationCorrectly()
         {
             //Arrange
@@ -60,6 +60,6 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-        }*/
+        }
     }
 }
