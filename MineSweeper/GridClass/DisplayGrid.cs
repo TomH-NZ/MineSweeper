@@ -13,7 +13,7 @@ namespace MineSweeper_v01
                 {
                     var gameCell = gameGrid.GeneratedGameCell[row, column];
                     
-                    output += ". ";
+                    output += ". "; //ToDo: Change to ternary for testing, display + for mine, . for non-mine.
                 }
 
                 output += "\n";
