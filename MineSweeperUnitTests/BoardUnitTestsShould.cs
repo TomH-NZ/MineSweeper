@@ -43,12 +43,12 @@ namespace MineSweeperUnitTests
         [InlineData(4, 4)]
         [InlineData(10, 10)]
         [InlineData(5, 5)]
-        public void GenerateABoardOfTheCorrectSize(int difficulty, int expected)
+        public void GenerateABoardOfTheCorrectSize(int size, int expected)
         {
             //Arrange
             
             //Act
-            var result = Factory.NewGameGrid(difficulty);
+            var result = Factory.NewGameGrid(size);
             
             //Assert
             Assert.Equal(expected, result.Size);
@@ -59,10 +59,10 @@ namespace MineSweeperUnitTests
         [InlineData(3, ". . . \n. . . \n. . . \n")]
         [InlineData(4, ". . . . \n. . . . \n. . . . \n. . . . \n")]
         [InlineData(5, ". . . . . \n. . . . . \n. . . . . \n. . . . . \n. . . . . \n")]
-        public void DisplayABoardWithTheCorrectDimensions(int difficulty, string expected)
+        public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
-            var newTestGame = Factory.NewGameGrid(difficulty);
+            var newTestGame = Factory.NewGameGrid(size);
             var newDisplay = Factory.NewGridDisplay();
             
             //Act
@@ -74,7 +74,7 @@ namespace MineSweeperUnitTests
 
         
         [Fact]
-        public void ReturnTrueWhenCellIsOccupiedByAMine()
+        public void ReturnTrueWhenCellIsInGeneratedMineList()
         {
             //Arrange
             var rowUserInput = "0";
@@ -89,7 +89,7 @@ namespace MineSweeperUnitTests
         }
 
         [Fact]
-        public void ReturnFalseWhenAMineIsNotOccupiedByAMine()
+        public void ReturnFalseWhenAMineIsNotInGeneratedMineList()
         {
             //Arrange
             var rowUserInput = " 0 ";
