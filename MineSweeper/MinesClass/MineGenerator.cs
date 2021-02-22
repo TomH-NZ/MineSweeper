@@ -6,16 +6,16 @@ namespace MineSweeper_v01
 {
     public class MineGenerator : IMineGenerator
     {
-        public List<Cell> MineLocations(int gridSize)
+        public List<string> MineLocations(int gridSize)
         {
-            var internalMineList = new List<Cell>();
+            var internalMineList = new List<string>();
 
             for (var index = 0; index < gridSize; index++)
             {
                 var randomMineRow = new Random().Next(0, gridSize);
                 var randomMineColumn = new Random().Next(0, gridSize);
 
-                var mine = new Cell(randomMineRow, randomMineColumn, CellStatus.OccupiedByMine);
+                var mine = randomMineRow.ToString() + "," + randomMineColumn.ToString();
                 internalMineList.Add(mine);
             }
             

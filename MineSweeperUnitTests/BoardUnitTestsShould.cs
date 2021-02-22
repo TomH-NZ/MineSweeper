@@ -7,11 +7,27 @@ namespace MineSweeperUnitTests
 {
     public class BoardUnitTestsShould
     {
-        private class StubForMineGeneration: IMineGenerator
+        private class StubReturnsZeroZeroAsCoordinates: IMineGenerator
         {
-            public List<Cell> MineLocations(int gridSize)
+            public List<string> MineLocations(int gridSize)
             {
-                var internalMineList = new List<Cell> {new Cell(0,0, CellStatus.OccupiedByMine)}; // needed to instantiate the Cell class to be able to feed it the coords
+                var internalMineList = new List<string> {"0,0"};
+                
+                return internalMineList;
+            }
+        }private class StubReturnsOneOneAsCoordinates: IMineGenerator
+        {
+            public List<string> MineLocations(int gridSize)
+            {
+                var internalMineList = new List<string> {"1,1"};
+                
+                return internalMineList;
+            }
+        }private class StubReturnsTwoTwoAsCoordinates: IMineGenerator
+        {
+            public List<string> MineLocations(int gridSize)
+            {
+                var internalMineList = new List<string> {"2,2"};
                 
                 return internalMineList;
             }
@@ -53,12 +69,12 @@ namespace MineSweeperUnitTests
 
         
         [Fact]
-        public void ReturnTheCorrectCellStatusWhenOccupiedByAMine()
+        public void ReturnTrueWhenCellIsOccupiedByAMine()
         {
             //Arrange
             var rowUserInput = "0";
             var columnUserInput = "0";
-            var mineLocations = new StubForMineGeneration();
+            var mineLocations = new StubReturnsZeroZeroAsCoordinates();
 
             //Act
             var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
@@ -67,5 +83,19 @@ namespace MineSweeperUnitTests
             Assert.True(result);
         }
 
+        [Fact]
+        public void ReturnFalseWhenAMineIsNotOccupiedByAMine()
+        {
+            //Arrange
+            var rowUserInput = "0";
+            var columnUserInput = "0";
+            var mineLocations = new StubReturnsOneOneAsCoordinates();
+
+            //Act
+            var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+
+            //Assert
+            Assert.False(result);    
+        }
     }
 }
