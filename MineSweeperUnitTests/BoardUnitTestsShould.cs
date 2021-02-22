@@ -7,6 +7,16 @@ namespace MineSweeperUnitTests
 {
     public class BoardUnitTestsShould
     {
+        private class StubForMineGeneration: IMineGenerator
+        {
+            public List<Cell> MineLocations(int gridSize)
+            {
+                var internalMineList = new List<Cell> {new Cell(0,0, CellStatus.OccupiedByMine)}; // needed to instantiate the Cell class to be able to feed it the coords
+                
+                return internalMineList;
+            }
+        }
+        
         [Theory]
         [InlineData(2, 2)]
         [InlineData(4, 4)]
@@ -41,15 +51,6 @@ namespace MineSweeperUnitTests
             Assert.Equal(expected, result);
         }
 
-        private class StubForMineGeneration: IMineGenerator
-        {
-            public List<Cell> MineLocations(int gridSize)
-            {
-                var internalMineList = new List<Cell> {new Cell(0,0, CellStatus.OccupiedByMine)}; // needed to instantiate the Cell class to be able to feed it the coords
-                
-                return internalMineList;
-            }
-        }
         
         [Fact]
         public void ReturnTheCorrectCellStatusWhenOccupiedByAMine()
@@ -63,7 +64,7 @@ namespace MineSweeperUnitTests
             var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
-            Assert.Equal(CellStatus.OccupiedByMine, result);
+            Assert.True(result);
         }
 
     }

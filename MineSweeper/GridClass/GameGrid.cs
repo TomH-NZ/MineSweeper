@@ -21,8 +21,5 @@ namespace MineSweeper_v01
                 }
             }
         }
-        
-        //public 
-        
     }
 }
