@@ -8,7 +8,7 @@ namespace MineSweeper_v01
         public int Size { get; set; }
         public Cell[,] GeneratedGameCell { get; set; }
         
-        public GameGrid(int size)
+        public GameGrid(int size) //ToDo: Move logic outside of constructor
         {
             Size = size;
             GeneratedGameCell = new Cell[Size, Size];

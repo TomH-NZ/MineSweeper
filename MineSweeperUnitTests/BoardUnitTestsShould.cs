@@ -15,7 +15,9 @@ namespace MineSweeperUnitTests
                 
                 return internalMineList;
             }
-        }private class StubReturnsOneOneAsCoordinates: IMineGenerator
+        }
+        
+        private class StubReturnsOneOneAsCoordinates: IMineGenerator
         {
             public List<string> MineLocations(int gridSize)
             {
@@ -23,7 +25,10 @@ namespace MineSweeperUnitTests
                 
                 return internalMineList;
             }
-        }private class StubReturnsTwoTwoAsCoordinates: IMineGenerator
+            
+        }
+        
+        private class StubReturnsTwoTwoAsCoordinates: IMineGenerator
         {
             public List<string> MineLocations(int gridSize)
             {
@@ -87,7 +92,7 @@ namespace MineSweeperUnitTests
         public void ReturnFalseWhenAMineIsNotOccupiedByAMine()
         {
             //Arrange
-            var rowUserInput = "0";
+            var rowUserInput = " 0 ";
             var columnUserInput = "0";
             var mineLocations = new StubReturnsOneOneAsCoordinates();
 
