@@ -5,10 +5,10 @@ namespace MineSweeper_v01
 {
     public class MineLogic : IMineLogic
     {
-        public bool CheckForMines(string rowInput, string columnInput, IEnumerable<string> mineLocations)
+        public bool CheckForMines(string rowInput, string columnInput, IEnumerable<string> mineLocations) //ToDo: Change to use CellStatus for mine checking
         {
             var output = false;
-            var playerInput = rowInput.Trim() + "," + columnInput.Trim(); //add validation to confirm is integer.
+            var playerInput = rowInput.Trim() + "," + columnInput.Trim(); //ToDo: add validation to confirm is integer.
 
             foreach (var mine in mineLocations)
             {

@@ -16,13 +16,13 @@ namespace MineSweeper_v01
 
         public void GenerateGrid(int size)
         {
-            var mineLocations = Factory.NewMineLocations();
+            var mineGenerator = Factory.NewMineLocations();
             
             for (var row = 0; row < Size; row++)
             {
-                for (var column = 0; column < Size; column++) // add if statement checking for minelocation.
+                for (var column = 0; column < Size; column++)
                 {
-                    foreach (var mine in mineLocations.MineLocations(size))
+                    foreach (var mine in mineGenerator.MineLocations(size))
                     {
                         var cellCoordinates = row + "," + column;
 
