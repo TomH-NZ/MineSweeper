@@ -7,17 +7,48 @@ namespace MineSweeperUnitTests
 {
     public class BoardUnitTestsShould
     {
+        private class StubReturnsZeroZeroAsCoordinates: IMineGenerator
+        {
+            public List<string> MineLocations(int gridSize)
+            {
+                var internalMineList = new List<string> {"0,0"};
+                
+                return internalMineList;
+            }
+        }
+        
+        private class StubReturnsOneOneAsCoordinates: IMineGenerator
+        {
+            public List<string> MineLocations(int gridSize)
+            {
+                var internalMineList = new List<string> {"1,1"};
+                
+                return internalMineList;
+            }
+            
+        }
+        
+        private class StubReturnsTwoTwoAsCoordinates: IMineGenerator
+        {
+            public List<string> MineLocations(int gridSize)
+            {
+                var internalMineList = new List<string> {"2,2"};
+                
+                return internalMineList;
+            }
+        }
+        
         [Theory]
         [InlineData(2, 2)]
         [InlineData(4, 4)]
         [InlineData(10, 10)]
         [InlineData(5, 5)]
-        public void GenerateABoardOfTheCorrectSize(int difficulty, int expected)
+        public void GenerateABoardOfTheCorrectSize(int size, int expected)
         {
             //Arrange
             
             //Act
-            var result = Factory.NewGameGrid(difficulty);
+            var result = Factory.NewGameGrid(size);
             
             //Assert
             Assert.Equal(expected, result.Size);
@@ -28,10 +59,10 @@ namespace MineSweeperUnitTests
         [InlineData(3, ". . . \n. . . \n. . . \n")]
         [InlineData(4, ". . . . \n. . . . \n. . . . \n. . . . \n")]
         [InlineData(5, ". . . . . \n. . . . . \n. . . . . \n. . . . . \n. . . . . \n")]
-        public void DisplayABoardWithTheCorrectDimensions(int difficulty, string expected)
+        public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
-            var newTestGame = Factory.NewGameGrid(difficulty);
+            var newTestGame = Factory.NewGameGrid(size);
             var newDisplay = Factory.NewGridDisplay();
             
             //Act
@@ -41,30 +72,37 @@ namespace MineSweeperUnitTests
             Assert.Equal(expected, result);
         }
 
-        private class StubForMineGeneration: IMineGenerator
-        {
-            public List<Cell> MineLocations(int gridSize)
-            {
-                var internalMineList = new List<Cell> {new Cell(0,0, CellStatus.OccupiedByMine)}; // needed to instantiate the Cell class to be able to feed it the coords
-                
-                return internalMineList;
-            }
-        }
         
         [Fact]
-        public void ReturnTheCorrectCellStatusWhenOccupiedByAMine()
+        public void ReturnTrueWhenCellIsInGeneratedMineList()
         {
             //Arrange
             var rowUserInput = "0";
             var columnUserInput = "0";
-            var mineLocations = new StubForMineGeneration();
+            var mineLocations = new StubReturnsZeroZeroAsCoordinates();
+            var locationChecker = Factory.NewMineChecker();
 
             //Act
-            var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+            var result = locationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
-            Assert.Equal(CellStatus.OccupiedByMine, result);
+            Assert.True(result);
         }
 
+        [Fact]
+        public void ReturnFalseWhenAMineIsNotInGeneratedMineList()
+        {
+            //Arrange
+            var rowUserInput = " 0 ";
+            var columnUserInput = "0";
+            var mineLocations = new StubReturnsOneOneAsCoordinates();
+            var locationChecker = Factory.NewMineChecker();
+
+            //Act
+            var result = locationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+
+            //Assert
+            Assert.False(result);    
+        }
     }
 }

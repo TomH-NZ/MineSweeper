@@ -22,5 +22,10 @@ namespace MineSweeper_v01
         {
             return new GameCreation();
         }
+
+        public static IMineLogic NewMineChecker()
+        {
+            return new MineLogic();
+        }
     }
 }

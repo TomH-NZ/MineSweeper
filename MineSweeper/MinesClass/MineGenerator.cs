@@ -4,18 +4,18 @@ using System.Collections.Generic;
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineGenerator : IMineGenerator
+    public class MineGenerator : IMineGenerator // ToDo: look int writing test for this class.
     {
-        public List<Cell> MineLocations(int gridSize)
+        public List<string> MineLocations(int gridSize)
         {
-            var internalMineList = new List<Cell>();
+            var internalMineList = new List<string>();
 
-            for (var index = 0; index < gridSize; index++)
+            for (var index = 0; index < gridSize; index++) //ToDo: add validation so mines don't repeat on same square
             {
                 var randomMineRow = new Random().Next(0, gridSize);
                 var randomMineColumn = new Random().Next(0, gridSize);
 
-                var mine = new Cell(randomMineRow, randomMineColumn, CellStatus.OccupiedByMine);
+                var mine = randomMineRow + "," + randomMineColumn;
                 internalMineList.Add(mine);
             }
             

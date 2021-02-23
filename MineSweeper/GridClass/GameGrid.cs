@@ -12,12 +12,29 @@ namespace MineSweeper_v01
         {
             Size = size;
             GeneratedGameCell = new Cell[Size, Size];
+        }
 
-            for (var row = 0; row < Size; row++) // move logic outside constructor
+        public void GenerateGrid(int size)
+        {
+            var mineGenerator = Factory.NewMineLocations();
+            
+            for (var row = 0; row < Size; row++)
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.NotOccupiedByMine);
+                    foreach (var mine in mineGenerator.MineLocations(size)) // ToDo: Look at extracting this to a separate class.
+                    {
+                        var cellCoordinates = row + "," + column;
+
+                        if (mine == cellCoordinates)
+                        {
+                            GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.OccupiedByMine);
+                        }
+                        else
+                        {
+                            GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.NotOccupiedByMine); 
+                        }
+                    }
                 }
             }
         }
