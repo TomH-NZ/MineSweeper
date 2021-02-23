@@ -22,7 +22,7 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    foreach (var mine in mineGenerator.MineLocations(size))
+                    foreach (var mine in mineGenerator.MineLocations(size)) // ToDo: Look at extracting this to a separate class.
                     {
                         var cellCoordinates = row + "," + column;
 

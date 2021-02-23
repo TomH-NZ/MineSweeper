@@ -83,7 +83,7 @@ namespace MineSweeperUnitTests
             var locationChecker = Factory.NewMineChecker();
 
             //Act
-            var result = locationChecker.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+            var result = locationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
             Assert.True(result);
@@ -99,7 +99,7 @@ namespace MineSweeperUnitTests
             var locationChecker = Factory.NewMineChecker();
 
             //Act
-            var result = locationChecker.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+            var result = locationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
             Assert.False(result);    

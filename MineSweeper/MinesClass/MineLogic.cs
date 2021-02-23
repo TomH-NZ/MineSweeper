@@ -5,7 +5,7 @@ namespace MineSweeper_v01
 {
     public class MineLogic : IMineLogic
     {
-        public bool CheckForMines(string rowInput, string columnInput, IEnumerable<string> mineLocations) //ToDo: Change to use CellStatus for mine checking
+        public bool HasAMine(string rowInput, string columnInput, IEnumerable<string> mineLocations) //ToDo: Change to use CellStatus for mine checking
         {
             var output = false;
             var playerInput = rowInput.Trim() + "," + columnInput.Trim(); //ToDo: add validation to confirm is integer.
