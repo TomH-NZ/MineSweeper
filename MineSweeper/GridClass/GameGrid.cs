@@ -24,7 +24,7 @@ namespace MineSweeper_v01
                 {
                     foreach (var mine in mineLocations.MineLocations(size))
                     {
-                        var cellCoordinates = row.ToString() + "," + column.ToString();
+                        var cellCoordinates = row + "," + column;
 
                         if (mine == cellCoordinates)
                         {

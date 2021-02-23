@@ -3,9 +3,9 @@ using System.Collections.Generic;
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineLogic // Do I need this class?
+    public class MineLogic : IMineLogic
     {
-        public static bool CheckForMines(string rowInput, string columnInput, IEnumerable<string> mineLocations) // ToDo: Remove static
+        public bool CheckForMines(string rowInput, string columnInput, IEnumerable<string> mineLocations)
         {
             var output = false;
             var playerInput = rowInput.Trim() + "," + columnInput.Trim(); //add validation to confirm is integer.
@@ -16,8 +16,6 @@ namespace MineSweeper_v01
                 {
                     output = true;
                 }
-
-                return output;
             }
             
             return output;

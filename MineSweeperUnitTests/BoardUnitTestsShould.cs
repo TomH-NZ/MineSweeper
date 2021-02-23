@@ -80,9 +80,10 @@ namespace MineSweeperUnitTests
             var rowUserInput = "0";
             var columnUserInput = "0";
             var mineLocations = new StubReturnsZeroZeroAsCoordinates();
+            var locationChecker = Factory.NewMineChecker();
 
             //Act
-            var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+            var result = locationChecker.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
             Assert.True(result);
@@ -95,9 +96,10 @@ namespace MineSweeperUnitTests
             var rowUserInput = " 0 ";
             var columnUserInput = "0";
             var mineLocations = new StubReturnsOneOneAsCoordinates();
+            var locationChecker = Factory.NewMineChecker();
 
             //Act
-            var result = MineLogic.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+            var result = locationChecker.CheckForMines(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
 
             //Assert
             Assert.False(result);    
