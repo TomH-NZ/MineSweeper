@@ -48,7 +48,7 @@ namespace MineSweeperUnitTests
             //Arrange
             
             //Act
-            var result = Factory.NewGameGrid(size);
+            var result = Factory.NewGridDisplay(size);
             
             //Assert
             Assert.Equal(expected, result.Size);
@@ -62,11 +62,10 @@ namespace MineSweeperUnitTests
         public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
-            var newTestGame = Factory.NewGameGrid(size);
-            var newDisplay = Factory.NewGridDisplay();
+            var newDisplay = Factory.NewGridDisplay(size);
             
             //Act
-            var result = newDisplay.GenerateGameDisplay(newTestGame);
+            var result = newDisplay.GenerateGameDisplay(size);
             
             //Assert
             Assert.Equal(expected, result);
