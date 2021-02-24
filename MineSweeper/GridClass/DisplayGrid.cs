@@ -22,7 +22,6 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < size; column++)
                 {
-                    //var gameCell = GeneratedGameCell[row, column];
                     foreach (var mine in mineGenerator.MineLocations(size)) // ToDo: Look at extracting this to a separate class.
                     {
                         var cellCoordinates = row + "," + column;

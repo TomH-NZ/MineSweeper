@@ -1,7 +1,7 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class GameGrid : IGameGrid
+    public class GameGrid : IGameGrid // ToDo: Delete file
     {
         /*For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.*/
         
