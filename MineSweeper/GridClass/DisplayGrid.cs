@@ -26,7 +26,7 @@ namespace MineSweeper_v01
                     {
                         var cellCoordinates = row + "," + column;
 
-                        if (mine == cellCoordinates)
+                        if (mine == cellCoordinates) // ToDo: look into a contains method, or a LINQ query
                         {
                             GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.OccupiedByMine);
                         }
