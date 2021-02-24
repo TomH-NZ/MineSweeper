@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineGenerator : IMineGenerator // ToDo: look int writing test for this class.
+    public class MineGenerator : IMineGenerator // ToDo: look into writing test for this class.
     {
         public List<string> MineLocations(int gridSize)
         {

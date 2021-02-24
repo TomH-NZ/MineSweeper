@@ -48,7 +48,7 @@ namespace MineSweeperUnitTests
             //Arrange
             
             //Act
-            var result = Factory.NewGridDisplay(size);
+            var result = Factory.NewGameGrid(size);
             
             //Assert
             Assert.Equal(expected, result.Size);

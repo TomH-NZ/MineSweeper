@@ -1,10 +1,9 @@
-using System;
 
 namespace MineSweeper_v01
 {
     public class GameCreation : IGameCreation // ToDo: rename to Console??
     {
-        public void NewMineSweeperGame()
+        public void NewMineSweeperGame() // ToDo: Look into Figgle library for creating a banner / header for the display. Use color for mines, blank, etc.
         {
             //ToDo: new game grid variable
             //ToDo: new mine generator variable
