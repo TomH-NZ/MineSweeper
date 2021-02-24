@@ -1,7 +1,7 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class GameGrid : IGameGrid // ToDo: Delete file
+    public class GameGrid : IGameGrid // ToDo: Delete file??
     {
         /*For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.*/
         
@@ -22,7 +22,7 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    foreach (var mine in mineGenerator.MineLocations(size)) // ToDo: Look at extracting this to a separate class.
+                    foreach (var mine in mineGenerator.MineLocations(size))
                     {
                         var cellCoordinates = row + "," + column;
 

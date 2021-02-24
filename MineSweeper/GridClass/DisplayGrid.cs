@@ -13,7 +13,7 @@ namespace MineSweeper_v01
             Size = size;
             GeneratedGameCell = new Cell[Size, Size];
         }
-        public string GenerateGameDisplay(int size)
+        public string GenerateGameDisplay(int size) // ToDo: Class is getting too busy, split out logic, ie: display, generation, update cell status
         {
             var output = "";
             var mineGenerator = Factory.NewMineLocations();

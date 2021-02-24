@@ -3,7 +3,7 @@ using System.Collections.Generic;
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineLogic : IMineLogic // ToDo: Delete class? Checking logic moved to DisplayGrid.
+    public class MineLogic : IMineLogic // ToDo: Delete class? 
     {
         public bool HasAMine(string rowInput, string columnInput, IEnumerable<string> mineLocations) //ToDo: Change to use CellStatus for mine checking
         {
