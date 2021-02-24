@@ -1,7 +1,7 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class DisplayGrid : IDisplayGrid
+    public class DisplayGrid : IDisplayGrid // ToDo: Look into Figgle library for creating a banner / header for the display. Use color for mines, blank, etc.
     {
         /*For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.*/
         
