@@ -25,7 +25,7 @@ namespace MineSweeper_v01
             }
         }
 
-        public void UpdateGameCellStatusWithMine(int size, int row, int column)
+        private void UpdateGameCellStatusWithMine(int size, int row, int column)
         {
             var newMineLocations = Factory.NewMineLocations();
 
@@ -35,14 +35,9 @@ namespace MineSweeper_v01
                 int.TryParse(mines[0].Trim(), out var mineRow);
                 int.TryParse(mines[1].Trim(), out var mineColumn);
 
-                if (mineRow == row && mineColumn == column)
-                {
-                    GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.OccupiedByMine);
-                }
-                else
-                {
-                    GeneratedGameCell[row, column] = new Cell(row, column, CellStatus.NotOccupiedByMine);
-                }
+                GeneratedGameCell[row, column] = mineRow == row && mineColumn == column
+                    ? new Cell(row, column, CellStatus.OccupiedByMine)
+                    : new Cell(row, column, CellStatus.NotOccupiedByMine);
             }
         }
     }
