@@ -15,7 +15,7 @@ namespace MineSweeper_v01
                 var randomMineRow = new Random().Next(0, gridSize);
                 var randomMineColumn = new Random().Next(0, gridSize);
 
-                var mine = randomMineRow + "," + randomMineColumn; // ToDo: Change to 2d array??
+                var mine = randomMineRow + "," + randomMineColumn;
                 internalMineList.Add(mine);
             }
             

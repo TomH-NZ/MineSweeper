@@ -17,8 +17,6 @@ namespace MineSweeper_v01
 
         public string GenerateGameDisplay(int size)
         {
-            var gameGrid = Factory.NewGameGrid(size);
-
             var output = "";
 
             for (var row = 0; row < size; row++)

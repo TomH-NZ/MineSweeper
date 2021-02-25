@@ -8,7 +8,7 @@ namespace MineSweeper_v01
         public bool HasAMine(string rowInput, string columnInput, IEnumerable<string> mineLocations)
         {
             var output = false;
-            int.TryParse(rowInput.Trim(), out var row);
+            int.TryParse(rowInput.Trim(), out var row); // ToDo: move validation to player input class?
             int.TryParse(columnInput.Trim(), out var column);
             var playerInput =  row + "," + column;
 
