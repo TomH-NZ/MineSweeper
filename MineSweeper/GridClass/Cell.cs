@@ -18,3 +18,5 @@ namespace MineSweeper_v01
         }
     }
 }
+
+// ToDo: populate cell with adjacent mines total at time of grid generation. Order would go Grid Generation, mine generation, adjacent mine calculation

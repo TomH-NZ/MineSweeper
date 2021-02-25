@@ -14,12 +14,23 @@ namespace MineSweeper_v01
         {
             Size = size;
         }
+
         public string GenerateGameDisplay(int size)
         {
             var gameGrid = Factory.NewGameGrid(size);
-            
-            var output = gameGrid.GeneratedGameCell.Cast<Cell>().Aggregate("", (current, variable) => current + ". ");
 
+            var output = "";
+
+            for (var row = 0; row < size; row++)
+            {
+                for (var column = 0; column < size; column++)
+                {
+
+                    output += ". ";
+                }
+
+                output += "\n";
+            }
             return output;
         }
     }

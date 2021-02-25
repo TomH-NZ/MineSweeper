@@ -104,8 +104,8 @@ namespace MineSweeperUnitTests
             Assert.False(result);    
         }
 
-        /*[Fact]
-        public void ReturnTrueWhenUsingTheCellStatusOfACell() // want to test based on CellStatus, but not sure how to call the field.
+        //[Fact]
+        /*public void ReturnTrueWhenUsingTheCellStatusOfACell() // want to test based on CellStatus, but not sure how to call the field.
         {
             //Arrange
             var newGame = Factory.NewGameGrid(2);

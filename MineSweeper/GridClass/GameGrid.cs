@@ -14,7 +14,7 @@ namespace MineSweeper_v01
             GeneratedGameCell = new Cell[Size, Size];
         }
 
-        public void GenerateGrid(int size)
+        public void GenerateGrid(int size) // ToDo: look into using a celldisplay class, with logic for each staus (. , * , @)
         {
             for (var row = 0; row < Size; row++)
             {
