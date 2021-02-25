@@ -6,15 +6,13 @@ namespace MineSweeper_v01
     {
         public int RowLocationValue { get; }
         public int ColumnLocationValue { get; }
-        public CellStatus CellStatus { get; }
         // ToDo: Add int field for adjacent mines. Add to constructor
         
 
-        public Cell(int row, int column, CellStatus cellStatus)
+        public Cell(int row, int column)
         {
             RowLocationValue = row;
             ColumnLocationValue = column;
-            CellStatus = cellStatus;
         }
     }
 }

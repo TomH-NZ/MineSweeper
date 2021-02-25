@@ -35,14 +35,3 @@ namespace MineSweeper_v01
         }
     }
 }
-
-/*for (var row = 0; row < size; row++)
-            {
-                for (var column = 0; column < size; column++)
-                {
-                    
-                    output += ". ";
-                }
-
-                output += "\n";
-            }*/

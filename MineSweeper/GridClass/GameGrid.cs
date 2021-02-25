@@ -20,24 +20,8 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    UpdateGameCellStatusWithMine(size, row, column);
+                    GeneratedGameCell[row, column] = new Cell(row, column);
                 }
-            }
-        }
-
-        private void UpdateGameCellStatusWithMine(int size, int row, int column)
-        {
-            var newMineLocations = Factory.NewMineLocations();
-
-            foreach (var entry in newMineLocations.MineLocations(size))
-            {
-                var mines = entry.Split(',');
-                int.TryParse(mines[0].Trim(), out var mineRow);
-                int.TryParse(mines[1].Trim(), out var mineColumn);
-
-                GeneratedGameCell[row, column] = mineRow == row && mineColumn == column
-                    ? new Cell(row, column, CellStatus.OccupiedByMine)
-                    : new Cell(row, column, CellStatus.NotOccupiedByMine);
             }
         }
     }
