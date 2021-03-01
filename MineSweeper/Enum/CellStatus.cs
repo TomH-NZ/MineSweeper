@@ -1,9 +1,8 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public enum CellStatus // ToDo: Add additional status for marked as mine?? 
+    public enum CellStatus // ToDo: Delete this class / directory if unused.
     {
-        OccupiedByMine,
-        NotOccupiedByMine
+        
     }
 }

@@ -2,12 +2,12 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class Cell
+    public class Cell // TODO: DELETE ENUM
     {
         public int RowLocationValue { get; }
-        public int ColumnLocationValue { get; }// TODO: DELETE ENUM
-        // ToDo: Add int field for adjacent mines. Add to constructor
-        // ToDo: Add bool field IsOccupiedByMine??
+        public int ColumnLocationValue { get; }
+        public bool IsAMine { get; set; }
+        public int NumberOfAdjacentMines { get; set; }
         
 
         public Cell(int row, int column)
