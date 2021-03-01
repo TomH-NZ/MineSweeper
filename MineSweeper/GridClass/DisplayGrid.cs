@@ -1,4 +1,4 @@
-using System.Linq;
+using System;
 
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
@@ -28,10 +28,9 @@ namespace MineSweeper_v01
                     {
                         outputGrid += ". ";
                     }
-
+                    
                 }
-
-                outputGrid += "\n";
+                outputGrid += Environment.NewLine;
             }
             return outputGrid;
         }

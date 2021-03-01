@@ -2,7 +2,7 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class Cell
+    public class Cell : ICell
     {
         public int RowLocationValue { get; }
         public int ColumnLocationValue { get; }

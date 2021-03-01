@@ -9,7 +9,6 @@ namespace MineSweeper_v01
         
         // ToDo: Cell has status of IsAMine. When generating mine locations have MineLogic update IsAMine for cell[row,column] to be true.
         
-        // ToDo: In DisplayGrid add in a while false condition for HasBeenRevealed to display ". " for each cell.
         // ToDo: If HasBeenRevealed is True, then run adjacent mine logic, update Cell field with value.
         
         // ToDo: Delete MineLogic?? Refactor MineGenerator??
