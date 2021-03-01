@@ -18,11 +18,6 @@ namespace MineSweeper_v01
             return new MineGenerator();
         }
 
-        public static IGameCreation NewMineSweeperGame()
-        {
-            return new GameCreation();
-        }
-
         public static IMineLogic NewMineChecker()
         {
             return new MineLogic();
