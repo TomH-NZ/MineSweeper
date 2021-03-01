@@ -17,17 +17,18 @@ namespace MineSweeper_v01
         public string GenerateGameDisplay(int size)
         {
             var outputGrid = "";
-            var baseGrid = Factory.NewGameGrid(size);
-            baseGrid.GenerateGrid(size);
+            var initialGameGrid = Factory.NewGameGrid(size);
+            initialGameGrid.GenerateGrid(size);
 
             for (var row = 0; row < size; row++)
             {
                 for (var column = 0; column < size; column++)
                 {
-                    if (!baseGrid.GeneratedGameCell[row,column].HasBeenRevealed)
+                    if (!initialGameGrid.GeneratedGameCell[row,column].HasBeenRevealed)
                     {
                         outputGrid += ". ";
                     }
+                    // ToDo: Add in Else command to run adjacent mine logic.
                     
                 }
                 outputGrid += Environment.NewLine;

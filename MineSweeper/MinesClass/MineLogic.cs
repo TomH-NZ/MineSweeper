@@ -3,7 +3,7 @@ using System.Collections.Generic;
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineLogic : IMineLogic
+    public class MineLogic : IMineLogic // ToDo: Do I need this class? Possibly move mine checking to use IsAMine prop of Cell?
     {
         public bool HasAMine(string rowInput, string columnInput, IEnumerable<string> mineLocations)
         {
