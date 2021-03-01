@@ -8,12 +8,15 @@ namespace MineSweeper_v01
         public int ColumnLocationValue { get; }
         public bool IsAMine { get; set; }
         public int NumberOfAdjacentMines { get; set; }
-        
+        public bool HasBeenRevealed { get; set; }
+        // ToDo: Add bool IsMarkedAsMine property?? 
 
         public Cell(int row, int column)
         {
             RowLocationValue = row;
             ColumnLocationValue = column;
+            IsAMine = false;
+            HasBeenRevealed = false;
         }
     }
 }

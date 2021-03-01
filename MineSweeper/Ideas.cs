@@ -6,5 +6,12 @@ namespace MineSweeper_v01
         // ToDo: 2 - player move, 3 - mine generation, 4 - adjacent mine calculation.
         
         // ToDo: Create new branch to test game flow (grid gen, player move, mine gen, etc) 
+        
+        // ToDo: Cell has status of IsAMine. When generating mine locations have MineLogic update IsAMine for cell[row,column] to be true.
+        
+        // ToDo: In DisplayGrid add in a while false condition for HasBeenRevealed to display ". " for each cell.
+        // ToDo: If HasBeenRevealed is True, then run adjacent mine logic, update Cell field with value.
+        
+        // ToDo: Delete MineLogic?? Refactor MineGenerator??
     }
 }

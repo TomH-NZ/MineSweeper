@@ -17,19 +17,19 @@ namespace MineSweeper_v01
 
         public string GenerateGameDisplay(int size)
         {
-            var output = "";
+            var outputGrid = "";
 
             for (var row = 0; row < size; row++)
             {
                 for (var column = 0; column < size; column++)
                 {
 
-                    output += ". ";
+                    outputGrid += ". ";
                 }
 
-                output += "\n";
+                outputGrid += "\n";
             }
-            return output;
+            return outputGrid;
         }
     }
 }
