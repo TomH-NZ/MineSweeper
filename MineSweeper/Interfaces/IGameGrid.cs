@@ -1,9 +1,11 @@
-// ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
     public interface IGameGrid
     {
-        public int Size { get; set; }
-        public Cell[,] GeneratedGameCell { get; set; }
+        int Size { get; set; }
+        Cell[,] GeneratedGameCell { get; set; }
+
+        void GenerateGrid(int size) // ToDo: look into using a celldisplay class, with logic for each staus (. , * , @)
+            ;
     }
 }
