@@ -9,17 +9,31 @@ namespace MineSweeper_v01
         public List<string> MineLocations(int gridSize)
         {
             var internalMineList = new List<string>();
+            var randomCoordinates = RandomMineCoordinates(gridSize);
 
-            for (var index = 0; index < gridSize; index++) //ToDo: add validation so mines don't repeat on same square
+            while (internalMineList.Count < gridSize)
             {
-                var randomMineRow = new Random().Next(0, gridSize);
-                var randomMineColumn = new Random().Next(0, gridSize);
-
-                var mine = randomMineRow + "," + randomMineColumn;
-                internalMineList.Add(mine);
+                if (!internalMineList.Contains(randomCoordinates))
+                {
+                    internalMineList.Add(randomCoordinates);
+                }
+                else
+                {
+                    randomCoordinates = RandomMineCoordinates(gridSize);
+                }
             }
             
             return internalMineList;
+        }
+
+        private string RandomMineCoordinates(int gridSize)
+        {
+            var randomMineRow = new Random().Next(0, gridSize);
+            var randomMineColumn = new Random().Next(0, gridSize);
+
+            var mine = randomMineRow + "," + randomMineColumn;
+
+            return mine;
         }
     }
 }
