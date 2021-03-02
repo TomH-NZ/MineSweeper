@@ -6,7 +6,6 @@ namespace MineSweeper_v01
         int Size { get; set; }
         ICell[,] GeneratedGameCell { get; set; }
 
-        void GenerateGrid(int size) // ToDo: look into using a celldisplay class, with logic for each staus (. , * , @)
-            ;
+        void GenerateGrid(int size);
     }
 }

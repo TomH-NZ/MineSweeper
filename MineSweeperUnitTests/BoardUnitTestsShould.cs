@@ -47,7 +47,7 @@ namespace MineSweeperUnitTests
             //Arrange
             
             //Act
-            var result = Factory.NewGameGrid(size);
+            var result = GridFactory.NewGameGrid(size);
             
             //Assert
             Assert.Equal(expected, result.Size);
@@ -61,7 +61,7 @@ namespace MineSweeperUnitTests
         public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
-            var newDisplay = Factory.NewGridDisplay(size);
+            var newDisplay = GridFactory.NewGridDisplay(size);
             
             //Act
             var result = newDisplay.GenerateGameDisplay(size);
@@ -78,7 +78,7 @@ namespace MineSweeperUnitTests
             var rowUserInput = "0";
             var columnUserInput = "0";
             var mineLocations = new StubReturnsZeroZeroAsCoordinates();
-            var mineLocationChecker = Factory.NewMineChecker();
+            var mineLocationChecker = MineFactory.NewMineChecker();
 
             //Act
             var result = mineLocationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
@@ -94,7 +94,7 @@ namespace MineSweeperUnitTests
             var rowUserInput = " 0 ";
             var columnUserInput = "0";
             var mineLocations = new StubReturnsOneOneAsCoordinates();
-            var mineLocationChecker = Factory.NewMineChecker();
+            var mineLocationChecker = MineFactory.NewMineChecker();
 
             //Act
             var result = mineLocationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));

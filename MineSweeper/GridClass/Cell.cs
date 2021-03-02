@@ -9,7 +9,7 @@ namespace MineSweeper_v01
         public bool IsAMine { get; set; }
         public int NumberOfAdjacentMines { get; set; }
         public bool HasBeenRevealed { get; set; }
-        // ToDo: Add bool IsMarkedAsMine property??
+        // ToDo: Add bool IsMarkedAsMine property for stretch goal
 
         public Cell(int row, int column)
         {

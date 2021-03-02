@@ -1,7 +1,7 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class Factory
+    public class GridFactory
     {
         public static IGameGrid NewGameGrid(int size)
         {
@@ -11,16 +11,6 @@ namespace MineSweeper_v01
         public static IDisplayGrid NewGridDisplay(int size)
         {
             return new DisplayGrid(size);
-        }
-
-        public static IMineGenerator NewMineLocations()
-        {
-            return new MineGenerator();
-        }
-
-        public static IMineLogic NewMineChecker()
-        {
-            return new MineLogic();
         }
     }
 }
