@@ -1,39 +1,30 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineGenerator : IMineGenerator // ToDo: look into writing test for this class.
+    public class MineGenerator : IMineGenerator
     {
-        public List<string> MineLocations(int gridSize)
+        public IEnumerable<Cell> MineLocations(int gridSize)
         {
-            var internalMineList = new List<string>();
-            var randomCoordinates = RandomMineCoordinates(gridSize);
+            var internalMineList = new List<Cell>();
 
-            while (internalMineList.Count < gridSize)
+            var newGameGrid = GridFactory.NewGameGrid(gridSize);
+            newGameGrid.GenerateGrid(gridSize);
+
+            for (var row = 0; row < gridSize; row++)
             {
-                if (!internalMineList.Contains(randomCoordinates))
+                for (var column = 0; column < gridSize; column++)
                 {
-                    internalMineList.Add(randomCoordinates);
-                }
-                else
-                {
-                    randomCoordinates = RandomMineCoordinates(gridSize);
+                    internalMineList.Add(newGameGrid.GeneratedGameCell[row, column]);
                 }
             }
+
+            IEnumerable<Cell> shuffledMineList = internalMineList.OrderBy(x => Guid.NewGuid()).ToList();
             
-            return internalMineList;
-        }
-
-        private string RandomMineCoordinates(int gridSize)
-        {
-            var randomMineRow = new Random().Next(0, gridSize);
-            var randomMineColumn = new Random().Next(0, gridSize);
-
-            var mine = randomMineRow + "," + randomMineColumn;
-
-            return mine;
+            return shuffledMineList;
         }
     }
 }

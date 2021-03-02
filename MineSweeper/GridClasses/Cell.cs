@@ -10,8 +10,7 @@ namespace MineSweeper_v01
         public int ColumnLocationValue { get; }
         public bool IsAMine { get; set; }
         public int NumberOfAdjacentMines { get; set; }
-        public CellDisplayStatus DisplayStatus { get; set; } // ToDo: Enum?? revealed / notRevealed / markedAsMine
-        // ToDo: Add bool IsMarkedAsMine property for stretch goal
+        public CellDisplayStatus DisplayStatus { get; set; } 
 
         public Cell(int row, int column)
         {

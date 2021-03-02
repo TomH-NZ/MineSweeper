@@ -6,12 +6,12 @@ namespace MineSweeper_v01
         /*For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.*/
         
         public int Size { get; set; }
-        public ICell[,] GeneratedGameCell { get; set; }
+        public Cell[,] GeneratedGameCell { get; set; }
         
         public GameGrid(int size)
         {
             Size = size;
-            GeneratedGameCell = new ICell[Size, Size];
+            GeneratedGameCell = new Cell[Size, Size];
         }
 
         public void GenerateGrid(int size) 

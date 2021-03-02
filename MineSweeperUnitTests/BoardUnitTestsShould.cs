@@ -6,37 +6,6 @@ namespace MineSweeperUnitTests
 {
     public class BoardUnitTestsShould
     {
-        private class StubReturnsZeroZeroAsCoordinates: IMineGenerator
-        {
-            public List<string> MineLocations(int gridSize)
-            {
-                var internalMineList = new List<string> {"0,0"};
-                
-                return internalMineList;
-            }
-        }
-        
-        private class StubReturnsOneOneAsCoordinates: IMineGenerator
-        {
-            public List<string> MineLocations(int gridSize)
-            {
-                var internalMineList = new List<string> {"1,1"};
-                
-                return internalMineList;
-            }
-            
-        }
-        
-        private class StubReturnsTwoTwoAsCoordinates: IMineGenerator
-        {
-            public List<string> MineLocations(int gridSize)
-            {
-                var internalMineList = new List<string> {"2,2"};
-                
-                return internalMineList;
-            }
-        }
-        
         [Theory]
         [InlineData(2, 2)]
         [InlineData(4, 4)]
@@ -70,39 +39,43 @@ namespace MineSweeperUnitTests
             Assert.Equal(expected, result);
         }
 
+        private class StubForMineLocationZeroZero : IMineGenerator
+        {
+            public IEnumerable<Cell> MineLocations(int gridSize)
+            {
+                var output = new List<Cell> {new Cell(0,0)};
+                return output;
+            }
+        }
         
         [Fact]
-        public void ReturnTrueWhenCellIsInGeneratedMineList()
+        public void UpdateTheStatusOfACellToRecordAMineAsTrue()
         {
             //Arrange
-            var rowUserInput = "0";
-            var columnUserInput = "0";
-            var mineLocations = new StubReturnsZeroZeroAsCoordinates();
-            var mineLocationChecker = MineFactory.NewMineChecker();
+            var newGame = GridFactory.NewGameGrid(2);
+            var updateCellMineStatus = new MineLogic();
+            var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            var result = mineLocationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2));
 
             //Assert
-            Assert.True(result);
+            Assert.True(newGame.GeneratedGameCell[0,0].IsAMine);
         }
-
-        [Fact]
-        public void ReturnFalseWhenAMineIsNotInGeneratedMineList()
-        {
-            //Arrange
-            var rowUserInput = " 0 ";
-            var columnUserInput = "0";
-            var mineLocations = new StubReturnsOneOneAsCoordinates();
-            var mineLocationChecker = MineFactory.NewMineChecker();
-
-            //Act
-            var result = mineLocationChecker.HasAMine(rowUserInput, columnUserInput, mineLocations.MineLocations(2));
-
-            //Assert
-            Assert.False(result);    
-        }
-
         
+        [Fact]
+        public void UpdateTheStatusOfACellToRecordAMineAsFalse()
+        {
+            //Arrange
+            var newGame = GridFactory.NewGameGrid(2);
+            var updateCellMineStatus = new MineLogic();
+            var mineStub = new StubForMineLocationZeroZero();
+
+            //Act
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2));
+
+            //Assert
+            Assert.False(newGame.GeneratedGameCell[1,1].IsAMine);
+        }
     }
 }
