@@ -37,3 +37,5 @@ namespace MineSweeper_v01
         }
     }
 }
+// ToDo: when grid generated, output cells to list.
+// ToDo: import list into mine logic, shuffle list then choose first [size] in list as mine location.

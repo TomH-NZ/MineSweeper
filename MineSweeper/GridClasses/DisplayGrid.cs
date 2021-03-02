@@ -17,7 +17,7 @@ namespace MineSweeper_v01
         public string GenerateGameDisplay(int size)
         {
             var outputGrid = "";
-            var initialGameGrid = GridFactory.NewGameGrid(size); // ToDo: Move instantiation of GameGrid to Console class??
+            var initialGameGrid = GridFactory.NewGameGrid(size);
             initialGameGrid.GenerateGrid(size);
 
             for (var row = 0; row < size; row++)

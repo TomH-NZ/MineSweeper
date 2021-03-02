@@ -20,7 +20,7 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    GeneratedGameCell[row, column] = new Cell(row, column); // ToDo: Remove direct coupling to Cell class, unsure how.
+                    GeneratedGameCell[row, column] = new Cell(row, column);
                 }
             }
         }

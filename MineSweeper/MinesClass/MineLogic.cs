@@ -5,7 +5,7 @@ namespace MineSweeper_v01
 {
     public class MineLogic : IMineLogic
     {
-        public bool HasAMine(string rowInput, string columnInput, IEnumerable<string> mineLocations) // ToDo: Do I need this class? Possibly move mine checking to use IsAMine prop of Cell?
+        public bool HasAMine(string rowInput, string columnInput, IEnumerable<string> mineLocations) // ToDo: Delete class
         {
             var output = false;
             int.TryParse(rowInput.Trim(), out var row); // ToDo: move validation to player input class?
