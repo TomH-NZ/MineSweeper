@@ -1,4 +1,5 @@
 using System;
+using MineSweeper_v01.Enums;
 
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
@@ -24,7 +25,7 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < size; column++)
                 {
-                    if (!initialGameGrid.GeneratedGameCell[row,column].HasBeenRevealed)
+                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
                     {
                         outputGrid += ". ";
                     }

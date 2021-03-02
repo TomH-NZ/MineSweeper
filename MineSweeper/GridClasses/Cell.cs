@@ -1,5 +1,7 @@
+using MineSweeper_v01.Enums;
 
 // ReSharper disable once CheckNamespace
+
 namespace MineSweeper_v01
 {
     public class Cell : ICell
@@ -8,7 +10,7 @@ namespace MineSweeper_v01
         public int ColumnLocationValue { get; }
         public bool IsAMine { get; set; }
         public int NumberOfAdjacentMines { get; set; }
-        public bool HasBeenRevealed { get; set; } // ToDo: Enum?? revealed / notRevealed / markedAsMine
+        public CellDisplayStatus DisplayStatus { get; set; } // ToDo: Enum?? revealed / notRevealed / markedAsMine
         // ToDo: Add bool IsMarkedAsMine property for stretch goal
 
         public Cell(int row, int column)
@@ -16,7 +18,7 @@ namespace MineSweeper_v01
             RowLocationValue = row;
             ColumnLocationValue = column;
             IsAMine = false;
-            HasBeenRevealed = false;
+            DisplayStatus = CellDisplayStatus.NotRevealed;
         }
     }
 }
