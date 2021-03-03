@@ -41,25 +41,25 @@ namespace MineSweeperUnitTests
 
         private class StubForMineLocationZeroZero : IMineGenerator
         {
-            public List<string> MineLocations(int gridSize)
+            public List<Cell> MineLocations(int gridSize)
             {
-                var output = new List<string> {"0,0"};
+                var output = new List<Cell> {new Cell(0,0)};
                 return output;
             }
         }
         
         [Fact]
-        public void UpdateTheStatusOfACellToRecordAMineAsTrue() // ToDo: Object reference not set to instance error,  track down why.
+        public void UpdateTheStatusOfACellToRecordAMineAsTrue()
         {
             //Arrange
             var gridSize = 2;
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
-            newGameGrid.GenerateGrid(gridSize);
+            newGameGrid.GenerateGrid(newGameGrid.Size);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGameGrid);
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(newGameGrid.Size), newGameGrid);
 
             //Assert
             Assert.True(newGameGrid.GeneratedGameCell[0,0].IsAMine);
@@ -71,12 +71,12 @@ namespace MineSweeperUnitTests
             //Arrange
             var gridSize = 2;
             var newGame = GridFactory.NewGameGrid(gridSize);
-            newGame.GenerateGrid(gridSize);
+            newGame.GenerateGrid(newGame.Size);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGame);
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(newGame.Size), newGame);
 
             //Assert
             Assert.False(newGame.GeneratedGameCell[1,1].IsAMine);

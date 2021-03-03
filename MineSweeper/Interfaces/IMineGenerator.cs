@@ -5,6 +5,6 @@ namespace MineSweeper_v01
 {
     public interface IMineGenerator
     {
-        List<string> MineLocations(int gridSize);
+        List<Cell> MineLocations(int gridSize);
     }
 }

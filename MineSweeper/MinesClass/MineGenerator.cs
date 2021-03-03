@@ -7,26 +7,22 @@ namespace MineSweeper_v01
 {
     public class MineGenerator : IMineGenerator
     {
-        public List<string> MineLocations(int gridSize)
+        public List<Cell> MineLocations(int gridSize)
         {
-            var generatedMineList = new List<string>();
+            var generatedMineList = new List<Cell>();
+            var gameGrid = GridFactory.NewGameGrid(gridSize);
+            gameGrid.GenerateGrid(gridSize);
 
             for (var row = 0; row < gridSize; row++)
             {
                 for (var column = 0; column < gridSize; column++)
                 {
-                    generatedMineList.Add(row + "," + column);
+                    generatedMineList.Add(gameGrid.GeneratedGameCell[row, column]);
                 }
             }
-
             var convertedMineList = generatedMineList.OrderBy(x => Guid.NewGuid()).ToList().Take(gridSize);
-            var outputMineList = convertedMineList.ToList();
             
-            return outputMineList;
+            return generatedMineList;
         }
     }
 }
-// ToDo: when grid generated, output cells to list.
-// ToDo: import list into mine logic, shuffle list then choose first [size] in list as mine location.
-
-// 

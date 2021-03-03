@@ -12,5 +12,9 @@ namespace MineSweeper_v01
         // ToDo: If HasBeenRevealed is True, then run adjacent mine logic, update Cell field with value.
         
         // ToDo: Delete MineLogic?? Refactor MineGenerator??
+        
+        // ToDo: Look at LINQ, type collections a bit deeper.
+        
+        // ToDo: Look into Record type in C# 9
     }
 }

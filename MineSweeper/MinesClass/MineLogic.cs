@@ -6,15 +6,19 @@ namespace MineSweeper_v01
 {
     public class MineLogic : IMineLogic
     {
-        public void UpdateCellMineStatus(List<string> mineLocations, IGameGrid gameGrid) // ToDo: Reduce  number of parameters being passed in.
-        {// ToDo: If query to compare cell in mine list to cell in generated grid??
-            foreach (var entry in mineLocations)
-            {
-                var output = entry.Split(',');
-                int.TryParse(output[0], out var row);
-                int.TryParse(output[1], out var column);
+        public void UpdateCellMineStatus(IEnumerable<Cell> mineLocations, IGameGrid gameGrid)
+        {
+            var inputMineLocations = mineLocations.ToList();
 
-                gameGrid.GeneratedGameCell[row, column].IsAMine = true;
+            for (var row = 0; row < gameGrid.Size; row++)
+            {
+                for (var column = 0; column < gameGrid.Size; column++)
+                {
+                    if (inputMineLocations.Contains(gameGrid.GeneratedGameCell[row,column]))
+                    {
+                        gameGrid.GeneratedGameCell[row, column].IsAMine = true;
+                    }
+                }
             }
         }
     }
