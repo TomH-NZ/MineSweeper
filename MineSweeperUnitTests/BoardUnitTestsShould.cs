@@ -41,9 +41,9 @@ namespace MineSweeperUnitTests
 
         private class StubForMineLocationZeroZero : IMineGenerator
         {
-            public IEnumerable<Cell> MineLocations(int gridSize)
+            public List<string> MineLocations(int gridSize)
             {
-                var output = new List<Cell> {new Cell(0,0)};
+                var output = new List<string> {"0,0"};
                 return output;
             }
         }
@@ -54,11 +54,12 @@ namespace MineSweeperUnitTests
             //Arrange
             var gridSize = 2;
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
+            newGameGrid.GenerateGrid(gridSize);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGameGrid, gridSize);
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGameGrid);
 
             //Assert
             Assert.True(newGameGrid.GeneratedGameCell[0,0].IsAMine);
@@ -70,11 +71,12 @@ namespace MineSweeperUnitTests
             //Arrange
             var gridSize = 2;
             var newGame = GridFactory.NewGameGrid(gridSize);
+            newGame.GenerateGrid(gridSize);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGame, gridSize);
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGame);
 
             //Assert
             Assert.False(newGame.GeneratedGameCell[1,1].IsAMine);
