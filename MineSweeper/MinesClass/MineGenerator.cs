@@ -22,9 +22,9 @@ namespace MineSweeper_v01
                 }
             }
 
-            IEnumerable<Cell> shuffledMineList = internalMineList.OrderBy(x => Guid.NewGuid()).ToList(); // ToDo: Add logic to select only top [size] entries
+            var outputMineList = internalMineList.OrderBy(x => Guid.NewGuid()).ToList().Take(gridSize); // ToDo: Add logic to select only top [size] entries
             
-            return shuffledMineList;
+            return outputMineList;
         }
     }
 }

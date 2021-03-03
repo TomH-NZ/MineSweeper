@@ -19,6 +19,8 @@ namespace MineSweeper_v01
             IsAMine = false;
             DisplayStatus = CellDisplayStatus.NotRevealed;
         }
+        
+        
     }
 }
 

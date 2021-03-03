@@ -49,15 +49,16 @@ namespace MineSweeperUnitTests
         }
         
         [Fact]
-        public void UpdateTheStatusOfACellToRecordAMineAsTrue()
+        public void UpdateTheStatusOfACellToRecordAMineAsTrue() // ToDo: Object reference not set to instance error,  track down why.
         {
             //Arrange
-            var newGameGrid = GridFactory.NewGameGrid(2);
+            var gridSize = 2;
+            var newGameGrid = GridFactory.NewGameGrid(gridSize);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2), newGameGrid, 0,0);
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGameGrid, gridSize);
 
             //Assert
             Assert.True(newGameGrid.GeneratedGameCell[0,0].IsAMine);
@@ -67,12 +68,13 @@ namespace MineSweeperUnitTests
         public void UpdateTheStatusOfACellToRecordAMineAsFalse()
         {
             //Arrange
-            var newGame = GridFactory.NewGameGrid(2);
+            var gridSize = 2;
+            var newGame = GridFactory.NewGameGrid(gridSize);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2), newGame, 1,1);
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(gridSize), newGame, gridSize);
 
             //Assert
             Assert.False(newGame.GeneratedGameCell[1,1].IsAMine);
