@@ -28,6 +28,7 @@ namespace MineSweeper_v01
                     if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
                     {
                         outputGrid += ". ";
+                        
                     }
                     // ToDo: Add in Else command to run adjacent mine logic.
                     

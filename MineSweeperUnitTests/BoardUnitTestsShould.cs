@@ -52,15 +52,15 @@ namespace MineSweeperUnitTests
         public void UpdateTheStatusOfACellToRecordAMineAsTrue()
         {
             //Arrange
-            var newGame = GridFactory.NewGameGrid(2);
+            var newGameGrid = GridFactory.NewGameGrid(2);
             var updateCellMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2));
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2), newGameGrid, 0,0);
 
             //Assert
-            Assert.True(newGame.GeneratedGameCell[0,0].IsAMine);
+            Assert.True(newGameGrid.GeneratedGameCell[0,0].IsAMine);
         }
         
         [Fact]
@@ -72,7 +72,7 @@ namespace MineSweeperUnitTests
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2));
+            updateCellMineStatus.UpdateCellMineStatus(mineStub.MineLocations(2), newGame, 1,1);
 
             //Assert
             Assert.False(newGame.GeneratedGameCell[1,1].IsAMine);
