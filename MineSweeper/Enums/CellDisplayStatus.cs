@@ -2,7 +2,7 @@ namespace MineSweeper_v01.Enums
 {
     public enum CellDisplayStatus
     {
-        Reavealed, 
+        Revealed, 
         NotRevealed, 
         MarkedAsMine
     }

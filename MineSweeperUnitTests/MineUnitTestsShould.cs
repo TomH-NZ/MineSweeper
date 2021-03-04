@@ -60,10 +60,27 @@ namespace MineSweeperUnitTests
         }
 
         [Fact]
-        public void ReturnTwoAdjacentMinesAfterAPlayerMove()
+        public void ReturnTwoAdjacentMinesOnASizeThreeGridAfterAPlayerMove()
         {
             //Arrange
             var newGameGrid = GridFactory.NewGameGrid(3);
+            newGameGrid.GenerateGrid(newGameGrid.Size);
+            var updateMineStatus = new MineLogic();
+            var mineStub = new StubForTwoMineLocations();
+
+            //Act
+            updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(newGameGrid.Size), newGameGrid);
+            var result = updateMineStatus.CalculateAdjacentMineTotal(newGameGrid, "1,1");
+
+            //Assert
+            Assert.Equal(2, result);
+        }
+        
+        [Fact]
+        public void ReturnTwoAdjacentMinesOnASizeTwoGridAfterAPlayerMove()
+        {
+            //Arrange
+            var newGameGrid = GridFactory.NewGameGrid(2);
             newGameGrid.GenerateGrid(newGameGrid.Size);
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForTwoMineLocations();

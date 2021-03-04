@@ -3,7 +3,7 @@ namespace MineSweeper_v01
 {
     public class GameGrid : IGameGrid
     {
-        /*For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.*/
+        //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
         
         public int Size { get; set; }
         public Cell[,] GeneratedGameCell { get; set; }
