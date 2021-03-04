@@ -8,18 +8,10 @@ namespace MineSweeper_v01
     {
         //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
         //Player move is always entered as Row then Column.
-        
-        public int Size { get; set; }
-        
-        public DisplayGrid(int size)
-        {
-            Size = size;
-        }
 
-        public string GenerateGameDisplay(int size)
+        public string GenerateGameDisplay(IGameGrid initialGameGrid)
         {
             var outputGrid = "";
-            var initialGameGrid = GridFactory.NewGameGrid(size);
             initialGameGrid.GenerateGrid(initialGameGrid.Size);
 
             for (var row = 0; row < initialGameGrid.Size; row++)

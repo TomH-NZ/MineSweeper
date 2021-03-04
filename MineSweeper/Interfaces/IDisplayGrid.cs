@@ -3,7 +3,6 @@ namespace MineSweeper_v01
 {
     public interface IDisplayGrid
     {
-        int Size { get; set; }
-        string GenerateGameDisplay(int size);
+        string GenerateGameDisplay(IGameGrid initialGameGrid);
     }
 }

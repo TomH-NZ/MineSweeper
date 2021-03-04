@@ -29,10 +29,11 @@ namespace MineSweeperUnitTests
         public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
-            var newDisplay = GridFactory.NewGridDisplay(size);
+            var newDisplay = GridFactory.NewGridDisplay();
+            var gameGrid = GridFactory.NewGameGrid(size);
             
             //Act
-            var result = newDisplay.GenerateGameDisplay(size);
+            var result = newDisplay.GenerateGameDisplay(gameGrid);
             
             //Assert
             Assert.Equal(expected, result);

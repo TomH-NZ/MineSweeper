@@ -8,9 +8,9 @@ namespace MineSweeper_v01
             return new GameGrid(size);
         }
 
-        public static IDisplayGrid NewGridDisplay(int size)
+        public static IDisplayGrid NewGridDisplay()
         {
-            return new DisplayGrid(size);
+            return new DisplayGrid();
         }
     }
 }
