@@ -9,5 +9,10 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.MineUnitTestsShould&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnTrueForANumberBetweenZeroAndNine&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnTrueForANumberBetweenZeroAndTen&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputThatIsNotANumber&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputGreaterThanNine&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputNotANumberOrGreaterThanNine&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
