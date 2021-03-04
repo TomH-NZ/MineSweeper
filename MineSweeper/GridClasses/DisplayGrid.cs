@@ -31,6 +31,11 @@ namespace MineSweeper_v01
                         outputGrid += ". ";
                         
                     }
+
+                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
+                    {
+                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].NumberOfAdjacentMines + " ";
+                    }
                     // ToDo: Add in Else command to run adjacent mine logic.
                     
                 }
