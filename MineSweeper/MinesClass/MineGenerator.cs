@@ -13,16 +13,16 @@ namespace MineSweeper_v01
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             gameGrid.GenerateGrid(gridSize);
 
-            for (var row = 0; row < gridSize; row++)
+            for (var row = 0; row < gameGrid.Size; row++)
             {
-                for (var column = 0; column < gridSize; column++)
+                for (var column = 0; column < gameGrid.Size; column++)
                 {
                     generatedMineList.Add(gameGrid.GeneratedGameCell[row, column]);
                 }
             }
-            var convertedMineList = generatedMineList.OrderBy(x => Guid.NewGuid()).ToList().Take(gridSize);
+            var convertedMineList = generatedMineList.OrderBy(x => Guid.NewGuid()).ToList().Take(gameGrid.Size);
             
-            return generatedMineList;
+            return (List<Cell>) convertedMineList;
         }
     }
 }

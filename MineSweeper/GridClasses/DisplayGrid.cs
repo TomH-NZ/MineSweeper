@@ -19,11 +19,11 @@ namespace MineSweeper_v01
         {
             var outputGrid = "";
             var initialGameGrid = GridFactory.NewGameGrid(size);
-            initialGameGrid.GenerateGrid(size);
+            initialGameGrid.GenerateGrid(initialGameGrid.Size);
 
-            for (var row = 0; row < size; row++)
+            for (var row = 0; row < initialGameGrid.Size; row++)
             {
-                for (var column = 0; column < size; column++)
+                for (var column = 0; column < initialGameGrid.Size; column++)
                 {
                     if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
                     {
