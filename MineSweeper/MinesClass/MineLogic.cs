@@ -6,7 +6,7 @@ namespace MineSweeper_v01
 {
     public class MineLogic : IMineLogic
     {
-        public void UpdateCellMineStatus(IEnumerable<Cell> mineLocations, IGameGrid gameGrid)
+        public void UpdateCellWithMineStatus(IEnumerable<Cell> mineLocations, IGameGrid gameGrid)
         {
             var inputMineLocations = mineLocations.ToList();
 
@@ -20,6 +20,11 @@ namespace MineSweeper_v01
                     }
                 }
             }
+        }
+
+        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove)
+        {
+            return 2;
         }
     }
 }
