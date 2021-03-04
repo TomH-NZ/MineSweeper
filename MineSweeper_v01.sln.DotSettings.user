@@ -1,12 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6c6eb0ba_002D3b92_002D4742_002D9c2e_002D1e8c9846e031/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BoardUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6c6eb0ba_002D3b92_002D4742_002D9c2e_002D1e8c9846e031/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BoardUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.MineUnitTestsShould&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a3084d3f_002D0e61_002D4162_002Db602_002Db83fb28ebf25/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="MineSweeperUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a3084d3f_002D0e61_002D4162_002Db602_002Db83fb28ebf25/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="MineSweeperUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.MineUnitTestsShould&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
