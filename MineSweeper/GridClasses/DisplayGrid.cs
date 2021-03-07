@@ -12,7 +12,7 @@ namespace MineSweeper_v01
         public string GenerateGameDisplay(IGameGrid initialGameGrid)
         {
             var outputGrid = "";
-            initialGameGrid.GenerateGrid(initialGameGrid.Size);
+            initialGameGrid.GenerateGrid(initialGameGrid.Size); // ToDo: Move grid generation outside method so it can be called repeatedly without creating a new grid each time.
 
             for (var row = 0; row < initialGameGrid.Size; row++)
             {
