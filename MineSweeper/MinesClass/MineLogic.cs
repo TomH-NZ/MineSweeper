@@ -35,7 +35,7 @@ namespace MineSweeper_v01
             {
                 foreach (var columnVariable in coordinateVariables)
                 {
-                    if (GreaterThanLowerGridBoundary(row, column, rowVariable, columnVariable) && LowerThanUpperGridBoundary(row, column, rowVariable, columnVariable, gameGrid) 
+                    if (GreaterThanLowerGridBoundary(row, column, rowVariable, columnVariable) && LesserThanUpperGridBoundary(row, column, rowVariable, columnVariable, gameGrid) 
                         && gameGrid.GeneratedGameCell[row + rowVariable, column + columnVariable].IsAMine)
                     {
                         adjacentMinesOutput += 1;
@@ -53,8 +53,8 @@ namespace MineSweeper_v01
             return lowerBoundaryOutput;
         }
 
-        private bool LowerThanUpperGridBoundary(int row, int column, int rowVariable, int columnVariable,
-            IGameGrid gameGrid)
+        private bool LesserThanUpperGridBoundary(int row, int column, int rowVariable, int columnVariable,
+            IGameGrid gameGrid) // ToDo: reduce number of input variables.  how?
         {
             var upperBoundaryOutput = row + rowVariable < gameGrid.Size && column + columnVariable < gameGrid.Size;
 

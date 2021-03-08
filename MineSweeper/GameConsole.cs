@@ -12,11 +12,11 @@ namespace MineSweeper_v01
             var userInputGridSize = "";
             var gridDisplay = GridFactory.NewGridDisplay();
 
-            while (!userInputValidation.IsCorrectInitialGridSize(userInputGridSize))
+            while (!userInputValidation.IsInitialGridSizeCorrect(userInputGridSize))
             {
                 Console.WriteLine("Please enter a grid size between 2 and 10: ");
                 userInputGridSize = Console.ReadLine();
-                userInputValidation.IsCorrectInitialGridSize(userInputGridSize);
+                userInputValidation.IsInitialGridSizeCorrect(userInputGridSize);
             }
 
             int.TryParse(userInputGridSize, out var gridSize);

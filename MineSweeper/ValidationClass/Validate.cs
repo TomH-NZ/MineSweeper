@@ -17,7 +17,7 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsCorrectInitialGridSize(string userInput)
+        public bool IsInitialGridSizeCorrect(string userInput)
         {
             var output = false;
             var validatedUserInput = int.TryParse(userInput, out var number);

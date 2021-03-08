@@ -63,7 +63,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.True(validateTest.IsCorrectInitialGridSize("5"));
+            Assert.True(validateTest.IsInitialGridSizeCorrect("5"));
         }
 
         [Theory]
@@ -80,7 +80,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.False(validateTest.IsCorrectInitialGridSize(input));
+            Assert.False(validateTest.IsInitialGridSizeCorrect(input));
         }
 
         [Fact]
