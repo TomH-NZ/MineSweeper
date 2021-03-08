@@ -62,5 +62,3 @@ namespace MineSweeper_v01
         }
     }
 }
-
-// ToDo: after integrating adjacent mine logic start writing user input process

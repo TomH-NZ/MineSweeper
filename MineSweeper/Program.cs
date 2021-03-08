@@ -6,7 +6,8 @@ namespace MineSweeper_v01
     {
         static void Main(string[] args)
         {
-           
+            var game = new GameConsole();
+            game.NewGame();
         }
     }
 }

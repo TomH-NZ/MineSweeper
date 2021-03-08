@@ -4,6 +4,9 @@
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.MineUnitTestsShould&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputGridSizeNotANumberOrOutsideZeroAndTen&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.ValidationUnitTestsShould.ReturnTrueIfPlayerHasSelectedAMine&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.ValidationUnitTestsShould.ReturnFalseIfPlayerHasNotSelectedAMine&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a3084d3f_002D0e61_002D4162_002Db602_002Db83fb28ebf25/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="MineSweeperUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;

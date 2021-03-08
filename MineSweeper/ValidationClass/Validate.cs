@@ -1,9 +1,10 @@
+
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
     public class Validate : IValidate
     {
-        public bool UserGridMove(string userMove)
+        public bool IsValidUserMove(string userMove)
         {
             var output = false;
             var validatedUserInput = int.TryParse(userMove, out var number);
@@ -16,7 +17,7 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool InitialGridSize(string userInput)
+        public bool IsCorrectInitialGridSize(string userInput)
         {
             var output = false;
             var validatedUserInput = int.TryParse(userInput, out var number);
@@ -26,6 +27,21 @@ namespace MineSweeper_v01
                 output = true;
             }
 
+            return output;
+        }
+
+        public bool IsPlayerDead(IGameGrid gameGrid, string userInput)
+        {
+            var output = false;
+            var inputMove = userInput.Split(',');
+            int.TryParse(inputMove[0], out var row);
+            int.TryParse(inputMove[1], out var column);
+
+            if (gameGrid.GeneratedGameCell[row, column].IsAMine)
+            {
+                output = true;
+            }
+            
             return output;
         }
     }
