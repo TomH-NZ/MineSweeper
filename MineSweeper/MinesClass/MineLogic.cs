@@ -6,7 +6,7 @@ namespace MineSweeper_v01
 {
     public class MineLogic : IMineLogic
     {
-        public void UpdateCellWithMineStatus(IEnumerable<Cell> mineLocations, IGameGrid gameGrid)
+        public void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid)
         {
             var inputMineLocations = mineLocations.ToList();
 

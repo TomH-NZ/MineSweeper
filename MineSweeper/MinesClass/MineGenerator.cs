@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
@@ -18,11 +17,22 @@ namespace MineSweeper_v01
                 for (var column = 0; column < gameGrid.Size; column++)
                 {
                     generatedMineList.Add(gameGrid.GeneratedGameCell[row, column]);
+                    gameGrid.GeneratedGameCell[row, column].IsAMine = true;
                 }
             }
-            var convertedMineList = generatedMineList.OrderBy(x => Guid.NewGuid()).ToList().Take(gameGrid.Size);
+
+            var convertedMineList = new List<Cell>(); // ToDo: Need to sort out some way of randomising the list and returning top [size] values.
+
+            for (var cell = 0; cell < gameGrid.Size; cell++)
+            {
+                var rnd = new Random();
+                var randomMine = generatedMineList.Count;
+                var mine = rnd.Next(randomMine);
+                convertedMineList.Add(generatedMineList[mine]);
+                generatedMineList.Remove(generatedMineList[mine]);
+            }
             
-            return (List<Cell>) convertedMineList;
+            return convertedMineList;
         }
     }
 }

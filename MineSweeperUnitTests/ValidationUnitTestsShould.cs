@@ -34,7 +34,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.True(validateTest.IsValidUserMove("1"));
+            Assert.True(validateTest.IsUserMoveValid("1"));
         }
 
         [Theory]
@@ -51,7 +51,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.False(validateTest.IsValidUserMove(input));
+            Assert.False(validateTest.IsUserMoveValid(input));
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.True(validateTest.IsInitialGridSizeCorrect("5"));
+            Assert.True(validateTest.IsInitialGridSizeValid("5"));
         }
 
         [Theory]
@@ -80,7 +80,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.False(validateTest.IsInitialGridSizeCorrect(input));
+            Assert.False(validateTest.IsInitialGridSizeValid(input));
         }
 
         [Fact]

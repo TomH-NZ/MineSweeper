@@ -18,17 +18,30 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
+                    /*if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
                     {
                         outputGrid += ". ";
                         
                     }
 
+                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine == true)
+                    {
+                        outputGrid += "+ ";
+                    }
+
                     if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
                     {
                         outputGrid += initialGameGrid.GeneratedGameCell[row, column].NumberOfAdjacentMines + " ";
-                    }
+                    }*/
                     // ToDo: Add in Else command to run adjacent mine logic.
+                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine == true)
+                    {
+                        outputGrid += "+ ";
+                    }
+                    else
+                    {
+                        outputGrid += ". ";
+                    }
                     
                 }
                 outputGrid += Environment.NewLine;

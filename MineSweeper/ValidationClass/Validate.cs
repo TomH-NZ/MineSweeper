@@ -4,7 +4,7 @@ namespace MineSweeper_v01
 {
     public class Validate : IValidate
     {
-        public bool IsValidUserMove(string userMove)
+        public bool IsUserMoveValid(string userMove)
         {
             var output = false;
             var validatedUserInput = int.TryParse(userMove, out var number);
@@ -17,7 +17,7 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsInitialGridSizeCorrect(string userInput)
+        public bool IsInitialGridSizeValid(string userInput)
         {
             var output = false;
             var validatedUserInput = int.TryParse(userInput, out var number);
