@@ -41,12 +41,12 @@ namespace MineSweeper_v01
             return RowLocationValue == other.RowLocationValue && ColumnLocationValue == other.ColumnLocationValue;
         }
 
-        /*public override int GetHashCode()
+        public override int GetHashCode()
         {
             return HashCode.Combine(RowLocationValue, ColumnLocationValue);
-        }*/
+        }
 
-        /*public static bool operator ==(Cell row, Cell column)
+        public static bool operator ==(Cell row, Cell column)
         {
             return row.Equals(column);
         }
@@ -54,7 +54,7 @@ namespace MineSweeper_v01
         public static bool operator !=(Cell row, Cell column)
         {
             return !(row == column);
-        }*/
+        }
     }
 }
 

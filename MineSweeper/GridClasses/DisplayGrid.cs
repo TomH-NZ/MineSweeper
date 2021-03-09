@@ -24,7 +24,7 @@ namespace MineSweeper_v01
                         
                     }
 
-                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine )
+                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine ) // ToDo: Delete before final update to Master branch.
                     {
                         outputGrid += "+ ";
                     }

@@ -14,17 +14,7 @@ namespace MineSweeperUnitTests
                 return output;
             }
         }
-        
-        private class StubForTwoMineLocations : IMineGenerator
-        {
-            public List<Cell> MineLocations(int gridSize)
-            {
-                var output = new List<Cell> {new Cell(0, 1), new Cell(1, 0)};
 
-                return output;
-            }
-        }
-        
         [Fact]
         public void ReturnTrueForAUserInputNumberBetweenZeroAndNine()
         {
@@ -89,17 +79,17 @@ namespace MineSweeperUnitTests
             //Arrange
             var size = 2;
             var newValidation = Factory.NewUserInputValidation();
-            var gameDisplay = GridFactory.NewGameGrid(size);
-            gameDisplay.GenerateGrid(gameDisplay.Size);
+            var gameGrid = GridFactory.NewGameGrid(size);
+            gameGrid.GenerateGrid(gameGrid.Size);
             var userInput = "0,0";
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(gameDisplay.Size), gameDisplay);
+            updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(gameGrid.Size), gameGrid);
 
             //Assert
-            Assert.True(newValidation.IsPlayerDead(gameDisplay, userInput));
+            Assert.True(newValidation.IsPlayerDead(gameGrid, userInput));
         }
         
         [Fact]
@@ -108,17 +98,17 @@ namespace MineSweeperUnitTests
             //Arrange
             var size = 2;
             var newValidation = Factory.NewUserInputValidation();
-            var gameDisplay = GridFactory.NewGameGrid(size);
-            gameDisplay.GenerateGrid(gameDisplay.Size);
+            var gameGrid = GridFactory.NewGameGrid(size);
+            gameGrid.GenerateGrid(gameGrid.Size);
             var userInput = "0,1";
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
-            updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(gameDisplay.Size), gameDisplay);
+            updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(gameGrid.Size), gameGrid);
 
             //Assert
-            Assert.False(newValidation.IsPlayerDead(gameDisplay, userInput));
+            Assert.False(newValidation.IsPlayerDead(gameGrid, userInput));
         }
     }
 }
