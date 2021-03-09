@@ -12,27 +12,27 @@ namespace MineSweeper_v01
         public string GenerateGameDisplay(IGameGrid initialGameGrid) // ToDo: Singleton pattern??
         {
             var outputGrid = "";
-            initialGameGrid.GenerateGrid(initialGameGrid.Size); // ToDo: Move grid generation outside method so it can be called repeatedly without creating a new grid each time.
+            //initialGameGrid.GenerateGrid(initialGameGrid.Size); // ToDo: Move grid generation outside method so it can be called repeatedly without creating a new grid each time.
 
             for (var row = 0; row < initialGameGrid.Size; row++)
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
-                    {
-                        outputGrid += ". ";
-                        
-                    }
-
-                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine ) // ToDo: Delete before final update to Master branch.
+                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed 
+                        && initialGameGrid.GeneratedGameCell[row,column].IsAMine)
                     {
                         outputGrid += "+ ";
+                        
+                    }
+                    else
+                    {
+                        outputGrid += ". ";
                     }
 
-                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
+                    /*if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
                     {
                         outputGrid += initialGameGrid.GeneratedGameCell[row, column].NumberOfAdjacentMines + " ";
-                    }
+                    }*/
                     // ToDo: Add in Else command to run adjacent mine logic.
                 }
                 outputGrid += Environment.NewLine;
