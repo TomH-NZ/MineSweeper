@@ -4,7 +4,7 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class MineLogic : IMineLogic
+    public class MineLogic : IMineLogic // ToDo: Better name??
     {
         public void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid)
         {
@@ -22,7 +22,7 @@ namespace MineSweeper_v01
             }
         }
 
-        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove)
+        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove) // ToDo: Look at playermove type, similar to cell
         {
             var inputMove = playerMove.Split(',');
             var adjacentMinesOutput = 0;

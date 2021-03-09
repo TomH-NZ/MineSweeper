@@ -2,7 +2,6 @@ using System;
 using MineSweeper_v01.Enums;
 
 // ReSharper disable once CheckNamespace
-
 namespace MineSweeper_v01
 {
     public class Cell : ICell 

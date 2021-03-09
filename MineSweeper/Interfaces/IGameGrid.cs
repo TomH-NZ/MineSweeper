@@ -6,6 +6,8 @@ namespace MineSweeper_v01
         int Size { get; set; }
         Cell[,] GeneratedGameCell { get; set; }
 
-        void GenerateGrid(int size);
+        void GenerateGrid(int size); //ToDo: hide size, look at removing??
     }
 }
+
+//ToDo: remove types from directory names

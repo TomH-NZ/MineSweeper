@@ -9,15 +9,6 @@
     &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.ValidationUnitTestsShould.ReturnFalseIfPlayerHasNotSelectedAMine&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a3084d3f_002D0e61_002D4162_002Db602_002Db83fb28ebf25/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="MineSweeperUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.BoardUnitTestsShould&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.MineUnitTestsShould&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnTrueForANumberBetweenZeroAndNine&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnTrueForANumberBetweenZeroAndTen&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputThatIsNotANumber&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputGreaterThanNine&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnFalseForUserInputNotANumberOrGreaterThanNine&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1945D736-ECDF-40D8-B7F4-9B15FF1C971E::.NETCoreApp,Version=v3.1::MineSweeperUnitTests.UserInputTestsShould.ReturnTrueForAUserInputGridSizeBetweenTwoAndTen&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a3084d3f_002D0e61_002D4162_002Db602_002Db83fb28ebf25/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="MineSweeperUnitTestsShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/tom.hatcher/MineSweeper_v01/MineSweeperUnitTests" Presentation="&amp;lt;MineSweeperUnitTests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
