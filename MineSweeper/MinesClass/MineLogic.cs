@@ -26,20 +26,20 @@ namespace MineSweeper_v01
         {
             var inputMove = playerMove.Split(',');
             var adjacentMinesOutput = 0;
-            int.TryParse(inputMove[0], out var row);
-            int.TryParse(inputMove[1], out var column);
+            int.TryParse(inputMove[0], out var rowInput);
+            int.TryParse(inputMove[1], out var columnInput);
 
             var coordinateVariables = new List<int> {-1, 0, 1};
 
             foreach (var rowVariable in coordinateVariables)
             {
-                foreach (var columnVariable in coordinateVariables)  // ToDo: rowInput = (row + rowVariable), columnInput = (column + columnVariable), pass to upper and lower methods. 
+                foreach (var columnVariable in coordinateVariables)   
                 {
-                    var rowInput = row + rowVariable;
-                    var columnInput = column + columnVariable;
+                    var row = rowInput + rowVariable;
+                    var column = columnInput + columnVariable;
                     
-                    if (GreaterThanLowerGridBoundary(rowInput, columnInput) && LesserThanUpperGridBoundary(rowInput, columnInput, gameGrid) 
-                        && gameGrid.GeneratedGameCell[rowInput, columnInput].IsAMine)
+                    if (GreaterThanLowerGridBoundary(row, column) && LesserThanUpperGridBoundary(row, column, gameGrid) 
+                        && gameGrid.GeneratedGameCell[row, column].IsAMine)
                     {
                         adjacentMinesOutput += 1;
                     }
