@@ -30,7 +30,7 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsPlayerDead(IGameGrid gameGrid, string userInput)
+        public bool IsPlayerDead(IGameGrid gameGrid, string userInput) // ToDo: Figure out how to run the method without passing in the game grid.
         {
             var output = false;
             var inputMove = userInput.Split(',');

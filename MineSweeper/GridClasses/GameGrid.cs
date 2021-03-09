@@ -1,3 +1,5 @@
+using MineSweeper_v01.Enums;
+
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
@@ -14,13 +16,16 @@ namespace MineSweeper_v01
             GeneratedGameCell = new Cell[Size, Size];
         }
 
-        public void GenerateGrid(int size) // ToDo: use string as input and convert to int within class??
+        public void GenerateGrid(int size) // ToDo: use string as input and convert to int within class?? Output to List<Cell> ??
         {
             for (var row = 0; row < Size; row++)
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    GeneratedGameCell[row, column] = new Cell(row, column);
+                    GeneratedGameCell[row, column] = new Cell(row, column)
+                    {
+                        IsAMine = false, DisplayStatus = CellDisplayStatus.NotRevealed
+                    };
                 }
             }
         }

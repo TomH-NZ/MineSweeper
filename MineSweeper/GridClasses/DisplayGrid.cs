@@ -9,7 +9,7 @@ namespace MineSweeper_v01
         //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
         //Player move is always entered as Row then Column.
 
-        public string GenerateGameDisplay(IGameGrid initialGameGrid)
+        public string GenerateGameDisplay(IGameGrid initialGameGrid) // ToDo: Singleton pattern??
         {
             var outputGrid = "";
             initialGameGrid.GenerateGrid(initialGameGrid.Size); // ToDo: Move grid generation outside method so it can be called repeatedly without creating a new grid each time.
@@ -18,13 +18,13 @@ namespace MineSweeper_v01
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    /*if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
+                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed)
                     {
                         outputGrid += ". ";
                         
                     }
 
-                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine == true)
+                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine )
                     {
                         outputGrid += "+ ";
                     }
@@ -32,17 +32,8 @@ namespace MineSweeper_v01
                     if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
                     {
                         outputGrid += initialGameGrid.GeneratedGameCell[row, column].NumberOfAdjacentMines + " ";
-                    }*/
+                    }
                     // ToDo: Add in Else command to run adjacent mine logic.
-                    if (initialGameGrid.GeneratedGameCell[row,column].IsAMine == true)
-                    {
-                        outputGrid += "+ ";
-                    }
-                    else
-                    {
-                        outputGrid += ". ";
-                    }
-                    
                 }
                 outputGrid += Environment.NewLine;
             }
