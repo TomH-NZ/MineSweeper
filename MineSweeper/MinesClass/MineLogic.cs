@@ -35,8 +35,11 @@ namespace MineSweeper_v01
             {
                 foreach (var columnVariable in coordinateVariables)  // ToDo: rowInput = (row + rowVariable), columnInput = (column + columnVariable), pass to upper and lower methods. 
                 {
-                    if (GreaterThanLowerGridBoundary(row, column, rowVariable, columnVariable) && LesserThanUpperGridBoundary(row, column, rowVariable, columnVariable, gameGrid) 
-                        && gameGrid.GeneratedGameCell[row + rowVariable, column + columnVariable].IsAMine)
+                    var rowInput = row + rowVariable;
+                    var columnInput = column + columnVariable;
+                    
+                    if (GreaterThanLowerGridBoundary(rowInput, columnInput) && LesserThanUpperGridBoundary(rowInput, columnInput, gameGrid) 
+                        && gameGrid.GeneratedGameCell[rowInput, columnInput].IsAMine)
                     {
                         adjacentMinesOutput += 1;
                     }
@@ -46,17 +49,16 @@ namespace MineSweeper_v01
             return adjacentMinesOutput;
         }
 
-        private bool GreaterThanLowerGridBoundary(int row, int column, int rowVariable, int columnVariable) // ToDo: reduce number of input variables.  how?
+        private bool GreaterThanLowerGridBoundary(int row, int column) // ToDo: reduce number of input variables.  how?
         {
-            var lowerBoundaryOutput = row + rowVariable >= 0 && column + columnVariable>= 0;
+            var lowerBoundaryOutput = row >= 0 && column >= 0;
 
             return lowerBoundaryOutput;
         }
 
-        private bool LesserThanUpperGridBoundary(int row, int column, int rowVariable, int columnVariable,
-            IGameGrid gameGrid) // ToDo: reduce number of input variables.  how?
+        private bool LesserThanUpperGridBoundary(int row, int column, IGameGrid gameGrid) // ToDo: reduce number of input variables.  how?
         {
-            var upperBoundaryOutput = row + rowVariable < gameGrid.Size && column + columnVariable < gameGrid.Size;
+            var upperBoundaryOutput = row < gameGrid.Size && column < gameGrid.Size;
 
             return upperBoundaryOutput;
         }
