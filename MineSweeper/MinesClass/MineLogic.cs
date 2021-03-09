@@ -33,7 +33,7 @@ namespace MineSweeper_v01
 
             foreach (var rowVariable in coordinateVariables)
             {
-                foreach (var columnVariable in coordinateVariables)
+                foreach (var columnVariable in coordinateVariables)  // ToDo: rowInput = (row + rowVariable), columnInput = (column + columnVariable), pass to upper and lower methods. 
                 {
                     if (GreaterThanLowerGridBoundary(row, column, rowVariable, columnVariable) && LesserThanUpperGridBoundary(row, column, rowVariable, columnVariable, gameGrid) 
                         && gameGrid.GeneratedGameCell[row + rowVariable, column + columnVariable].IsAMine)

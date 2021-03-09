@@ -21,7 +21,7 @@ namespace MineSweeper_v01
                 }
             }
 
-            var convertedMineList = new List<Cell>(); // ToDo: Need to sort out some way of randomising the list and returning top [size] values.
+            var convertedMineList = new List<Cell>();
 
             for (var cell = 0; cell < gameGrid.Size; cell++)
             {
