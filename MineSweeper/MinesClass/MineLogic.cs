@@ -49,14 +49,14 @@ namespace MineSweeper_v01
             return adjacentMinesOutput;
         }
 
-        private bool GreaterThanLowerGridBoundary(int row, int column) // ToDo: reduce number of input variables.  how?
+        private bool GreaterThanLowerGridBoundary(int row, int column)
         {
             var lowerBoundaryOutput = row >= 0 && column >= 0;
 
             return lowerBoundaryOutput;
         }
 
-        private bool LesserThanUpperGridBoundary(int row, int column, IGameGrid gameGrid) // ToDo: reduce number of input variables.  how?
+        private bool LesserThanUpperGridBoundary(int row, int column, IGameGrid gameGrid)
         {
             var upperBoundaryOutput = row < gameGrid.Size && column < gameGrid.Size;
 
