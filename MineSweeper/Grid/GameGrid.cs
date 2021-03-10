@@ -16,7 +16,7 @@ namespace MineSweeper_v01
             GeneratedGameCell = new Cell[Size, Size];
         }
 
-        public void GenerateGrid(int size) 
+        public void GenerateGrid() 
         {
             for (var row = 0; row < Size; row++)
             {

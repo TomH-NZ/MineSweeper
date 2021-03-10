@@ -26,7 +26,7 @@ namespace MineSweeper_v01
 
             int.TryParse(userInputGridSize, out var gridSize);
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
-            newGameGrid.GenerateGrid(newGameGrid.Size);
+            newGameGrid.GenerateGrid();
             mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
             Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
         }

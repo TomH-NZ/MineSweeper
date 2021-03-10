@@ -10,7 +10,7 @@ namespace MineSweeper_v01
         {
             var generatedMineList = new List<Cell>();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
-            gameGrid.GenerateGrid(gridSize);
+            gameGrid.GenerateGrid();
 
             for (var row = 0; row < gameGrid.Size; row++)
             {

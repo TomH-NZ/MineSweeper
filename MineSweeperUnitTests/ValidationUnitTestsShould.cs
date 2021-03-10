@@ -80,7 +80,7 @@ namespace MineSweeperUnitTests
             var size = 2;
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
-            gameGrid.GenerateGrid(gameGrid.Size);
+            gameGrid.GenerateGrid();
             var userInput = "0,0";
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
@@ -99,7 +99,7 @@ namespace MineSweeperUnitTests
             var size = 2;
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
-            gameGrid.GenerateGrid(gameGrid.Size);
+            gameGrid.GenerateGrid();
             var userInput = "0,1";
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
