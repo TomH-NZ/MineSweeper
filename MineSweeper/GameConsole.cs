@@ -28,7 +28,33 @@ namespace MineSweeper_v01
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
             newGameGrid.GenerateGrid();
             mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
-            Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
+            var userInputMove = ",";
+            
+            while (!userInputValidation.IsPlayerDead(newGameGrid, userInputMove))
+            {
+                Console.Clear();
+                Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
+                var rowInput = "";
+                var columnInput = "";
+                
+                while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))
+                {
+                    Console.WriteLine($"Please enter a row ( 0 - {gridSize - 1 }): ");
+                    rowInput += Console.ReadLine();
+                }
+
+                while (!userInputValidation.IsUserMoveValid(columnInput, newGameGrid.Size))
+                {
+                    Console.WriteLine($"Please enter a column ( 0 - {gridSize - 1 }): ");
+                    columnInput = Console.ReadLine();
+                }
+                
+                userInputMove += rowInput + "," + columnInput;
+
+                userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
+            }
+
+            Console.WriteLine("Game Over!");
         }
     }
 }
