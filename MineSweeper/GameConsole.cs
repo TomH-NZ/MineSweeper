@@ -29,9 +29,6 @@ namespace MineSweeper_v01
             newGameGrid.GenerateGrid(newGameGrid.Size);
             mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
             Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
-            // ToDo: GenerateGameDisplay runs the grid generation again, resetting cell mine status to False. 
-            // ToDo: Need to figure out how to generate the grid and then feed it into the Display method separately ....
-            // ToDo: so that it doesn't reset the cell status.
         }
     }
 }

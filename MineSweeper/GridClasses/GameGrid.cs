@@ -16,7 +16,7 @@ namespace MineSweeper_v01
             GeneratedGameCell = new Cell[Size, Size];
         }
 
-        public void GenerateGrid(int size) // ToDo: use string as input and convert to int within class?? Output to List<Cell> ??
+        public void GenerateGrid(int size) 
         {
             for (var row = 0; row < Size; row++)
             {

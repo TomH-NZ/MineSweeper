@@ -24,8 +24,8 @@ namespace MineSweeper_v01
 
         public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove) // ToDo: Look at playermove type, similar to cell
         {
-            var inputMove = playerMove.Split(',');
             var adjacentMinesOutput = 0;
+            var inputMove = playerMove.Split(',');
             int.TryParse(inputMove[0], out var rowInput);
             int.TryParse(inputMove[1], out var columnInput);
 

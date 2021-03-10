@@ -30,7 +30,7 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsPlayerDead(IGameGrid gameGrid, string userInput) // ToDo: Figure out how to run the method without passing in the game grid. List<Cell>??
+        public bool IsPlayerDead(IGameGrid gameGrid, string userInput) // ToDo: userInput as a type, like Cell.
         {// ToDo: player selects all non-mine squares, what happens??
             var output = false;
             var inputMove = userInput.Split(',');

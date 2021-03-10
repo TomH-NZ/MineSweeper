@@ -18,21 +18,15 @@ namespace MineSweeper_v01
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
                     if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed 
-                        && initialGameGrid.GeneratedGameCell[row,column].IsAMine)
+                        && initialGameGrid.GeneratedGameCell[row,column].IsAMine) // ToDo: Use for display testing in game process.
                     {
                         outputGrid += "+ ";
-                        
                     }
                     else
                     {
                         outputGrid += ". ";
                     }
-
-                    /*if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
-                    {
-                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].NumberOfAdjacentMines + " ";
-                    }*/
-                    // ToDo: Add in Else command to run adjacent mine logic.
+                    // ToDo: Write standard display methods to use for full implementation.
                 }
                 outputGrid += Environment.NewLine;
             }

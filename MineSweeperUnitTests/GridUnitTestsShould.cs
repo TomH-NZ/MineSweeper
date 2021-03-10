@@ -5,7 +5,7 @@ using Xunit;
 
 namespace MineSweeperUnitTests
 {
-    public class BoardUnitTestsShould // ToDo: grid vs board. name consistency
+    public class GridUnitTestsShould // ToDo: grid vs board. name consistency
     {
         private class StubForTwoMineLocations : IMineGenerator
         {
