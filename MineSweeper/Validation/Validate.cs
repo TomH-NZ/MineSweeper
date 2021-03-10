@@ -4,12 +4,12 @@ namespace MineSweeper_v01
 {
     public class Validate : IValidate
     {
-        public bool IsUserMoveValid(string userMove)
+        public bool IsUserMoveValid(string userMove, int gridSize)
         {
             var output = false;
             var validatedUserInput = int.TryParse(userMove, out var number);
 
-            if (validatedUserInput && number >= 0 && number <= 9)
+            if (validatedUserInput && number >= 0 && number < gridSize)
             {
                 output = true;
             }

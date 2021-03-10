@@ -24,16 +24,16 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.True(validateTest.IsUserMoveValid("1"));
+            Assert.True(validateTest.IsUserMoveValid("1", 2));
         }
 
         [Theory]
-        [InlineData("")]
-        [InlineData("a")]
-        [InlineData("9a")]
-        [InlineData("10")]
-        [InlineData("-2")]
-        public void ReturnFalseForUserInputNotANumberOrGreaterThanNine(string input)
+        [InlineData("", 3)]
+        [InlineData("a", 4)]
+        [InlineData("9a", 3)]
+        [InlineData("10", 5)]
+        [InlineData("-2", 2)]
+        public void ReturnFalseForUserInputNotANumberOrGreaterThanNine(string input, int gridSize)
         {
             //Arrange
             var validateTest = new Validate();
@@ -41,7 +41,7 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.False(validateTest.IsUserMoveValid(input));
+            Assert.False(validateTest.IsUserMoveValid(input, gridSize));
         }
 
         [Fact]
