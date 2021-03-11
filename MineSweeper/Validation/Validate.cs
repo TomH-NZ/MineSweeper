@@ -17,12 +17,12 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsInitialGridSizeValid(string userInput)
+        public bool IsInitialGridSizeValid(string userGridSize)
         {
             var output = false;
-            var validatedUserInput = int.TryParse(userInput, out var number);
+            var validatedUserInput = int.TryParse(userGridSize, out var gridSize);
 
-            if (validatedUserInput && number >= 2 && number <= 10)
+            if (validatedUserInput && gridSize >= 2 && gridSize <= 10)
             {
                 output = true;
             }
@@ -30,18 +30,10 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsPlayerDead(IGameGrid gameGrid, string userInput) // ToDo: userInput as a type, like Cell.
+        public bool IsPlayerDead(IGameGrid gameGrid, PlayerMove userInput) // ToDo: use Cell as player input type?? Tuple??
         {// ToDo: player selects all non-mine squares, what happens??
-            var output = false;
-            var inputMove = userInput.Split(',');
-            int.TryParse(inputMove[0], out var row);
-            int.TryParse(inputMove[1], out var column);
+            var output = gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].IsAMine;
 
-            if (gameGrid.GeneratedGameCell[row, column].IsAMine)
-            {
-                output = true;
-            }
-            
             return output;
         }
     }

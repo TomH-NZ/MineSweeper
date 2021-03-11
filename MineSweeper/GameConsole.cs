@@ -27,31 +27,43 @@ namespace MineSweeper_v01
             int.TryParse(userInputGridSize, out var gridSize);
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
             newGameGrid.GenerateGrid();
-            mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
-            var userInputMove = ",";
+            
+            var rowOutput = 0;
+            var columnOutput = 0;
+            var userInputMove = new PlayerMove(rowOutput, columnOutput); // ToDo: Swap to using Cell[,] as the input type?? Tuple??
+            var turnCount = 0;
             
             while (!userInputValidation.IsPlayerDead(newGameGrid, userInputMove))
             {
                 Console.Clear();
                 Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
-                var rowInput = "";
-                var columnInput = "";
                 
+                var rowInput = "";
                 while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))
                 {
                     Console.WriteLine($"Please enter a row ( 0 - {gridSize - 1 }): ");
                     rowInput += Console.ReadLine();
+                    
                 }
-
+                
+                var columnInput = "";
                 while (!userInputValidation.IsUserMoveValid(columnInput, newGameGrid.Size))
                 {
                     Console.WriteLine($"Please enter a column ( 0 - {gridSize - 1 }): ");
                     columnInput = Console.ReadLine();
                 }
-                
-                userInputMove += rowInput + "," + columnInput;
 
+                int.TryParse(rowInput, out var row);
+                int.TryParse(columnInput, out var column);
+                userInputMove[row, column];
                 userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
+
+                if (turnCount == 0)
+                {
+                    mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
+                }
+
+                turnCount++;
             }
 
             Console.WriteLine("Game Over!");

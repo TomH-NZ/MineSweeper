@@ -22,7 +22,7 @@ namespace MineSweeper_v01
             }
         }
 
-        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove) // ToDo: Look at playermove type, similar to cell
+        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove) // ToDo: Look at cell type?? Tuple??
         {
             var adjacentMinesOutput = 0;
             var inputMove = playerMove.Split(',');
