@@ -45,7 +45,7 @@ namespace MineSweeper_v01
                 {
                     Console.Clear();
                     Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
-                    Console.WriteLine(turnCount);
+                    //Console.WriteLine(turnCount);
                     
                     var rowInput = "";
                     while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))
