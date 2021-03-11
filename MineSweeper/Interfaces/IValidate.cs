@@ -5,6 +5,6 @@ namespace MineSweeper_v01
     {
         bool IsUserMoveValid(string userMove, int gridSize);
         bool IsInitialGridSizeValid(string userGridSize);
-        bool IsPlayerDead(IGameGrid gameGrid, PlayerMove userInput);
+        bool IsGameOver(IGameGrid gameGrid, PlayerMove userInput);
     }
 }

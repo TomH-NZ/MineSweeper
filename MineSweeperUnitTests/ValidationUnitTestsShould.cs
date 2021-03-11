@@ -88,7 +88,7 @@ namespace MineSweeperUnitTests
             updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(gameGrid.Size), gameGrid);
 
             //Assert
-            Assert.True(newValidation.IsPlayerDead(gameGrid, userInput));
+            Assert.True(newValidation.IsGameOver(gameGrid, userInput));
         }
         
         [Fact]
@@ -106,7 +106,7 @@ namespace MineSweeperUnitTests
             updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(gameGrid.Size), gameGrid);
 
             //Assert
-            Assert.False(newValidation.IsPlayerDead(gameGrid, userInput));
+            Assert.False(newValidation.IsGameOver(gameGrid, userInput));
         }
     }
 }

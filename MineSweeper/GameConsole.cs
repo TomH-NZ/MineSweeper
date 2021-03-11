@@ -34,7 +34,7 @@ namespace MineSweeper_v01
             var userInputMove = new PlayerMove(rowOutput, columnOutput);
             var turnCount = 0;
             
-            while (!userInputValidation.IsPlayerDead(newGameGrid, userInputMove))
+            while (!userInputValidation.IsGameOver(newGameGrid, userInputMove))
             {
                 Console.Clear();
                 
@@ -70,12 +70,22 @@ namespace MineSweeper_v01
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                     = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
                 
-                userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
+                userInputValidation.IsGameOver(newGameGrid, userInputMove);
+            }
+            // ToDo: add bool HasPlayerLost method. If true, run GameOver message 
+
+            if (newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine)
+            {
+                Console.Clear();
+                Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid)); // ToDo: Write logic to display full grid after mine selected.
+                Console.WriteLine("Sorry, you have lost.");
+                Console.WriteLine("Game Over!");
+            }
+            else
+            {
+                Console.WriteLine("Congrats, you have won!");
             }
             
-            Console.Clear();
-            Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid)); // ToDo: Write logic to display full grid after mine selected.
-            Console.WriteLine("Game Over!");
         }
     }
 }

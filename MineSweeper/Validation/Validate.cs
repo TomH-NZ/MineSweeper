@@ -30,7 +30,7 @@ namespace MineSweeper_v01
             return output;
         }
 
-        public bool IsPlayerDead(IGameGrid gameGrid, PlayerMove userInput)
+        public bool IsGameOver(IGameGrid gameGrid, PlayerMove userInput)
         {// ToDo: player selects all non-mine squares, what happens??
             var output = gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].IsMine;
 
