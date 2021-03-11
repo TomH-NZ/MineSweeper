@@ -41,8 +41,8 @@ namespace MineSweeper_v01
                 if (turnCount == 0)
                 {
                     mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
-                    turnCount++;
                 }
+                turnCount++;
                 
                 Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
                 
@@ -69,7 +69,11 @@ namespace MineSweeper_v01
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus = CellDisplayStatus.Revealed;
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                     = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
-                
+
+                if (turnCount == gridSize * gridSize - gridSize)
+                {
+                    break;
+                }
                 userInputValidation.IsGameOver(newGameGrid, userInputMove);
             }
             // ToDo: add bool HasPlayerLost method. If true, run GameOver message 
