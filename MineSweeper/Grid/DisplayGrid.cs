@@ -25,7 +25,7 @@ namespace MineSweeper_v01
                     else if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed 
                              && !initialGameGrid.GeneratedGameCell[row,column].IsMine)
                     {
-                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal;
+                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + " ";
                     }
                     else if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed 
                              && initialGameGrid.GeneratedGameCell[row,column].IsMine)
@@ -40,6 +40,29 @@ namespace MineSweeper_v01
                 }
                 outputGrid += Environment.NewLine;
             }
+            return outputGrid;
+        }
+
+        public string GameOverDisplay(IGameGrid initialGameGrid)
+        {
+            var outputGrid = "";
+
+            for (var row = 0; row < initialGameGrid.Size; row++)
+            {
+                for (var column = 0; column < initialGameGrid.Size; column++)
+                {
+                    if (initialGameGrid.GeneratedGameCell[row,column].IsMine)
+                    {
+                        outputGrid += "* ";
+                    }
+                    else
+                    {
+                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + " ";
+                    }
+                }
+                outputGrid += Environment.NewLine;
+            }
+
             return outputGrid;
         }
     }

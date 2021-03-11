@@ -72,8 +72,9 @@ namespace MineSweeper_v01
                 
                 userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
             }
-
-            Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid)); // ToDo: Write logic to display full grid after mine selected.
+            
+            Console.Clear();
+            Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid)); // ToDo: Write logic to display full grid after mine selected.
             Console.WriteLine("Game Over!");
         }
     }
