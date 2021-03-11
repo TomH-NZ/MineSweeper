@@ -64,14 +64,16 @@ namespace MineSweeper_v01
                 int.TryParse(rowInput, out var row);
                 int.TryParse(columnInput, out var column);
                 userInputMove = new PlayerMove(row, column);
-                userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
+                
 
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus = CellDisplayStatus.Revealed;
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                     = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
-
+                
+                userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
             }
 
+            Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid)); // ToDo: Write logic to display full grid after mine selected.
             Console.WriteLine("Game Over!");
         }
     }

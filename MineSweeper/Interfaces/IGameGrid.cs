@@ -7,5 +7,3 @@ namespace MineSweeper_v01
         Cell[,] GeneratedGameCell { get; set; }
     }
 }
-
-//ToDo: remove types from directory names

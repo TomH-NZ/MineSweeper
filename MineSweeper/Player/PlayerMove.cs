@@ -12,5 +12,4 @@ namespace MineSweeper_v01
             Column = column;
         }
     }
-    // ToDo: Add playerMove to Validate - IsPlayerDead , MineLogic - CalculateAdjacentMines, GameConsole, UnitTests
 }
