@@ -46,6 +46,8 @@ namespace MineSweeper_v01
         public string GameOverDisplay(IGameGrid initialGameGrid)
         {
             var outputGrid = "";
+            var mineUpdater = MineFactory.NewMineChecker();
+            var userInputMove = new PlayerMove(0,0);
 
             for (var row = 0; row < initialGameGrid.Size; row++)
             {
@@ -57,6 +59,9 @@ namespace MineSweeper_v01
                     }
                     else
                     {
+                        userInputMove = new PlayerMove(row, column);
+                        initialGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal = 
+                            mineUpdater.CalculateAdjacentMineTotal(initialGameGrid, userInputMove);
                         outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + " ";
                     }
                 }
