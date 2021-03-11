@@ -20,7 +20,7 @@ namespace MineSweeper_v01
                 }
             }
 
-            var convertedMineList = new List<Cell>();
+            var convertedMineList = new List<Cell>(); // ToDo: Extract to separate method??
 
             for (var cell = 0; cell < gameGrid.Size; cell++)
             {

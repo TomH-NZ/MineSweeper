@@ -33,7 +33,7 @@ namespace MineSweeperUnitTests
         [InlineData("9a", 3)]
         [InlineData("10", 5)]
         [InlineData("-2", 2)]
-        public void ReturnFalseForUserInputNotANumberOrGreaterThanNine(string input, int gridSize)
+        public void ReturnFalseForUserInputNotANumberOrOutsideTheGridBoundaries(string input, int gridSize)
         {
             //Arrange
             var validateTest = new Validate();

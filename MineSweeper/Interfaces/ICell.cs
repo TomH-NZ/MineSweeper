@@ -9,7 +9,7 @@ namespace MineSweeper_v01
         int Row { get; }
         int Column { get; }
         bool IsMine { get; set; }
-        int NumberOfAdjacentMines { get; set; }
+        int AdjacentMinesTotal { get; set; }
         CellDisplayStatus DisplayStatus { get; set; }
     }
 }

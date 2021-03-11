@@ -5,8 +5,6 @@ namespace MineSweeper_v01
     {
         int Size { get; set; }
         Cell[,] GeneratedGameCell { get; set; }
-
-        //void GenerateGrid(); //ToDo: hide size, look at removing??
     }
 }
 

@@ -9,7 +9,7 @@ namespace MineSweeper_v01
         public int Row { get; }
         public int Column { get; }
         public bool IsMine { get; set; }
-        public int NumberOfAdjacentMines { get; set; }
+        public int AdjacentMinesTotal { get; set; }
         public CellDisplayStatus DisplayStatus { get; set; } 
 
         public Cell(int row, int column)

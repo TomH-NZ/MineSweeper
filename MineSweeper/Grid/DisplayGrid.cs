@@ -22,6 +22,10 @@ namespace MineSweeper_v01
                     {
                         outputGrid += "+ ";
                     }
+                    else if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed)
+                    {
+                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal;
+                    }
                     else
                     {
                         outputGrid += ". ";

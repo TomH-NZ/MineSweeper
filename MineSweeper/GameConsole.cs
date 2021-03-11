@@ -1,4 +1,5 @@
 using System;
+using MineSweeper_v01.Enums;
 
 namespace MineSweeper_v01
 {
@@ -13,9 +14,6 @@ namespace MineSweeper_v01
 
             var userInputGridSize = "";
             var userInputValidation = Factory.NewUserInputValidation();
-            var gameGridDisplay = GridFactory.NewGridDisplay();
-            var mineGeneration = MineFactory.NewMineLocations();
-            var mineUpdater = MineFactory.NewMineChecker();
             
             while (!userInputValidation.IsInitialGridSizeValid(userInputGridSize))
             {
@@ -27,14 +25,25 @@ namespace MineSweeper_v01
             int.TryParse(userInputGridSize, out var gridSize);
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
             
-            var rowOutput = 0; // ToDo: Define variables just before they are used, rather than at the top of the class.
+            var gameGridDisplay = GridFactory.NewGridDisplay();
+            var mineGeneration = MineFactory.NewMineLocations();
+            var mineUpdater = MineFactory.NewMineChecker();
+            
+            var rowOutput = 0;
             var columnOutput = 0;
-            var userInputMove = new PlayerMove(rowOutput, columnOutput); // ToDo: Swap to using Cell[,] as the input type?? Tuple??
+            var userInputMove = new PlayerMove(rowOutput, columnOutput);
             var turnCount = 0;
             
             while (!userInputValidation.IsPlayerDead(newGameGrid, userInputMove))
             {
                 Console.Clear();
+                
+                if (turnCount == 0)
+                {
+                    mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
+                    turnCount++;
+                }
+                
                 Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
                 
                 var rowInput = "";
@@ -57,12 +66,11 @@ namespace MineSweeper_v01
                 userInputMove = new PlayerMove(row, column);
                 userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
 
-                if (turnCount == 0)
-                {
-                    mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
-                }
+                newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus = CellDisplayStatus.Revealed;
+                newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
+                    = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
+                //ToDo: Run adjacent mine logic to update field. Separate method??
 
-                turnCount++;
             }
 
             Console.WriteLine("Game Over!");
