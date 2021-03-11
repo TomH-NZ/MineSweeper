@@ -1,3 +1,4 @@
+using MineSweeper_v01.Enums;
 
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
@@ -32,9 +33,12 @@ namespace MineSweeper_v01
 
         public bool IsGameOver(IGameGrid gameGrid, PlayerMove userInput)
         {// ToDo: player selects all non-mine squares, what happens??
-            var output = gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].IsMine;
-
-            return output;
+            return gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].IsMine;
+        }
+        
+        public bool IsCellRevealed(IGameGrid gameGrid, PlayerMove userInput)
+        {
+            return gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].DisplayStatus == CellDisplayStatus.Revealed;
         }
     }
 }

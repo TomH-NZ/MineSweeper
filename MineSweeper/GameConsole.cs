@@ -36,58 +36,64 @@ namespace MineSweeper_v01
             
             while (!userInputValidation.IsGameOver(newGameGrid, userInputMove))
             {
-                Console.Clear();
-                
                 if (turnCount == 0)
                 {
                     mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
                 }
-                turnCount++;
                 
-                Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
-                
-                var rowInput = "";
-                while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))
+                while (userInputValidation.IsCellRevealed(newGameGrid, userInputMove) || turnCount == 0)
                 {
-                    Console.WriteLine($"Please enter a row ( 0 - {gridSize - 1 }): ");
-                    rowInput += Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
+                    Console.WriteLine(turnCount);
                     
+                    var rowInput = "";
+                    while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))
+                    {
+                        Console.WriteLine($"Please enter a row ( 0 - {gridSize - 1 }): ");
+                        rowInput = Console.ReadLine();
+                    
+                    }
+                
+                    var columnInput = "";
+                    while (!userInputValidation.IsUserMoveValid(columnInput, newGameGrid.Size))
+                    {
+                        Console.WriteLine($"Please enter a column ( 0 - {gridSize - 1 }): ");
+                        columnInput = Console.ReadLine();
+                    }
+                    int.TryParse(rowInput, out var row);
+                    int.TryParse(columnInput, out var column);
+                    userInputMove = new PlayerMove(row, column);
+                    turnCount++;
                 }
                 
-                var columnInput = "";
-                while (!userInputValidation.IsUserMoveValid(columnInput, newGameGrid.Size))
-                {
-                    Console.WriteLine($"Please enter a column ( 0 - {gridSize - 1 }): ");
-                    columnInput = Console.ReadLine();
-                }
-
-                int.TryParse(rowInput, out var row);
-                int.TryParse(columnInput, out var column);
-                userInputMove = new PlayerMove(row, column);
-                
-
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus = CellDisplayStatus.Revealed;
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                     = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
+                
+                userInputValidation.IsGameOver(newGameGrid, userInputMove);
 
+                
                 if (turnCount == gridSize * gridSize - gridSize)
                 {
                     break;
                 }
-                userInputValidation.IsGameOver(newGameGrid, userInputMove);
+                
             }
-            // ToDo: add bool HasPlayerLost method. If true, run GameOver message 
-
+            
+            Console.Clear();
+            Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid));
+            
             if (newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine)
             {
-                Console.Clear();
-                Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid)); // ToDo: Write logic to display full grid after mine selected.
+                 // ToDo: Write logic to display full grid after mine selected.
                 Console.WriteLine("Sorry, you have lost.");
                 Console.WriteLine("Game Over!");
             }
             else
             {
-                Console.WriteLine("Congrats, you have won!");
+                Console.WriteLine("Congrats!");
+                Console.WriteLine("You have won!");
             }
             
         }
