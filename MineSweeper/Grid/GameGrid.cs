@@ -1,4 +1,3 @@
-using MineSweeper_v01.Enums;
 
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
@@ -9,25 +8,26 @@ namespace MineSweeper_v01
         
         public int Size { get; set; }
         public Cell[,] GeneratedGameCell { get; set; }
-        
+
         public GameGrid(int size)
         {
             Size = size;
-            GeneratedGameCell = new Cell[Size, Size];
+            GeneratedGameCell = GenerateGrid();
         }
 
-        public void GenerateGrid() 
+        private Cell[,] GenerateGrid()
         {
+            var outputCell = new Cell[Size, Size];
+            
             for (var row = 0; row < Size; row++)
             {
                 for (var column = 0; column < Size; column++)
                 {
-                    GeneratedGameCell[row, column] = new Cell(row, column)
-                    {
-                        IsAMine = false, DisplayStatus = CellDisplayStatus.NotRevealed
-                    };
+                    outputCell[row, column] = new Cell(row, column);
                 }
             }
+
+            return outputCell;
         }
     }
 }

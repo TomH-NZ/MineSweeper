@@ -32,7 +32,7 @@ namespace MineSweeper_v01
 
         public bool IsPlayerDead(IGameGrid gameGrid, PlayerMove userInput) // ToDo: use Cell as player input type?? Tuple??
         {// ToDo: player selects all non-mine squares, what happens??
-            var output = gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].IsAMine;
+            var output = gameGrid.GeneratedGameCell[userInput.Row, userInput.Column].IsMine;
 
             return output;
         }

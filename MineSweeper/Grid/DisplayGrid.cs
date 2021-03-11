@@ -18,7 +18,7 @@ namespace MineSweeper_v01
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
                     if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed 
-                        && initialGameGrid.GeneratedGameCell[row,column].IsAMine) // ToDo: Use for display testing in game process.
+                        && initialGameGrid.GeneratedGameCell[row,column].IsMine) // ToDo: Use for display testing in game process.
                     {
                         outputGrid += "+ ";
                     }

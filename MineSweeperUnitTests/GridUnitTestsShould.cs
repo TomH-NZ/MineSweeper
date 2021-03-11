@@ -43,7 +43,6 @@ namespace MineSweeperUnitTests
             //Arrange
             var newDisplay = GridFactory.NewGridDisplay();
             var gameGrid = GridFactory.NewGameGrid(size);
-            gameGrid.GenerateGrid();
             
             //Act
             var result = newDisplay.GenerateGameDisplay(gameGrid);
@@ -61,7 +60,6 @@ namespace MineSweeperUnitTests
             var gameDisplay = GridFactory.NewGridDisplay();
             var mineLogic = MineFactory.NewMineChecker();
             var mineLocations = new StubForTwoMineLocations();
-            newGrid.GenerateGrid();
             mineLogic.UpdateCellWithMineStatus(mineLocations.MineLocations(gridSize), newGrid);
 
             //Act

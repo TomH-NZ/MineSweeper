@@ -6,6 +6,6 @@ namespace MineSweeper_v01
     public interface IMineLogic
     {
         void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid);
-        int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove);
+        int CalculateAdjacentMineTotal(IGameGrid gameGrid, PlayerMove playerMove);
     }
 }

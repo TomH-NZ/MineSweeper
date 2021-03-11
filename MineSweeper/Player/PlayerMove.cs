@@ -1,7 +1,7 @@
 // ReSharper disable once CheckNamespace
 namespace MineSweeper_v01
 {
-    public class PlayerMove
+    public class PlayerMove // ToDo: have Cell inherit from PlayerMove, taking in row/column, use inheritance rather than interface.
     {
         public int Row { get; set; }
         public int Column { get; set; }
@@ -10,11 +10,6 @@ namespace MineSweeper_v01
         {
             Row = row;
             Column = column;
-        }
-
-        public int this[int index]
-        {
-            get { throw new System.NotImplementedException(); }
         }
     }
     // ToDo: Add playerMove to Validate - IsPlayerDead , MineLogic - CalculateAdjacentMines, GameConsole, UnitTests

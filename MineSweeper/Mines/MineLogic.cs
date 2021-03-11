@@ -16,30 +16,30 @@ namespace MineSweeper_v01
                 {
                     if (inputMineLocations.Contains(gameGrid.GeneratedGameCell[row,column]))
                     {
-                        gameGrid.GeneratedGameCell[row, column].IsAMine = true;
+                        gameGrid.GeneratedGameCell[row, column].IsMine = true;
                     }
                 }
             }
         }
 
-        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, string playerMove) // ToDo: Look at cell type?? Tuple??
+        public int CalculateAdjacentMineTotal(IGameGrid gameGrid, PlayerMove playerMove) // ToDo: Look at cell type?? Tuple??
         {
             var adjacentMinesOutput = 0;
-            var inputMove = playerMove.Split(',');
+            /*var inputMove = playerMove.Split(',');
             int.TryParse(inputMove[0], out var rowInput);
-            int.TryParse(inputMove[1], out var columnInput);
+            int.TryParse(inputMove[1], out var columnInput);*/
 
             var coordinateVariables = new List<int> {-1, 0, 1};
 
             foreach (var rowVariable in coordinateVariables)
             {
-                foreach (var columnVariable in coordinateVariables)   
+                foreach (var columnVariable in coordinateVariables)
                 {
-                    var row = rowInput + rowVariable;
-                    var column = columnInput + columnVariable;
+                    var row = playerMove.Row + rowVariable;
+                    var column = playerMove.Column + columnVariable;
                     
                     if (GreaterThanLowerGridBoundary(row, column) && LesserThanUpperGridBoundary(row, column, gameGrid) 
-                        && gameGrid.GeneratedGameCell[row, column].IsAMine)
+                        && gameGrid.GeneratedGameCell[row, column].IsMine)
                     {
                         adjacentMinesOutput += 1;
                     }

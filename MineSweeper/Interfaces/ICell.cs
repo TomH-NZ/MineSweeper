@@ -6,9 +6,9 @@ namespace MineSweeper_v01
 {
     public interface ICell
     {
-        int RowLocationValue { get; }
-        int ColumnLocationValue { get; }
-        bool IsAMine { get; set; }
+        int Row { get; }
+        int Column { get; }
+        bool IsMine { get; set; }
         int NumberOfAdjacentMines { get; set; }
         CellDisplayStatus DisplayStatus { get; set; }
     }

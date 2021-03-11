@@ -6,17 +6,17 @@ namespace MineSweeper_v01
 {
     public class Cell : ICell 
     {
-        public int RowLocationValue { get; }
-        public int ColumnLocationValue { get; }
-        public bool IsAMine { get; set; }
+        public int Row { get; }
+        public int Column { get; }
+        public bool IsMine { get; set; }
         public int NumberOfAdjacentMines { get; set; }
         public CellDisplayStatus DisplayStatus { get; set; } 
 
         public Cell(int row, int column)
         {
-            RowLocationValue = row;
-            ColumnLocationValue = column;
-            IsAMine = false;
+            Row = row;
+            Column = column;
+            IsMine = false;
             DisplayStatus = CellDisplayStatus.NotRevealed;
         }
 
@@ -27,7 +27,7 @@ namespace MineSweeper_v01
 
             var other = (Cell) obj;
 
-            if (RowLocationValue != other.RowLocationValue || ColumnLocationValue != other.ColumnLocationValue)
+            if (Row != other.Row || Column != other.Column)
             {
                 return false;
             }
@@ -37,12 +37,12 @@ namespace MineSweeper_v01
 
         protected bool Equals(Cell other)
         {
-            return RowLocationValue == other.RowLocationValue && ColumnLocationValue == other.ColumnLocationValue;
+            return Row == other.Row && Column == other.Column;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(RowLocationValue, ColumnLocationValue);
+            return HashCode.Combine(Row, Column);
         }
 
         public static bool operator ==(Cell row, Cell column)

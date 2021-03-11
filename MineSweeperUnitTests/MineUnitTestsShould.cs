@@ -31,7 +31,6 @@ namespace MineSweeperUnitTests
             //Arrange
             var gridSize = 2;
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
-            newGameGrid.GenerateGrid();
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
@@ -39,7 +38,7 @@ namespace MineSweeperUnitTests
             updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(newGameGrid.Size), newGameGrid);
 
             //Assert
-            Assert.True(newGameGrid.GeneratedGameCell[0,0].IsAMine);
+            Assert.True(newGameGrid.GeneratedGameCell[0,0].IsMine);
         }
         
         [Fact]
@@ -48,7 +47,6 @@ namespace MineSweeperUnitTests
             //Arrange
             var gridSize = 2;
             var newGame = GridFactory.NewGameGrid(gridSize);
-            newGame.GenerateGrid();
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForMineLocationZeroZero();
 
@@ -56,7 +54,7 @@ namespace MineSweeperUnitTests
             updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(newGame.Size), newGame);
 
             //Assert
-            Assert.False(newGame.GeneratedGameCell[1,1].IsAMine);
+            Assert.False(newGame.GeneratedGameCell[1,1].IsMine);
         }
 
         [Fact]
@@ -64,13 +62,13 @@ namespace MineSweeperUnitTests
         {
             //Arrange
             var newGameGrid = GridFactory.NewGameGrid(3);
-            newGameGrid.GenerateGrid();
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForTwoMineLocations();
+            var userInputMove = new PlayerMove(1, 1);
 
             //Act
             updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(newGameGrid.Size), newGameGrid);
-            var result = updateMineStatus.CalculateAdjacentMineTotal(newGameGrid, "1,1");
+            var result = updateMineStatus.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
 
             //Assert
             Assert.Equal(2, result);
@@ -81,13 +79,13 @@ namespace MineSweeperUnitTests
         {
             //Arrange
             var newGameGrid = GridFactory.NewGameGrid(2);
-            newGameGrid.GenerateGrid();
             var updateMineStatus = new MineLogic();
             var mineStub = new StubForTwoMineLocations();
+            var userInputMove = new PlayerMove(1, 1);
 
             //Act
             updateMineStatus.UpdateCellWithMineStatus(mineStub.MineLocations(newGameGrid.Size), newGameGrid);
-            var result = updateMineStatus.CalculateAdjacentMineTotal(newGameGrid, "1,1");
+            var result = updateMineStatus.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
 
             //Assert
             Assert.Equal(2, result);

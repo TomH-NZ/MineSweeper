@@ -26,9 +26,8 @@ namespace MineSweeper_v01
 
             int.TryParse(userInputGridSize, out var gridSize);
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
-            newGameGrid.GenerateGrid();
             
-            var rowOutput = 0;
+            var rowOutput = 0; // ToDo: Define variables just before they are used, rather than at the top of the class.
             var columnOutput = 0;
             var userInputMove = new PlayerMove(rowOutput, columnOutput); // ToDo: Swap to using Cell[,] as the input type?? Tuple??
             var turnCount = 0;
@@ -55,7 +54,7 @@ namespace MineSweeper_v01
 
                 int.TryParse(rowInput, out var row);
                 int.TryParse(columnInput, out var column);
-                userInputMove[row, column];
+                userInputMove = new PlayerMove(row, column);
                 userInputValidation.IsPlayerDead(newGameGrid, userInputMove);
 
                 if (turnCount == 0)
