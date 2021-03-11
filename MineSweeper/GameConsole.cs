@@ -69,7 +69,6 @@ namespace MineSweeper_v01
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus = CellDisplayStatus.Revealed;
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                     = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
-                //ToDo: Run adjacent mine logic to update field. Separate method??
 
             }
 
