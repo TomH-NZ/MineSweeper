@@ -16,7 +16,7 @@ namespace MineSweeper_v01
             var userInputValidation = Factory.NewUserInputValidation();
             
             while (!userInputValidation.IsInitialGridSizeValid(userInputGridSize))
-            {
+            { // ToDo: Extract to separate method that returns an int??
                 Console.WriteLine("Please enter a grid size between 2 and 10: ");
                 userInputGridSize = Console.ReadLine();
                 userInputValidation.IsInitialGridSizeValid(userInputGridSize);
@@ -29,9 +29,9 @@ namespace MineSweeper_v01
             var mineGeneration = MineFactory.NewMineLocations();
             var mineUpdater = MineFactory.NewMineChecker();
             
-            var rowOutput = 0;
-            var columnOutput = 0;
-            var userInputMove = new PlayerMove(rowOutput, columnOutput);
+            var rowMove = 0;
+            var columnMove = 0;
+            var userInputMove = new PlayerMove(rowMove, columnMove);
             var turnCount = 0;
             
             while (!userInputValidation.IsGameOver(newGameGrid, userInputMove))
@@ -45,7 +45,6 @@ namespace MineSweeper_v01
                 {
                     Console.Clear();
                     Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
-                    //Console.WriteLine(turnCount);
                     
                     var rowInput = "";
                     while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))

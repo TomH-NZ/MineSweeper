@@ -12,30 +12,21 @@ namespace MineSweeper_v01
         public string GenerateGameDisplay(IGameGrid initialGameGrid)
         {
             var outputGrid = "";
+            var demonstration = true;
             
             for (var row = 0; row < initialGameGrid.Size; row++)
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.NotRevealed 
-                        && initialGameGrid.GeneratedGameCell[row,column].IsMine) // ToDo: Use for display testing in game process.
+                    outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch
                     {
-                        outputGrid += "+ ";
-                    }
-                    else if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed 
-                             && !initialGameGrid.GeneratedGameCell[row,column].IsMine)
-                    {
-                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + " ";
-                    }
-                    else if (initialGameGrid.GeneratedGameCell[row,column].DisplayStatus == CellDisplayStatus.Revealed 
-                             && initialGameGrid.GeneratedGameCell[row,column].IsMine)
-                    {
-                        outputGrid += "* ";
-                    }
-                    else
-                    {
-                        outputGrid += ". ";
-                    }
+                        CellDisplayStatus.NotRevealed when initialGameGrid.GeneratedGameCell[row, column].IsMine =>
+                            demonstration ? "+ " : ". ",
+                        CellDisplayStatus.Revealed when !initialGameGrid.GeneratedGameCell[row, column].IsMine =>
+                            initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + " ",
+                        CellDisplayStatus.Revealed when initialGameGrid.GeneratedGameCell[row, column].IsMine => "* ",
+                        _ => ". "
+                    };
                     // ToDo: Write standard display methods to use for full implementation.
                 }
                 outputGrid += Environment.NewLine;
