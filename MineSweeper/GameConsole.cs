@@ -47,17 +47,18 @@ namespace MineSweeper_v01
                     Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
 
                     var inputMove = string.Empty;
+                    var maxUsableGridSize = gridSize - 1;
                     do
                     {
-                        Console.WriteLine($"Please enter grid coordinates (row,column) between 0 - {gridSize - 1}: ");
+                        Console.WriteLine($"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
                         inputMove = Console.ReadLine();
-                    } while (!userInputValidation.IsUserMoveValid(inputMove, newGameGrid.Size)); // ToDo: do-while
+                    } while (!userInputValidation.IsUserMoveValid(inputMove, newGameGrid.Size));
                     
                     var moveSplit =
-                        inputMove.Split(','); // ToDO: move logic to a new class, have output as PlayerMove[,]
+                        inputMove.Split(','); 
                     int.TryParse(moveSplit[0], out var row);
                     int.TryParse(moveSplit[1], out var column);
-                    userInputMove = new PlayerMove(row, column);
+                    userInputMove = new PlayerMove(row, column); // ToDO: move logic to a new class, have output as PlayerMove[,], input as string
                     turnCount++;
                 }
 
