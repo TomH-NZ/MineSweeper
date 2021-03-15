@@ -41,26 +41,20 @@ namespace MineSweeper_v01
                 }
                 
                 while (userInputValidation.IsCellRevealed(newGameGrid, userInputMove) || turnCount == 0)
-                { // ToDo: Look into entering the user input as "x,y" rather than "x" "y".
+                {
                     Console.Clear();
                     Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
                     
-                    var rowInput = "";
-                    while (!userInputValidation.IsUserMoveValid(rowInput, newGameGrid.Size))
+                    var inputMove = ",";
+                    while (!userInputValidation.IsUserMoveValid(inputMove, newGameGrid.Size))
                     {
-                        Console.WriteLine($"Please enter a row ( 0 - {gridSize - 1 }): ");
-                        rowInput = Console.ReadLine();
-                    
+                        Console.WriteLine($"Please enter grid coordinates (row,column) between 0 - {gridSize - 1 }: ");
+                        inputMove = Console.ReadLine();
                     }
-                
-                    var columnInput = "";
-                    while (!userInputValidation.IsUserMoveValid(columnInput, newGameGrid.Size))
-                    {
-                        Console.WriteLine($"Please enter a column ( 0 - {gridSize - 1 }): ");
-                        columnInput = Console.ReadLine();
-                    }
-                    int.TryParse(rowInput, out var row);
-                    int.TryParse(columnInput, out var column);
+
+                    var moveSplit = inputMove.Split(',');
+                    int.TryParse(moveSplit[0], out var row);
+                    int.TryParse(moveSplit[1], out var column);
                     userInputMove = new PlayerMove(row, column);
                     turnCount++;
                 }

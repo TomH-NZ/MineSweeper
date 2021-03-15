@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using MineSweeper_v01.Enums;
 
 // ReSharper disable once CheckNamespace
@@ -8,12 +9,28 @@ namespace MineSweeper_v01
         public bool IsUserMoveValid(string userMove, int gridSize)
         {
             var output = false;
-            var validatedUserInput = int.TryParse(userMove, out var number);
+            var rowValidation = false;
+            var columnValidation = false;
 
-            if (validatedUserInput && number >= 0 && number < gridSize)
+            var individualMoves = userMove.Split(',');
+            var rowConversion = int.TryParse(individualMoves[0], out var row);
+            var columnConversion = int.TryParse(individualMoves[1], out var column);
+
+            if (rowConversion && row >= 0 && row < gridSize)
+            {
+                rowValidation = true;
+            }
+
+            if (columnConversion && column >= 0 && column < gridSize)
+            {
+                columnValidation = true;
+            }
+
+            if (rowValidation && columnValidation && individualMoves.Length == 2)
             {
                 output = true;
             }
+             
 
             return output;
         }

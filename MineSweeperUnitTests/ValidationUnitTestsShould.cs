@@ -24,15 +24,20 @@ namespace MineSweeperUnitTests
             //Act
 
             //Assert
-            Assert.True(validateTest.IsUserMoveValid("1", 2));
+            Assert.True(validateTest.IsUserMoveValid("0,0", 2));
         }
 
         [Theory]
-        [InlineData("", 3)]
-        [InlineData("a", 4)]
-        [InlineData("9a", 3)]
-        [InlineData("10", 5)]
-        [InlineData("-2", 2)]
+        [InlineData(",", 3)]
+        [InlineData("0,", 3)]
+        [InlineData("a,", 4)]
+        [InlineData("a,1", 4)]
+        [InlineData("9a,0", 3)]
+        [InlineData("9a,9a", 3)]
+        [InlineData("10,10", 5)]
+        [InlineData("10,-1", 5)]
+        [InlineData("-1,-1", 2)]
+        [InlineData("0,0,0", 2)]
         public void ReturnFalseForUserInputNotANumberOrOutsideTheGridBoundaries(string input, int gridSize)
         {
             //Arrange
