@@ -41,7 +41,7 @@ namespace MineSweeperUnitTests
         public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
-            var newDisplay = GridFactory.NewGridDisplay();
+            var newDisplay = GridFactory.NewDisplayGrid();
             var gameGrid = GridFactory.NewGameGrid(size);
             
             //Act
@@ -57,7 +57,7 @@ namespace MineSweeperUnitTests
             //Arrange
             var gridSize = 2;
             var newGrid = GridFactory.NewGameGrid(gridSize);
-            var gameDisplay = GridFactory.NewGridDisplay();
+            var gameDisplay = GridFactory.NewDisplayGrid();
             var mineLogic = MineFactory.NewMineChecker();
             var mineLocations = new StubForTwoMineLocations();
             mineLogic.UpdateCellWithMineStatus(mineLocations.MineLocations(gridSize), newGrid);

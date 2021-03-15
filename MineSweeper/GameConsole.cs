@@ -16,16 +16,15 @@ namespace MineSweeper_v01
             var userInputValidation = Factory.NewUserInputValidation();
             
             while (!userInputValidation.IsInitialGridSizeValid(userInputGridSize))
-            { // ToDo: Extract to separate method that returns an int??
+            {
                 Console.WriteLine("Please enter a grid size between 2 and 10: ");
                 userInputGridSize = Console.ReadLine();
-                userInputValidation.IsInitialGridSizeValid(userInputGridSize);
             }
 
             int.TryParse(userInputGridSize, out var gridSize);
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
             
-            var gameGridDisplay = GridFactory.NewGridDisplay();
+            var gameGridDisplay = GridFactory.NewDisplayGrid();
             var mineGeneration = MineFactory.NewMineLocations();
             var mineUpdater = MineFactory.NewMineChecker();
             
@@ -42,7 +41,7 @@ namespace MineSweeper_v01
                 }
                 
                 while (userInputValidation.IsCellRevealed(newGameGrid, userInputMove) || turnCount == 0)
-                {
+                { // ToDo: Look into entering the user input as "x,y" rather than "x" "y".
                     Console.Clear();
                     Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
                     
@@ -70,9 +69,6 @@ namespace MineSweeper_v01
                 newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                     = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
                 
-                userInputValidation.IsGameOver(newGameGrid, userInputMove);
-
-                
                 if (turnCount == gridSize * gridSize - gridSize)
                 {
                     break;
@@ -83,9 +79,8 @@ namespace MineSweeper_v01
             Console.Clear();
             Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid));
             
-            if (newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine)
+            if (newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine) // ToDo: Ternary operator, slash-n (carriage return)
             {
-                 // ToDo: Write logic to display full grid after mine selected.
                 Console.WriteLine("Sorry, you have lost.");
                 Console.WriteLine("Game Over!");
             }

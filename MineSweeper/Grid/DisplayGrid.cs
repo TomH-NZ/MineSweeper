@@ -27,7 +27,6 @@ namespace MineSweeper_v01
                         CellDisplayStatus.Revealed when initialGameGrid.GeneratedGameCell[row, column].IsMine => "* ",
                         _ => ". "
                     };
-                    // ToDo: Write standard display methods to use for full implementation.
                 }
                 outputGrid += Environment.NewLine;
             }

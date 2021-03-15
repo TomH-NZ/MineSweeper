@@ -20,9 +20,9 @@ namespace MineSweeper_v01
                 }
             }
 
-            var convertedMineList = new List<Cell>(); // ToDo: Extract to separate method??
+            var convertedMineList = new List<Cell>(); 
 
-            for (var cell = 0; cell < gameGrid.Size; cell++)
+            for (var cell = 0; cell < gameGrid.Size; cell++) // ToDo: Extract to separate method??
             {
                 var rnd = new Random();
                 var randomMine = generatedMineList.Count;
