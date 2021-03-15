@@ -79,17 +79,9 @@ namespace MineSweeper_v01
             Console.Clear();
             Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid));
             
-            if (newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine) // ToDo: Ternary operator, slash-n (carriage return)
-            {
-                Console.WriteLine("Sorry, you have lost.");
-                Console.WriteLine("Game Over!");
-            }
-            else
-            {
-                Console.WriteLine("Congrats!");
-                Console.WriteLine("You have won!");
-            }
-            
+            Console.WriteLine(newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine
+                ? "Sorry, you have lost.\nGame over!"
+                : "Congrats!\nYou have won!");
         }
     }
 }
