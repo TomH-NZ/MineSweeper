@@ -11,14 +11,14 @@ namespace MineSweeper_v01
 
         public string GenerateGameDisplay(IGameGrid initialGameGrid)
         {
-            var outputGrid = "";
-            var demonstration = true;
+            var outputGrid = string.Empty;
+            var demonstration = false;
             
             for (var row = 0; row < initialGameGrid.Size; row++)
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch
+                    outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch //ToDo: switch/case statement?
                     {
                         CellDisplayStatus.NotRevealed when initialGameGrid.GeneratedGameCell[row, column].IsMine =>
                             demonstration ? "+ " : ". ",

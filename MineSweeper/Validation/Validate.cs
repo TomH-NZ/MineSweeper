@@ -7,30 +7,32 @@ namespace MineSweeper_v01
     public class Validate : IValidate
     {
         public bool IsUserMoveValid(string userMove, int gridSize)
-        {
+        { //ToDo: quit command?
             var output = false;
             var rowValidation = false;
             var columnValidation = false;
 
             var individualMoves = userMove.Split(',');
+            if (individualMoves.Length != 2) return output;
             var rowConversion = int.TryParse(individualMoves[0], out var row);
             var columnConversion = int.TryParse(individualMoves[1], out var column);
-
+               
             if (rowConversion && row >= 0 && row < gridSize)
             {
                 rowValidation = true;
             }
-
+               
             if (columnConversion && column >= 0 && column < gridSize)
             {
                 columnValidation = true;
             }
-
-            if (rowValidation && columnValidation && individualMoves.Length == 2)
+               
+            if (rowValidation && columnValidation)
             {
                 output = true;
             }
-             
+
+
 
             return output;
         }

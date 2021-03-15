@@ -20,7 +20,7 @@ namespace MineSweeper_v01
             DisplayStatus = CellDisplayStatus.NotRevealed;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is Cell))
                 return false;

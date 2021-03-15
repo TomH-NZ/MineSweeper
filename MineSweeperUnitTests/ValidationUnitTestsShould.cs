@@ -38,6 +38,7 @@ namespace MineSweeperUnitTests
         [InlineData("10,-1", 5)]
         [InlineData("-1,-1", 2)]
         [InlineData("0,0,0", 2)]
+        [InlineData("0.0.0", 2)]
         public void ReturnFalseForUserInputNotANumberOrOutsideTheGridBoundaries(string input, int gridSize)
         {
             //Arrange
