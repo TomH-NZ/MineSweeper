@@ -45,3 +45,4 @@ Revealed
 ### Stretch Goals
 1. The first player move is guaranteed to not be a mine.
 2. Add the ability for a player to flag a grid square as a mine.
+3. Add color to individual cells that change depending on the contained character.
