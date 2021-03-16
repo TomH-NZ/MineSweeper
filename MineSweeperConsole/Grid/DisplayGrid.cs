@@ -20,7 +20,7 @@ namespace MineSweeper.Grid
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch //ToDo: switch/case statement?
+                    outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch
                     {
                         CellDisplayStatus.NotRevealed when initialGameGrid.GeneratedGameCell[row, column].IsMine =>
                             demonstration ? "+ " : ". ",
