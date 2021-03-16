@@ -72,9 +72,24 @@ namespace MineSweeper_v01
             Console.Clear();
             Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid));
 
-            Console.WriteLine(newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine
+            /*Console.WriteLine(newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine // ToDo: decide on color or not, delete unneeded.
                 ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
-                : $"Congrats!{Environment.NewLine}You have won!");
+                : $"Congrats!{Environment.NewLine}You have won!");*/
+
+            if (newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Sorry, you have lost.{Environment.NewLine}Game over!");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Congrats!{Environment.NewLine}You have won!");
+                Console.ResetColor();
+            }
         }
 
         private PlayerMove RenameThisMethod(string move) // ToDo: rename the method, as it says!

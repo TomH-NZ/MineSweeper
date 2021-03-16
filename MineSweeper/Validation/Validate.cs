@@ -31,9 +31,7 @@ namespace MineSweeper_v01
             {
                 output = true;
             }
-
-
-
+            
             return output;
         }
 
