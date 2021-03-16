@@ -16,5 +16,7 @@ namespace MineSweeper_v01
         // ToDo: Look at LINQ, type collections a bit deeper.
         
         // ToDo: Look into Record type in C# 9
+        
+        // ToDo: Idea for future work: row[0] and column[0] have grid values displayed to assist with placing a move.
     }
 }

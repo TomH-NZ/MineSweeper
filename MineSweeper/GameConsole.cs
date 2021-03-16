@@ -46,7 +46,7 @@ namespace MineSweeper_v01
                     Console.Clear();
                     Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
 
-                    var inputMove = string.Empty;
+                    string inputMove;
                     var maxUsableGridSize = gridSize - 1;
                     do
                     {
@@ -54,11 +54,7 @@ namespace MineSweeper_v01
                         inputMove = Console.ReadLine();
                     } while (!userInputValidation.IsUserMoveValid(inputMove, newGameGrid.Size));
                     
-                    var moveSplit =
-                        inputMove.Split(','); 
-                    int.TryParse(moveSplit[0], out var row);
-                    int.TryParse(moveSplit[1], out var column);
-                    userInputMove = new PlayerMove(row, column); // ToDO: move logic to a new class, have output as PlayerMove[,], input as string
+                    userInputMove = RenameThisMethod(inputMove);
                     turnCount++;
                 }
 
@@ -77,8 +73,17 @@ namespace MineSweeper_v01
             Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid));
 
             Console.WriteLine(newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine
-                ? "Sorry, you have lost.\nGame over!"
-                : "Congrats!\nYou have won!");
+                ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
+                : $"Congrats!{Environment.NewLine}You have won!");
+        }
+
+        private PlayerMove RenameThisMethod(string move) // ToDo: rename the method, as it says!
+        {
+            var moveSplit = move.Split(',');
+            int.TryParse(moveSplit[0], out var row);
+            int.TryParse(moveSplit[1], out var column);
+
+            return new PlayerMove(row, column);
         }
     }
 }
