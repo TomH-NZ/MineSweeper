@@ -1,4 +1,4 @@
-# MineSweeper_v01
+# MineSweeper
 
 ## Minesweeper For Testing
 
