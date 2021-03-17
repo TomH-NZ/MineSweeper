@@ -56,9 +56,6 @@ namespace MineSweeper
             if (_turnCount == 0)
             {
                 _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(gridSize), currentGameGrid);
-                
-                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
-                    = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
             }
 
             do
@@ -82,13 +79,15 @@ namespace MineSweeper
 
             currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
                 CellDisplayStatus.Revealed;
+            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
+                = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
             // ToDo: Run adjacent mine logic after mines have been allocated in grid??
         }
 
         private int GetGridSize()
         {
             var userInputGridSize = "";
-            var size = 1;
+            var size = 11;
             
             while (!_userInputValidation.IsInitialGridSizeValid(userInputGridSize, out var returnedGridSize))
             {
