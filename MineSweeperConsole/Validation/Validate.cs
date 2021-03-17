@@ -46,7 +46,6 @@ namespace MineSweeper.Validation
 
             size = gridSize;
             return true;
-
         }
 
         public bool IsGameOver(IGameGrid gameGrid, PlayerMove userInput)
