@@ -37,11 +37,12 @@ namespace MineSweeper.Validation
 
         public bool IsInitialGridSizeValid(string userGridSize, out int size )
         {
-            //ar validatedUserInput = int.TryParse(userGridSize, out var gridSize);
+            if (!int.TryParse(userGridSize, out var gridSize) || gridSize < 2 || gridSize > 10)
+            {
+                size = 0;
+                return false;
+            }
 
-            size = 0;
-
-            if (!int.TryParse(userGridSize, out var gridSize) || gridSize < 2 || gridSize > 10) return false;
             size = gridSize;
             return true;
 

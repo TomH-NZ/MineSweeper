@@ -60,30 +60,30 @@ namespace MineSweeperUnitTests
         {
             //Arrange
             var validateTest = new Validate();
-            //var size = 2;
+            var size = 5;
 
             //Act
 
             //Assert
-            var size = 2;
-            Assert.True(validateTest.IsInitialGridSizeValid("5", int size));
+            Assert.True(validateTest.IsInitialGridSizeValid("5", out size));
         }
 
         [Theory]
-        [InlineData("")]
-        [InlineData("a")]
-        [InlineData("9a")]
-        [InlineData("11")]
-        [InlineData("-3")]
-        public void ReturnFalseForUserInputGridSizeNotANumberOrOutsideZeroAndTen(string input)
+        [InlineData("", 0)]
+        [InlineData("a", 0)]
+        [InlineData("9a", 0)]
+        [InlineData("11", 0)]
+        [InlineData("-3", 0)]
+        public void ReturnFalseForUserInputGridSizeNotANumberOrOutsideZeroAndTen(string input, int size)
         {
             //Arrange
             var validateTest = new Validate();
+            var output = size;
 
             //Act
 
             //Assert
-            Assert.False(validateTest.IsInitialGridSizeValid(input));
+            Assert.False(validateTest.IsInitialGridSizeValid(input, out output));
         }
 
         [Fact]

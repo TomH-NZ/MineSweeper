@@ -22,16 +22,6 @@ namespace MineSweeper
             // ToDo: Insert fancy greeting using Figgle.  Add Figgle as module to project.
             // ToDo: use emoji for bomb??
 
-            /*var userInputGridSize = "";
-            
-            while (!_userInputValidation.IsInitialGridSizeValid(userInputGridSize))
-            {
-                Console.WriteLine("Please enter a grid size between 2 and 10: ");
-                userInputGridSize = Console.ReadLine();
-            }
-
-            int.TryParse(userInputGridSize, out var gridSize);*/
-
             var gridSize = GetGridSize();
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
             
@@ -66,6 +56,9 @@ namespace MineSweeper
             if (_turnCount == 0)
             {
                 _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(gridSize), currentGameGrid);
+                
+                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
+                    = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
             }
 
             do
@@ -89,24 +82,21 @@ namespace MineSweeper
 
             currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
                 CellDisplayStatus.Revealed;
-            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
-                = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
             // ToDo: Run adjacent mine logic after mines have been allocated in grid??
         }
 
         private int GetGridSize()
         {
             var userInputGridSize = "";
-            var size = 0;
+            var size = 1;
             
-            while (_userInputValidation.IsInitialGridSizeValid(userInputGridSize, out int size1))
+            while (!_userInputValidation.IsInitialGridSizeValid(userInputGridSize, out var returnedGridSize))
             {
                 Console.WriteLine("Please enter a grid size between 2 and 10: ");
                 userInputGridSize = Console.ReadLine();
-                size = size1;
+                size = returnedGridSize;
             }
 
-            //int.TryParse(userInputGridSize, out var gridSize);
             return size;
         }
     }
