@@ -1,12 +1,19 @@
 using System;
 using MineSweeper.Enums;
 using MineSweeper.Factories;
+using MineSweeper.Interfaces;
 using MineSweeper.Player;
 
 namespace MineSweeper
 {
     public class GameConsole
     {
+        private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
+        private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
+        private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
+        private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
+        private int _turnCount;
+        
         public void NewGame()
         {
             //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
@@ -15,69 +22,32 @@ namespace MineSweeper
             // ToDo: Insert fancy greeting using Figgle.  Add Figgle as module to project.
             // ToDo: use emoji for bomb??
 
-            var userInputGridSize = "";
-            var userInputValidation = Factory.NewUserInputValidation();
-
-            while (!userInputValidation.IsInitialGridSizeValid(userInputGridSize))
+            /*var userInputGridSize = "";
+            
+            while (!_userInputValidation.IsInitialGridSizeValid(userInputGridSize))
             {
                 Console.WriteLine("Please enter a grid size between 2 and 10: ");
                 userInputGridSize = Console.ReadLine();
             }
 
-            int.TryParse(userInputGridSize, out var gridSize);
+            int.TryParse(userInputGridSize, out var gridSize);*/
+
+            var gridSize = GetGridSize();
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
-
-            var gameGridDisplay = GridFactory.NewDisplayGrid();
-            var mineGeneration = MineFactory.NewMineLocations();
-            var mineUpdater = MineFactory.NewMineChecker();
-
-            var rowMove = 0;
-            var columnMove = 0;
-            var userInputMove = new PlayerMove(rowMove, columnMove);
-            var turnCount = 0;
-
-            while (!userInputValidation.IsGameOver(currentGameGrid, userInputMove))
+            
+            var userInputMove = new PlayerMove(0, 0);
+            
+            while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < gridSize * gridSize - gridSize)
             {
-                if (turnCount == 0)
-                {
-                    mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), currentGameGrid);
-                }
-
-                while (userInputValidation.IsCellRevealed(currentGameGrid, userInputMove) || turnCount == 0)
-                {
-                    Console.Clear();
-                    Console.WriteLine(gameGridDisplay.GenerateGameDisplay(currentGameGrid));
-
-                    string inputMove;
-                    var maxUsableGridSize = gridSize - 1;
-                    do
-                    {
-                        Console.WriteLine(
-                            $"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
-                        inputMove = Console.ReadLine();
-                    } while (!userInputValidation.IsUserMoveValid(inputMove, currentGameGrid.Size));
-
-                    userInputMove = ConvertUserInputToUserMove(inputMove);
-                    turnCount++;
-                }
-
-                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
-                    CellDisplayStatus.Revealed;
-                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
-                    = mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
-
-                if (turnCount == gridSize * gridSize - gridSize)
-                {
-                    break;
-                }
+                RunGame(gridSize, userInputMove, currentGameGrid);
             }
 
             Console.Clear();
-            Console.WriteLine(gameGridDisplay.GameOverDisplay(currentGameGrid));
+            Console.WriteLine(_gameGridDisplay.GameOverDisplay(currentGameGrid));
 
             Console.WriteLine(
                 currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
-                    .IsMine // ToDo: decide on color or not, delete unneeded.
+                    .IsMine
                     ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
                     : $"Congrats!{Environment.NewLine}You have won!");
         }
@@ -89,6 +59,55 @@ namespace MineSweeper
             int.TryParse(moveSplit[1], out var column);
 
             return new PlayerMove(row, column);
+        }
+
+        private void RunGame(int gridSize, PlayerMove userInputMove, IGameGrid currentGameGrid)
+        {
+            if (_turnCount == 0)
+            {
+                _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(gridSize), currentGameGrid);
+            }
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine(_gameGridDisplay.GenerateGameDisplay(currentGameGrid));
+
+                string inputMove;
+                var maxUsableGridSize = gridSize - 1;
+
+                do
+                {
+                    Console.WriteLine(
+                        $"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
+                    inputMove = Console.ReadLine();
+                } while (!_userInputValidation.IsUserMoveValid(inputMove, currentGameGrid.Size));
+
+                userInputMove = ConvertUserInputToUserMove(inputMove);
+                _turnCount++;
+            } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
+
+            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
+                CellDisplayStatus.Revealed;
+            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
+                = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
+            // ToDo: Run adjacent mine logic after mines have been allocated in grid??
+        }
+
+        private int GetGridSize()
+        {
+            var userInputGridSize = "";
+            var size = 0;
+            
+            while (_userInputValidation.IsInitialGridSizeValid(userInputGridSize, out int size1))
+            {
+                Console.WriteLine("Please enter a grid size between 2 and 10: ");
+                userInputGridSize = Console.ReadLine();
+                size = size1;
+            }
+
+            //int.TryParse(userInputGridSize, out var gridSize);
+            return size;
         }
     }
 }

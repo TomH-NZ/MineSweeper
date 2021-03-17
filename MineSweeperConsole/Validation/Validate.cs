@@ -35,17 +35,16 @@ namespace MineSweeper.Validation
             return output;
         }
 
-        public bool IsInitialGridSizeValid(string userGridSize)
+        public bool IsInitialGridSizeValid(string userGridSize, out int size )
         {
-            var output = false;
-            var validatedUserInput = int.TryParse(userGridSize, out var gridSize);
+            //ar validatedUserInput = int.TryParse(userGridSize, out var gridSize);
 
-            if (validatedUserInput && gridSize >= 2 && gridSize <= 10)
-            {
-                output = true;
-            }
+            size = 0;
 
-            return output;
+            if (!int.TryParse(userGridSize, out var gridSize) || gridSize < 2 || gridSize > 10) return false;
+            size = gridSize;
+            return true;
+
         }
 
         public bool IsGameOver(IGameGrid gameGrid, PlayerMove userInput)

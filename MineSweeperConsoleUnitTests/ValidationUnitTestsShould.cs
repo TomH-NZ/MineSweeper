@@ -21,7 +21,7 @@ namespace MineSweeperUnitTests
         }
 
         [Fact]
-        public void ReturnTrueForAUserInputNumberBetweenZeroAndNine()
+        public void ReturnTrueForAUserInputNumberBetweenZeroAndGridSize()
         {
             //Arrange
             var validateTest = new Validate();
@@ -60,11 +60,13 @@ namespace MineSweeperUnitTests
         {
             //Arrange
             var validateTest = new Validate();
+            //var size = 2;
 
             //Act
 
             //Assert
-            Assert.True(validateTest.IsInitialGridSizeValid("5"));
+            var size = 2;
+            Assert.True(validateTest.IsInitialGridSizeValid("5", int size));
         }
 
         [Theory]
