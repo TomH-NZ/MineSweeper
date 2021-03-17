@@ -1,13 +1,12 @@
 using System;
 using MineSweeper.Enums;
 using MineSweeper.Interfaces;
+using MineSweeper.Player;
 
 namespace MineSweeper.Grid
 {
-    public class Cell : ICell 
+    public class Cell : PlayerMove, ICell 
     {
-        public int Row { get; }
-        public int Column { get; }
         public bool IsMine { get; set; }
         public int AdjacentMinesTotal { get; set; }
         public CellDisplayStatus DisplayStatus { get; set; } 

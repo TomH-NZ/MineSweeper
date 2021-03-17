@@ -25,7 +25,7 @@ namespace MineSweeper
             }
 
             int.TryParse(userInputGridSize, out var gridSize);
-            var newGameGrid = GridFactory.NewGameGrid(gridSize);
+            var currentGameGrid = GridFactory.NewGameGrid(gridSize);
 
             var gameGridDisplay = GridFactory.NewDisplayGrid();
             var mineGeneration = MineFactory.NewMineLocations();
@@ -36,34 +36,35 @@ namespace MineSweeper
             var userInputMove = new PlayerMove(rowMove, columnMove);
             var turnCount = 0;
 
-            while (!userInputValidation.IsGameOver(newGameGrid, userInputMove))
+            while (!userInputValidation.IsGameOver(currentGameGrid, userInputMove))
             {
                 if (turnCount == 0)
                 {
-                    mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), newGameGrid);
+                    mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(gridSize), currentGameGrid);
                 }
 
-                while (userInputValidation.IsCellRevealed(newGameGrid, userInputMove) || turnCount == 0)
+                while (userInputValidation.IsCellRevealed(currentGameGrid, userInputMove) || turnCount == 0)
                 {
                     Console.Clear();
-                    Console.WriteLine(gameGridDisplay.GenerateGameDisplay(newGameGrid));
+                    Console.WriteLine(gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
                     string inputMove;
                     var maxUsableGridSize = gridSize - 1;
                     do
                     {
-                        Console.WriteLine($"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
+                        Console.WriteLine(
+                            $"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
                         inputMove = Console.ReadLine();
-                    } while (!userInputValidation.IsUserMoveValid(inputMove, newGameGrid.Size));
-                    
-                    userInputMove = RenameThisMethod(inputMove);
+                    } while (!userInputValidation.IsUserMoveValid(inputMove, currentGameGrid.Size));
+
+                    userInputMove = ConvertUserInputToUserMove(inputMove);
                     turnCount++;
                 }
 
-                newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
+                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
                     CellDisplayStatus.Revealed;
-                newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
-                    = mineUpdater.CalculateAdjacentMineTotal(newGameGrid, userInputMove);
+                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
+                    = mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
 
                 if (turnCount == gridSize * gridSize - gridSize)
                 {
@@ -72,15 +73,16 @@ namespace MineSweeper
             }
 
             Console.Clear();
-            Console.WriteLine(gameGridDisplay.GameOverDisplay(newGameGrid));
+            Console.WriteLine(gameGridDisplay.GameOverDisplay(currentGameGrid));
 
-            Console.WriteLine(newGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].IsMine // ToDo: decide on color or not, delete unneeded.
-                ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
-                : $"Congrats!{Environment.NewLine}You have won!");
-            
+            Console.WriteLine(
+                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
+                    .IsMine // ToDo: decide on color or not, delete unneeded.
+                    ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
+                    : $"Congrats!{Environment.NewLine}You have won!");
         }
 
-        private PlayerMove RenameThisMethod(string move) // ToDo: rename the method, as it says!
+        private PlayerMove ConvertUserInputToUserMove(string move) // ToDo: rename the method, as it says!
         {
             var moveSplit = move.Split(',');
             int.TryParse(moveSplit[0], out var row);

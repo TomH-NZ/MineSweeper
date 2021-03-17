@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using MineSweeper.Grid;
 using MineSweeper.Interfaces;
 using MineSweeper.Player;
@@ -10,13 +9,11 @@ namespace MineSweeper.Mines
     {
         public void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid)
         {
-            var inputMineLocations = mineLocations.ToList();
-
             for (var row = 0; row < gameGrid.Size; row++)
             {
                 for (var column = 0; column < gameGrid.Size; column++)
                 {
-                    if (inputMineLocations.Contains(gameGrid.GeneratedGameCell[row,column]))
+                    if (mineLocations.Contains(gameGrid.GeneratedGameCell[row,column]))
                     {
                         gameGrid.GeneratedGameCell[row, column].IsMine = true;
                     }
@@ -27,7 +24,6 @@ namespace MineSweeper.Mines
         public int CalculateAdjacentMineTotal(IGameGrid gameGrid, PlayerMove playerMove)
         {
             var adjacentMinesOutput = 0;
-
             var coordinateVariables = new List<int> {-1, 0, 1};
 
             foreach (var rowVariable in coordinateVariables)

@@ -11,5 +11,10 @@ namespace MineSweeper.Player
             Row = row;
             Column = column;
         }
+
+        public PlayerMove()
+        {
+            
+        }
     }
 }
