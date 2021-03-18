@@ -87,13 +87,12 @@ namespace MineSweeper
         private int GetGridSize()
         {
             var userInputGridSize = "";
-            var size = 11;
+            var size = 0;
             
-            while (!_userInputValidation.IsInitialGridSizeValid(userInputGridSize, out var returnedGridSize))
+            while (!_userInputValidation.IsInitialGridSizeValid(userInputGridSize, out size))
             {
                 Console.WriteLine("Please enter a grid size between 2 and 10: ");
                 userInputGridSize = Console.ReadLine();
-                size = returnedGridSize;
             }
 
             return size;
