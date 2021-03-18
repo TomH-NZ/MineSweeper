@@ -42,7 +42,7 @@ namespace MineSweeper
                     : $"Congrats!{Environment.NewLine}You have won!");
         }
 
-        private PlayerMove ConvertUserInputToUserMove(string move) // ToDo: rename the method, as it says!
+        private PlayerMove ConvertUserInputToUserMove(string move)
         {
             var moveSplit = move.Split(',');
             int.TryParse(moveSplit[0], out var row);
