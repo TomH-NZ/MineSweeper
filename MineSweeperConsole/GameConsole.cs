@@ -25,9 +25,7 @@ namespace MineSweeper
             var gridSize = GetGridSize();
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
             
-            var userInputMove = new PlayerMove(0, 0); 
-            //ToDo: The game is not working due to the PlayerMove not being updated with the value from inside RunGame.
-            //ToDo: As a result when the IsGameOver validation is run it accepts the last good move, 0,0.
+            var userInputMove = new PlayerMove(0, 0);
             
             while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < gridSize * gridSize - gridSize)
             {
