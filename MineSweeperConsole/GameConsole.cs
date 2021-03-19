@@ -31,7 +31,7 @@ namespace MineSweeper
             
             while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < gridSize * gridSize - gridSize)
             {
-                RunGame(gridSize, userInputMove, currentGameGrid);
+                userInputMove = RunGame(gridSize, userInputMove, currentGameGrid);
             }
 
             Console.Clear();
@@ -53,7 +53,7 @@ namespace MineSweeper
             return new PlayerMove(row, column);
         }
 
-        private void RunGame(int gridSize, PlayerMove userInputMove, IGameGrid currentGameGrid)
+        private PlayerMove RunGame(int gridSize, PlayerMove userInputMove, IGameGrid currentGameGrid)
         {
             if (_turnCount == 0)
             {
@@ -84,6 +84,8 @@ namespace MineSweeper
             currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                 = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
             // ToDo: Run adjacent mine logic after mines have been allocated in grid??
+
+            return userInputMove;
         }
 
         private int GetGridSize()
