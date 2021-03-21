@@ -1,6 +1,7 @@
 using System;
 using MineSweeper.Enums;
 using MineSweeper.Factories;
+using MineSweeper.Game;
 using MineSweeper.Interfaces;
 using MineSweeper.Player;
 
@@ -12,6 +13,7 @@ namespace MineSweeper
         private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
         private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
+        private readonly IDisplay _gameDisplayLogic = Factory.NewDisplayLogic();
         private int _turnCount;
         
         public void NewGame()
@@ -63,15 +65,7 @@ namespace MineSweeper
                 Console.Clear();
                 Console.WriteLine(_gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
-                string inputMove;
-                var maxUsableGridSize = gridSize - 1;
-
-                do // ToDo: extract to new method??
-                {
-                    Console.WriteLine(
-                        $"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
-                    inputMove = Console.ReadLine();
-                } while (!_userInputValidation.IsUserMoveValid(inputMove, currentGameGrid.Size));
+                var inputMove = _gameDisplayLogic.ComeUpWithBetterName(gridSize);
 
                 userInputMove = ConvertUserInputToUserMove(inputMove);
                 _turnCount++;
@@ -85,6 +79,8 @@ namespace MineSweeper
 
             return userInputMove;
         }
+
+        
 
         private int GetGridSize()
         {
