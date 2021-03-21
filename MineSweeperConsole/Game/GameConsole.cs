@@ -1,5 +1,4 @@
 using System;
-using MineSweeper.Enums;
 using MineSweeper.Factories;
 using MineSweeper.Interfaces;
 using MineSweeper.Player;
@@ -11,10 +10,12 @@ namespace MineSweeper.Game
         private readonly IConvertUserInput _convertUserInput = Factory.newUserInputConverter();
         private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
         private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
+        private readonly IUpdateCell _updateCell = Factory.newCellUpdater();
         private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplay _gameDisplayLogic = Factory.NewDisplayLogic();
         private int _turnCount;
+        
 
         public void NewGame()
         {
@@ -62,15 +63,12 @@ namespace MineSweeper.Game
                 _turnCount++;
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
-            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
-                CellDisplayStatus.Revealed;
-            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
-                = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
-            // ToDo: Run adjacent mine logic after mines have been allocated in grid??
+            _updateCell.DisplayStatusAfterUserMove(userInputMove, currentGameGrid);
+            _updateCell.AdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
 
             return userInputMove;
         }
-        
+
         private int GetGridSize()
         {
             var userInputGridSize = "";

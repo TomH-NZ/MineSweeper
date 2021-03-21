@@ -21,5 +21,10 @@ namespace MineSweeper.Factories
         {
             return new ConvertUserInput();
         }
+
+        public static IUpdateCell newCellUpdater()
+        {
+            return new UpdateCell();
+        }
     }
 }
