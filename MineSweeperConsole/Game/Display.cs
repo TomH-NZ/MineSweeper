@@ -7,7 +7,7 @@ namespace MineSweeper.Game
     public class Display : IDisplay
     {
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
-        public string ComeUpWithBetterName(int gridSize) // ToDo: Come up with a better method name
+        public string ShowUserInputMessage(int gridSize)
         {
             string inputMove;
             var maxUsableGridSize = gridSize - 1;

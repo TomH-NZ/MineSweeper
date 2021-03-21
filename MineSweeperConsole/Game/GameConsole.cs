@@ -56,7 +56,7 @@ namespace MineSweeper.Game
                 Console.Clear();
                 Console.WriteLine(_gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
-                var inputMove = _gameDisplayLogic.ComeUpWithBetterName(gridSize);
+                var inputMove = _gameDisplayLogic.ShowUserInputMessage(gridSize);
 
                 userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
                 _turnCount++;

@@ -2,6 +2,6 @@ namespace MineSweeper.Game
 {
     public interface IDisplay
     {
-        string ComeUpWithBetterName(int gridSize);
+        string ShowUserInputMessage(int gridSize);
     }
 }
