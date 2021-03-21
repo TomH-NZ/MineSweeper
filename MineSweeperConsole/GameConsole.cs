@@ -42,7 +42,7 @@ namespace MineSweeper
                     : $"Congrats!{Environment.NewLine}You have won!");
         }
 
-        private PlayerMove ConvertUserInputToUserMove(string move)
+        private PlayerMove ConvertUserInputToUserMove(string move) // ToDo: Move to new class??
         {
             var moveSplit = move.Split(',');
             int.TryParse(moveSplit[0], out var row);
@@ -66,7 +66,7 @@ namespace MineSweeper
                 string inputMove;
                 var maxUsableGridSize = gridSize - 1;
 
-                do
+                do // ToDo: extract to new method??
                 {
                     Console.WriteLine(
                         $"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
