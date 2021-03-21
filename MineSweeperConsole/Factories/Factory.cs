@@ -16,5 +16,10 @@ namespace MineSweeper.Factories
         {
             return new Display();
         }
+
+        public static IConvertUserInput newUserInputConverter()
+        {
+            return new ConvertUserInput();
+        }
     }
 }

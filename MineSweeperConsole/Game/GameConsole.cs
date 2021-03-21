@@ -1,21 +1,21 @@
 using System;
 using MineSweeper.Enums;
 using MineSweeper.Factories;
-using MineSweeper.Game;
 using MineSweeper.Interfaces;
 using MineSweeper.Player;
 
-namespace MineSweeper
+namespace MineSweeper.Game
 {
     public class GameConsole
     {
-        private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
+        private readonly IConvertUserInput _convertUserInput = Factory.newUserInputConverter();
         private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
+        private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
         private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplay _gameDisplayLogic = Factory.NewDisplayLogic();
         private int _turnCount;
-        
+
         public void NewGame()
         {
             //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
@@ -44,15 +44,6 @@ namespace MineSweeper
                     : $"Congrats!{Environment.NewLine}You have won!");
         }
 
-        private PlayerMove ConvertUserInputToUserMove(string move) // ToDo: Move to new class??
-        {
-            var moveSplit = move.Split(',');
-            int.TryParse(moveSplit[0], out var row);
-            int.TryParse(moveSplit[1], out var column);
-
-            return new PlayerMove(row, column);
-        }
-
         private PlayerMove RunGame(int gridSize, PlayerMove userInputMove, IGameGrid currentGameGrid)
         {
             if (_turnCount == 0)
@@ -67,7 +58,7 @@ namespace MineSweeper
 
                 var inputMove = _gameDisplayLogic.ComeUpWithBetterName(gridSize);
 
-                userInputMove = ConvertUserInputToUserMove(inputMove);
+                userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
                 _turnCount++;
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
@@ -79,9 +70,7 @@ namespace MineSweeper
 
             return userInputMove;
         }
-
         
-
         private int GetGridSize()
         {
             var userInputGridSize = "";
