@@ -9,13 +9,13 @@ namespace MineSweeper.Game
     {
         private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
         
-        public void DisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid)
+        public void UpdateDisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid)
         {
             currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].DisplayStatus =
                 CellDisplayStatus.Revealed;
         }
 
-        public void AdjacentMineTotalAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid)
+        public void UpdateAdjacentMineTotalAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid)
         {
             currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
                 = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);

@@ -5,8 +5,8 @@ namespace MineSweeper.Game
 {
     public interface IUpdateCell
     {
-        void DisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
+        void UpdateDisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
         
-        void AdjacentMineTotalAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
+        void UpdateAdjacentMineTotalAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
     }
 }

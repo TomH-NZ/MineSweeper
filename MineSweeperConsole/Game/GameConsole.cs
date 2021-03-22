@@ -23,7 +23,6 @@ namespace MineSweeper.Game
             //Player move is always entered as Row then Column.
 
             // ToDo: Insert fancy greeting using Figgle.  Add Figgle as module to project.
-            // ToDo: use emoji for bomb??
 
             var gridSize = GetGridSize();
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
@@ -60,11 +59,12 @@ namespace MineSweeper.Game
                 var inputMove = _gameDisplayLogic.ShowUserInputMessage(gridSize);
 
                 userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
+                
                 _turnCount++;
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
-            _updateCell.DisplayStatusAfterUserMove(userInputMove, currentGameGrid);
-            _updateCell.AdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
+            _updateCell.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
+            _updateCell.UpdateAdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
 
             return userInputMove;
         }

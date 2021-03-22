@@ -6,7 +6,7 @@ using MineSweeper.Mines;
 using MineSweeper.Player;
 using Xunit;
 
-namespace MineSweeperUnitTests
+namespace MineSweeperConsoleUnitTests
 {
     public class MineUnitTestsShould
     {
