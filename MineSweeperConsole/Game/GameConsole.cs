@@ -31,24 +31,20 @@ namespace MineSweeper.Game
             
             while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < gridSize * gridSize - gridSize)
             {
-                userInputMove = RunGame(gridSize, userInputMove, currentGameGrid);
+                userInputMove = RunGame(userInputMove, currentGameGrid);
             }
 
             Console.Clear();
-            Console.WriteLine(_gameGridDisplay.GameOverDisplay(currentGameGrid));
-
-            Console.WriteLine(
-                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
-                    .IsMine
-                    ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
-                    : $"Congrats!{Environment.NewLine}You have won!");
+            _gameDisplayLogic.NewMethod(currentGameGrid, userInputMove);
         }
 
-        private PlayerMove RunGame(int gridSize, PlayerMove userInputMove, IGameGrid currentGameGrid)
+        
+
+        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid)
         {
             if (_turnCount == 0)
             {
-                _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(gridSize), currentGameGrid);
+                _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
             }
 
             do
@@ -56,7 +52,7 @@ namespace MineSweeper.Game
                 Console.Clear();
                 Console.WriteLine(_gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
-                var inputMove = _gameDisplayLogic.ShowUserInputMessage(gridSize);
+                var inputMove = _gameDisplayLogic.ShowUserInputMessage(currentGameGrid.Size);
 
                 userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
                 

@@ -1,4 +1,3 @@
-
 namespace MineSweeper.Interfaces
 {
     public interface IDisplayGrid

@@ -1,12 +1,14 @@
 using System;
 using MineSweeper.Factories;
 using MineSweeper.Interfaces;
+using MineSweeper.Player;
 
 namespace MineSweeper.Game
 {
     public class Display : IDisplay
     {
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
+        private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
         public string ShowUserInputMessage(int gridSize)
         {
             string inputMove;
@@ -20,6 +22,17 @@ namespace MineSweeper.Game
             } while (!_userInputValidation.IsUserMoveValid(inputMove, gridSize));
 
             return inputMove;
+        }
+        
+        public void NewMethod(IGameGrid currentGameGrid, PlayerMove userInputMove)
+        {
+            Console.WriteLine(_gameGridDisplay.GameOverDisplay(currentGameGrid));
+
+            Console.WriteLine(
+                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
+                    .IsMine
+                    ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
+                    : $"Congrats!{Environment.NewLine}You have won!");
         }
     }
 }
