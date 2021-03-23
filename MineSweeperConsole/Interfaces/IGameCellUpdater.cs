@@ -3,7 +3,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Game
 {
-    public interface IUpdateCell
+    public interface IGameCellUpdater
     {
         void UpdateDisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
         

@@ -12,10 +12,10 @@ namespace MineSweeper.Validation
             var rowValidation = false;
             var columnValidation = false;
 
-            var individualMoves = userMove.Split(',');
-            if (individualMoves.Length != 2) return output;
-            var rowConversion = int.TryParse(individualMoves[0], out var row);
-            var columnConversion = int.TryParse(individualMoves[1], out var column);
+            var individualUserMoves = userMove.Split(',');
+            if (individualUserMoves.Length != 2) return output;
+            var rowConversion = int.TryParse(individualUserMoves[0], out var row);
+            var columnConversion = int.TryParse(individualUserMoves[1], out var column);
                
             if (rowConversion && row >= 0 && row < gridSize)
             {
@@ -40,7 +40,7 @@ namespace MineSweeper.Validation
             var isValid = !int.TryParse(userGridSize, out var gridSize) || gridSize < 2 || gridSize > 10;
             if (isValid)
             {
-                size = 3;
+                size = 0;
                 return false;
             }
 

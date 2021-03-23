@@ -9,9 +9,7 @@ namespace MineSweeper.Game
     {
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplay _gameDisplay = Factory.NewDisplayLogic();
-        private int _turnCount;
         
-
         public void NewGame()
         {
             //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
@@ -24,13 +22,14 @@ namespace MineSweeper.Game
             
             var userInputMove = new PlayerMove(0, 0);
             var maxNonMineCells = gridSize * gridSize - gridSize;
+            var turnCount = 0;
             
             
-            while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < maxNonMineCells)
+            while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && turnCount < maxNonMineCells)
             {
-                var firstTimeRun = _turnCount == 0;
+                var firstTimeRun = turnCount == 0;
                 userInputMove = RunGame(userInputMove, currentGameGrid, firstTimeRun);
-                _turnCount++;
+                turnCount++;
             }
 
             Console.Clear();
@@ -59,9 +58,7 @@ namespace MineSweeper.Game
 
                 var inputMove = _gameDisplay.ShowUserInputMessage(currentGameGrid.Size);
 
-                userInputMove = convertUserInput.ConvertUserInputToUserMove(inputMove);
-                
-                
+                userInputMove = convertUserInput.ConvertInputToUserMove(inputMove);
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
             updateCell.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);

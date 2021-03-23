@@ -2,9 +2,9 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Game
 {
-    public class ConvertUserInput : IConvertUserInput
+    public class UserInputConverter : IUserInputConverter
     {
-        public PlayerMove ConvertUserInputToUserMove(string move) // ToDo: Rename to something better
+        public PlayerMove ConvertInputToUserMove(string move) // ToDo: Rename to something better
         {
             var moveSplit = move.Split(',');
             int.TryParse(moveSplit[0], out var row);

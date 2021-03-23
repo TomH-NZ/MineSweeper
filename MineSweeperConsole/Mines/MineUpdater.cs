@@ -5,7 +5,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Mines
 {
-    public class MineUpdater : IMineUpdater // ToDo: Better name??
+    public class MineUpdater : IMineUpdater
     {
         public void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid)
         {
@@ -46,16 +46,12 @@ namespace MineSweeper.Mines
 
         private bool GreaterThanLowerGridBoundary(int row, int column)
         {
-            var lowerBoundaryOutput = row >= 0 && column >= 0;
-
-            return lowerBoundaryOutput;
+            return row >= 0 && column >= 0;
         }
 
         private bool LesserThanUpperGridBoundary(int row, int column, IGameGrid gameGrid)
         {
-            var upperBoundaryOutput = row < gameGrid.Size && column < gameGrid.Size;
-
-            return upperBoundaryOutput;
+            return row < gameGrid.Size && column < gameGrid.Size;
         }
     }
 }
