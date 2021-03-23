@@ -9,11 +9,11 @@ namespace MineSweeper.Game
     {
         private readonly IConvertUserInput _convertUserInput = Factory.NewUserInputConverter();
         private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
+        private readonly IMineUpdater _mineUpdater = MineFactory.NewMineChecker();
         private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
         private readonly IUpdateCell _updateCell = Factory.NewCellUpdater();
-        private readonly IMineUpdater _mineUpdater = MineFactory.NewMineChecker();
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
-        private readonly IDisplay _gameDisplayLogic = Factory.NewDisplayLogic();
+        private readonly IDisplay _gameDisplay = Factory.NewDisplayLogic();
         private int _turnCount;
         
 
@@ -35,14 +35,14 @@ namespace MineSweeper.Game
             }
 
             Console.Clear();
-            _gameDisplayLogic.renameThisMethod(currentGameGrid, userInputMove);
+            _gameDisplay.EndGameMessage(currentGameGrid, userInputMove);
         }
 
         
 
-        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid)
+        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid) // ToDo: Move to separate class?
         {
-            if (_turnCount == 0)
+            if (_turnCount == 0) // ToDo: Use bool to run once? Ternary op in previous method.
             {
                 _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
             }
@@ -52,7 +52,7 @@ namespace MineSweeper.Game
                 Console.Clear();
                 Console.WriteLine(_gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
-                var inputMove = _gameDisplayLogic.ShowUserInputMessage(currentGameGrid.Size);
+                var inputMove = _gameDisplay.ShowUserInputMessage(currentGameGrid.Size);
 
                 userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
                 

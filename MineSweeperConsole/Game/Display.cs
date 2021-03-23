@@ -24,7 +24,7 @@ namespace MineSweeper.Game
             return inputMove;
         }
         
-        public void renameThisMethod(IGameGrid currentGameGrid, PlayerMove userInputMove)
+        public void EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove)
         {
             Console.WriteLine(_gameGridDisplay.GameOverDisplay(currentGameGrid));
 
