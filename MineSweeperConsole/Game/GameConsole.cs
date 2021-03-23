@@ -28,10 +28,14 @@ namespace MineSweeper.Game
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
             
             var userInputMove = new PlayerMove(0, 0);
+            var maxNonMineCells = gridSize * gridSize - gridSize;
             
-            while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < gridSize * gridSize - gridSize)
+            
+            while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && _turnCount < maxNonMineCells)
             {
-                userInputMove = RunGame(userInputMove, currentGameGrid);
+                var firstTimeRun = _turnCount == 0;
+                userInputMove = RunGame(userInputMove, currentGameGrid, firstTimeRun);
+                _turnCount++;
             }
 
             Console.Clear();
@@ -40,9 +44,9 @@ namespace MineSweeper.Game
 
         
 
-        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid) // ToDo: Move to separate class?
+        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool firstTimeRun) // ToDo: Move to separate class?
         {
-            if (_turnCount == 0) // ToDo: Use bool to run once? Ternary op in previous method.
+            if (firstTimeRun) 
             {
                 _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
             }
@@ -56,7 +60,7 @@ namespace MineSweeper.Game
 
                 userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
                 
-                _turnCount++;
+                
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
             _updateCell.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
