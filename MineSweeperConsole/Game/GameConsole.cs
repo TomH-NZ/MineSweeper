@@ -7,11 +7,6 @@ namespace MineSweeper.Game
 {
     public class GameConsole
     {
-        private readonly IConvertUserInput _convertUserInput = Factory.NewUserInputConverter();
-        private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
-        private readonly IMineUpdater _mineUpdater = MineFactory.NewMineChecker();
-        private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
-        private readonly IUpdateCell _updateCell = Factory.NewCellUpdater();
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplay _gameDisplay = Factory.NewDisplayLogic();
         private int _turnCount;
@@ -46,25 +41,31 @@ namespace MineSweeper.Game
 
         private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool firstTimeRun) // ToDo: Move to separate class?
         {
+            var updateCell = Factory.NewCellUpdater();
+            var mineUpdater = MineFactory.NewMineChecker();
+            var mineGeneration = MineFactory.NewMineLocations();
+            var gameGridDisplay = GridFactory.NewDisplayGrid();
+            var convertUserInput = Factory.NewUserInputConverter();
+            
             if (firstTimeRun) 
             {
-                _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
+                mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
             }
 
             do
             {
                 Console.Clear();
-                Console.WriteLine(_gameGridDisplay.GenerateGameDisplay(currentGameGrid));
+                Console.WriteLine(gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
                 var inputMove = _gameDisplay.ShowUserInputMessage(currentGameGrid.Size);
 
-                userInputMove = _convertUserInput.ConvertUserInputToUserMove(inputMove);
+                userInputMove = convertUserInput.ConvertUserInputToUserMove(inputMove);
                 
                 
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
-            _updateCell.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
-            _updateCell.UpdateAdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
+            updateCell.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
+            updateCell.UpdateAdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
 
             return userInputMove;
         }
