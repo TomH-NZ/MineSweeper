@@ -6,6 +6,6 @@ namespace MineSweeper.Game
     public interface IDisplay
     {
         string ShowUserInputMessage(int gridSize);
-        void NewMethod(IGameGrid currentGameGrid, PlayerMove userInputMove);
+        void renameThisMethod(IGameGrid currentGameGrid, PlayerMove userInputMove);
     }
 }

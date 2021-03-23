@@ -7,11 +7,11 @@ namespace MineSweeper.Game
 {
     public class GameConsole
     {
-        private readonly IConvertUserInput _convertUserInput = Factory.newUserInputConverter();
+        private readonly IConvertUserInput _convertUserInput = Factory.NewUserInputConverter();
         private readonly IMineGenerator _mineGeneration = MineFactory.NewMineLocations();
         private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
-        private readonly IUpdateCell _updateCell = Factory.newCellUpdater();
-        private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
+        private readonly IUpdateCell _updateCell = Factory.NewCellUpdater();
+        private readonly IMineUpdater _mineUpdater = MineFactory.NewMineChecker();
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplay _gameDisplayLogic = Factory.NewDisplayLogic();
         private int _turnCount;
@@ -35,7 +35,7 @@ namespace MineSweeper.Game
             }
 
             Console.Clear();
-            _gameDisplayLogic.NewMethod(currentGameGrid, userInputMove);
+            _gameDisplayLogic.renameThisMethod(currentGameGrid, userInputMove);
         }
 
         

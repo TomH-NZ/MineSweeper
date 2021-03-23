@@ -94,7 +94,7 @@ namespace MineSweeperUnitTests
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
             var userInput = new PlayerMove(0,0);
-            var updateMineStatus = new MineLogic();
+            var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
@@ -112,7 +112,7 @@ namespace MineSweeperUnitTests
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
             var userInput = new PlayerMove(0,1);
-            var updateMineStatus = new MineLogic();
+            var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act

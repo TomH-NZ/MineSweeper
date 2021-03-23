@@ -4,7 +4,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Interfaces
 {
-    public interface IMineLogic
+    public interface IMineUpdater
     {
         void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid);
         int CalculateAdjacentMineTotal(IGameGrid gameGrid, PlayerMove playerMove);

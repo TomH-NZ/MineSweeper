@@ -10,9 +10,9 @@ namespace MineSweeper.Factories
             return new MineGenerator();
         }
 
-        public static IMineLogic NewMineChecker()
+        public static IMineUpdater NewMineChecker()
         {
-            return new MineLogic();
+            return new MineUpdater();
         }
     }
 }

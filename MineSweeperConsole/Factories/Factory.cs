@@ -17,12 +17,12 @@ namespace MineSweeper.Factories
             return new Display();
         }
 
-        public static IConvertUserInput newUserInputConverter()
+        public static IConvertUserInput NewUserInputConverter()
         {
             return new ConvertUserInput();
         }
 
-        public static IUpdateCell newCellUpdater()
+        public static IUpdateCell NewCellUpdater()
         {
             return new UpdateCell();
         }

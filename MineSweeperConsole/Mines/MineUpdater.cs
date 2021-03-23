@@ -5,7 +5,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Mines
 {
-    public class MineLogic : IMineLogic // ToDo: Better name??
+    public class MineUpdater : IMineUpdater // ToDo: Better name??
     {
         public void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid)
         {

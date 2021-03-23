@@ -35,7 +35,7 @@ namespace MineSweeperConsoleUnitTests
             //Arrange
             var gridSize = 2;
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
-            var updateMineStatus = new MineLogic();
+            var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
@@ -51,7 +51,7 @@ namespace MineSweeperConsoleUnitTests
             //Arrange
             var gridSize = 2;
             var newGame = GridFactory.NewGameGrid(gridSize);
-            var updateMineStatus = new MineLogic();
+            var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
 
             //Act
@@ -66,7 +66,7 @@ namespace MineSweeperConsoleUnitTests
         {
             //Arrange
             var newGameGrid = GridFactory.NewGameGrid(3);
-            var updateMineStatus = new MineLogic();
+            var updateMineStatus = new MineUpdater();
             var mineStub = new StubForTwoMineLocations();
             var userInputMove = new PlayerMove(1, 1);
 
@@ -83,7 +83,7 @@ namespace MineSweeperConsoleUnitTests
         {
             //Arrange
             var newGameGrid = GridFactory.NewGameGrid(2);
-            var updateMineStatus = new MineLogic();
+            var updateMineStatus = new MineUpdater();
             var mineStub = new StubForTwoMineLocations();
             var userInputMove = new PlayerMove(1, 1);
 

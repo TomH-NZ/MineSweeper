@@ -7,7 +7,7 @@ namespace MineSweeper.Game
 {
     public class UpdateCell : IUpdateCell
     {
-        private readonly IMineLogic _mineUpdater = MineFactory.NewMineChecker();
+        private readonly IMineUpdater _mineUpdater = MineFactory.NewMineChecker();
         
         public void UpdateDisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid)
         {
