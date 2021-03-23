@@ -8,7 +8,7 @@ using Xunit;
 
 namespace MineSweeperConsoleUnitTests
 {
-    public class MineUnitTestsShould
+    public class MineTestsShould
     {
         private class StubForMineLocationZeroZero : IMineGenerator
         {

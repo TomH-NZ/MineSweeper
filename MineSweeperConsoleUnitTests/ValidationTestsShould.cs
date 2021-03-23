@@ -7,9 +7,9 @@ using MineSweeper.Player;
 using MineSweeper.Validation;
 using Xunit;
 
-namespace MineSweeperUnitTests
+namespace MineSweeperConsoleUnitTests
 {
-    public class ValidationUnitTestsShould
+    public class ValidationTestsShould
     {
         private class StubForMineLocationZeroZero : IMineGenerator
         {

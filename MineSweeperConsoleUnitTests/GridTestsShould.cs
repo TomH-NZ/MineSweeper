@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using MineSweeper.Factories;
 using MineSweeper.Grid;
 using MineSweeper.Interfaces;
 using Xunit;
 
-namespace MineSweeperUnitTests
+namespace MineSweeperConsoleUnitTests
 {
-    public class GridUnitTestsShould
+    public class GridTestsShould
     {
         private class StubForTwoMineLocations : IMineGenerator
         {
