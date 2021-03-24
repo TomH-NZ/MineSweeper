@@ -9,6 +9,7 @@ namespace MineSweeper.Game
     {
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
+        
         public string ShowUserInputMessage(int gridSize)
         {
             string inputMove;
