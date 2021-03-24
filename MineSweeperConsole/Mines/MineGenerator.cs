@@ -24,7 +24,7 @@ namespace MineSweeper.Mines
 
             var convertedMineList = new List<Cell>(); 
 
-            for (var cell = 0; cell < gameGrid.Size; cell++) // ToDo: Extract to separate method??
+            for (var cell = 0; cell < gameGrid.Size; cell++)
             {
                 var rnd = new Random();
                 var randomMine = generatedMineList.Count;

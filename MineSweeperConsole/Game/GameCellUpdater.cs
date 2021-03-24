@@ -5,7 +5,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Game
 {
-    public class GameCellUpdater : IGameCellUpdater // ToDo: Look at using CellUpdater as the class name 
+    public class GameCellUpdater : IGameCellUpdater
     {
         private readonly IMineUpdater _mineUpdater = MineFactory.NewMineChecker();
         

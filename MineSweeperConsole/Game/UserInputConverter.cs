@@ -4,7 +4,7 @@ namespace MineSweeper.Game
 {
     public class UserInputConverter : IUserInputConverter
     {
-        public PlayerMove ConvertInputToUserMove(string move) // ToDo: Rename to something better
+        public PlayerMove ConvertInputToUserMove(string move)
         {
             var moveSplit = move.Split(',');
             int.TryParse(moveSplit[0], out var row);

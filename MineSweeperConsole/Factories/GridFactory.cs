@@ -1,4 +1,3 @@
-
 using MineSweeper.Grid;
 using MineSweeper.Interfaces;
 
