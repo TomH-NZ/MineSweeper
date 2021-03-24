@@ -15,8 +15,6 @@ namespace MineSweeper.Game
             //For the game, [0,0] is located in the top left corner, with the largest row/column being bottom right.
             //Player move is always entered as Row then Column.
 
-            // ToDo: Insert fancy greeting using Figgle.  Add Figgle as module to project.
-
             var gridSize = GetGridSize();
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
             
@@ -27,8 +25,8 @@ namespace MineSweeper.Game
             
             while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && turnCount < maxNonMineCells)
             {
-                var firstTimeRun = turnCount == 0;
-                userInputMove = RunGame(userInputMove, currentGameGrid, firstTimeRun);
+                var isRunAtGameStart = turnCount == 0;
+                userInputMove = RunGame(userInputMove, currentGameGrid, isRunAtGameStart);
                 turnCount++;
             }
 
@@ -38,15 +36,15 @@ namespace MineSweeper.Game
 
         
 
-        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool firstTimeRun) // ToDo: Move to separate class?
+        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool isRunAtGameStart) // ToDo: Move to separate class?
         {
-            var updateCell = Factory.NewCellUpdater();
+            var cellUpdater = Factory.NewCellUpdater();
             var mineUpdater = MineFactory.NewMineChecker();
             var mineGeneration = MineFactory.NewMineLocations();
             var gameGridDisplay = GridFactory.NewDisplayGrid();
             var convertUserInput = Factory.NewUserInputConverter();
             
-            if (firstTimeRun) 
+            if (isRunAtGameStart) 
             {
                 mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
             }
@@ -61,8 +59,8 @@ namespace MineSweeper.Game
                 userInputMove = convertUserInput.ConvertInputToUserMove(inputMove);
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
-            updateCell.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
-            updateCell.UpdateAdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
+            cellUpdater.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
+            cellUpdater.UpdateAdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid);
 
             return userInputMove;
         }
