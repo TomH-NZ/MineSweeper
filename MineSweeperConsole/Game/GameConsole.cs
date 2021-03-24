@@ -31,7 +31,7 @@ namespace MineSweeper.Game
             }
 
             Console.Clear();
-            _gameDisplay.EndGameMessage(currentGameGrid, userInputMove);
+            Console.WriteLine(_gameDisplay.EndGameMessage(currentGameGrid, userInputMove));
         }
         
         private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool isRunAtGameStart) // ToDo: Move to separate class?

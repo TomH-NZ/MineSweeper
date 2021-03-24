@@ -17,7 +17,7 @@ namespace MineSweeper.Grid
         public string GenerateGameDisplay(IGameGrid initialGameGrid)
         {
             var outputGrid = string.Empty;
-            var demonstrationStatus = false;
+            var demonstrationStatus = true;
             var demonstrationMine = "+ ";
             
             for (var row = 0; row < initialGameGrid.Size; row++)
@@ -38,7 +38,7 @@ namespace MineSweeper.Grid
             return outputGrid;
         }
 
-        public string GameOverDisplay(IGameGrid initialGameGrid)
+        public string GameOverGridDisplay(IGameGrid initialGameGrid)
         {
             var outputGrid = "";
             var revealedMine = "* ";

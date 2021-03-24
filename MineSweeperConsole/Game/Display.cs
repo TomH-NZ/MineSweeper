@@ -25,15 +25,16 @@ namespace MineSweeper.Game
             return inputMove;
         }
         
-        public void EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove)
-        {
-            Console.WriteLine(_gameGridDisplay.GameOverDisplay(currentGameGrid));
-
-            Console.WriteLine(
-                currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
+        public string EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove)// ToDo: change to string output
+        { 
+            var finishedGrid =_gameGridDisplay.GameOverGridDisplay(currentGameGrid);
+            
+            var message = currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
                     .IsMine
                     ? $"Sorry, you have lost.{Environment.NewLine}Game over!"
-                    : $"Congrats!{Environment.NewLine}You have won!");
+                    : $"Congrats!{Environment.NewLine}You have won!";
+
+            return finishedGrid + message;
         }
     }
 }
