@@ -25,8 +25,8 @@ namespace MineSweeper.Game
             
             while (!_userInputValidation.IsGameOver(currentGameGrid, userInputMove) && turnCount < maxNonMineCells)
             {
-                var isRunAtGameStart = turnCount == 0;
-                userInputMove = RunGame(userInputMove, currentGameGrid, isRunAtGameStart);
+                var runAtGameStart = turnCount == 0;
+                userInputMove = RunGame(userInputMove, currentGameGrid, runAtGameStart);
                 turnCount++;
             }
 
@@ -34,7 +34,7 @@ namespace MineSweeper.Game
             Console.WriteLine(_gameDisplay.EndGameMessage(currentGameGrid, userInputMove));
         }
         
-        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool isRunAtGameStart) // ToDo: Move to separate class?
+        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool runAtGameStart) // ToDo: Move to separate class?
         {
             var cellUpdater = Factory.NewCellUpdater();
             var mineUpdater = MineFactory.NewMineChecker();
@@ -42,7 +42,7 @@ namespace MineSweeper.Game
             var gameGridDisplay = GridFactory.NewDisplayGrid();
             var convertUserInput = Factory.NewUserInputConverter();
             
-            if (isRunAtGameStart) 
+            if (runAtGameStart) 
             {
                 mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
             }
