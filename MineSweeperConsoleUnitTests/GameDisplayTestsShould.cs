@@ -42,7 +42,7 @@ namespace MineSweeperConsoleUnitTests
         }
         
         [Fact]
-        public void ShowTheCorrectGameWinningMessageWhenAPlayerDoesNotHitAMine()
+        public void ShowTheCorrectGameWinningMessageWhenAPlayerCompletesAGridWithoutHittingAMine()
         {
             //Arrange
             var gridSize = 2;
