@@ -5,7 +5,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Game
 {
-    public class Display : IDisplay
+    public class MessageDisplay : IMessageDisplay
     {
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
         private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();

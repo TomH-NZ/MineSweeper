@@ -3,7 +3,7 @@ using MineSweeper.Player;
 
 namespace MineSweeper.Game
 {
-    public interface IDisplay
+    public interface IMessageDisplay
     {
         string ShowUserInputMessage(int gridSize);
         string EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove);

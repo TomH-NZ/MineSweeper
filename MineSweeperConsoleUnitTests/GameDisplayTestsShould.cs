@@ -25,7 +25,7 @@ namespace MineSweeperConsoleUnitTests
         {
             //Arrange
             var gridSize = 2;
-            var gameDisplay = Factory.NewDisplayLogic();
+            var gameDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
             var mineStub = new StubForTwoMineLocations();
@@ -46,7 +46,7 @@ namespace MineSweeperConsoleUnitTests
         {
             //Arrange
             var gridSize = 2;
-            var gameDisplay = Factory.NewDisplayLogic();
+            var gameDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
             var mineStub = new StubForTwoMineLocations();

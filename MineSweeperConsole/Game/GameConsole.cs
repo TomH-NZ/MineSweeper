@@ -8,7 +8,7 @@ namespace MineSweeper.Game
     public class GameConsole
     {
         private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
-        private readonly IDisplay _gameDisplay = Factory.NewDisplayLogic();
+        private readonly IMessageDisplay _gameMessageDisplay = Factory.NewMessageDisplay();
         
         public void NewGame()
         {
@@ -31,7 +31,7 @@ namespace MineSweeper.Game
             }
 
             Console.Clear();
-            Console.WriteLine(_gameDisplay.EndGameMessage(currentGameGrid, userInputMove));
+            Console.WriteLine(_gameMessageDisplay.EndGameMessage(currentGameGrid, userInputMove));
         }
         
         private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool runAtGameStart) // ToDo: Move to separate class?
@@ -52,7 +52,7 @@ namespace MineSweeper.Game
                 Console.Clear();
                 Console.WriteLine(gameGridDisplay.GenerateGameDisplay(currentGameGrid));
 
-                var inputMove = _gameDisplay.ShowUserInputMessage(currentGameGrid.Size);
+                var inputMove = _gameMessageDisplay.ShowUserInputMessage(currentGameGrid.Size);
 
                 userInputMove = convertUserInput.ConvertInputToUserMove(inputMove);
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));

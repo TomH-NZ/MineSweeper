@@ -12,9 +12,9 @@ namespace MineSweeper.Factories
             return new Validate();
         }
 
-        public static IDisplay NewDisplayLogic()
+        public static IMessageDisplay NewMessageDisplay()
         {
-            return new Display();
+            return new MessageDisplay();
         }
 
         public static IUserInputConverter NewUserInputConverter()
