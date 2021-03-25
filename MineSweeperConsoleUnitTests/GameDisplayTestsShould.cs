@@ -25,7 +25,7 @@ namespace MineSweeperConsoleUnitTests
         {
             //Arrange
             var gridSize = 2;
-            var gameDisplay = Factory.NewMessageDisplay();
+            var newMessageDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
             var mineStub = new StubForTwoMineLocations();
@@ -35,7 +35,7 @@ namespace MineSweeperConsoleUnitTests
 
             //Act
             mineUpdater.UpdateCellWithMineStatus(mineStub.MineLocations(gridSize), gameGrid);
-            var result = gameDisplay.EndGameMessage(gameGrid, userMove);
+            var result = newMessageDisplay.EndGameMessage(gameGrid, userMove);
 
             //Assert
             Assert.Equal(expected, result);
@@ -46,7 +46,7 @@ namespace MineSweeperConsoleUnitTests
         {
             //Arrange
             var gridSize = 2;
-            var gameDisplay = Factory.NewMessageDisplay();
+            var newMessageDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
             var mineStub = new StubForTwoMineLocations();
@@ -56,7 +56,7 @@ namespace MineSweeperConsoleUnitTests
 
             //Act
             mineUpdater.UpdateCellWithMineStatus(mineStub.MineLocations(gridSize), gameGrid);
-            var result = gameDisplay.EndGameMessage(gameGrid, userMove);
+            var result = newMessageDisplay.EndGameMessage(gameGrid, userMove);
 
             //Assert
             Assert.Equal(expected, result);
