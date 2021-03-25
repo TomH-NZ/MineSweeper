@@ -7,7 +7,7 @@ namespace MineSweeper.Validation
     public class Validate : IValidate
     {
         public bool IsUserMoveValid(string userMove, int gridSize)
-        { //ToDo: quit command?
+        {
             var output = false;
             var rowValidation = false;
             var columnValidation = false;

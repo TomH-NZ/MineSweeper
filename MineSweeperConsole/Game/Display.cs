@@ -25,7 +25,7 @@ namespace MineSweeper.Game
             return inputMove;
         }
         
-        public string EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove)// ToDo: change to string output
+        public string EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove)
         { 
             var revealedGameGrid =_gameGridDisplay.GameOverGridDisplay(currentGameGrid);
             
