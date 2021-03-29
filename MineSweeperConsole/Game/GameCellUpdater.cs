@@ -15,10 +15,21 @@ namespace MineSweeper.Game
                 CellDisplayStatus.Revealed;
         }
 
-        public void UpdateAdjacentMineTotalAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid)
+        public void UpdateAdjacentMineTotalAtGameStart(IGameGrid currentGameGrid)
         {
-            currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal
-                = _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, userInputMove);
+            for (var row = 0; row < currentGameGrid.Size; row++)
+            {
+                for (var column = 0; column < currentGameGrid.Size; column++)
+                {
+                    var selectedCell = new PlayerMove(row, column);
+
+                    if (!currentGameGrid.GeneratedGameCell[row, column].IsMine)
+                    {
+                        currentGameGrid.GeneratedGameCell[row,column].AdjacentMinesTotal = 
+                            _mineUpdater.CalculateAdjacentMineTotal(currentGameGrid, selectedCell);
+                    }
+                }
+            }
         }
     }
 }

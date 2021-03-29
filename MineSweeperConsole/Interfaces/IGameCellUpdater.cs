@@ -7,6 +7,6 @@ namespace MineSweeper.Game
     {
         void UpdateDisplayStatusAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
         
-        void UpdateAdjacentMineTotalAfterUserMove(PlayerMove userInputMove, IGameGrid currentGameGrid);
+        void UpdateAdjacentMineTotalAtGameStart(IGameGrid currentGameGrid);
     }
 }

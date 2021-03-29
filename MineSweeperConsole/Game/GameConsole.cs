@@ -45,6 +45,7 @@ namespace MineSweeper.Game
             if (runAtGameStart) 
             {
                 mineUpdater.UpdateCellWithMineStatus(mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
+                cellUpdater.UpdateAdjacentMineTotalAtGameStart(currentGameGrid);
             }
 
             do
@@ -58,7 +59,6 @@ namespace MineSweeper.Game
             } while (_userInputValidation.IsCellRevealed(currentGameGrid, userInputMove));
 
             cellUpdater.UpdateDisplayStatusAfterUserMove(userInputMove, currentGameGrid);
-            cellUpdater.UpdateAdjacentMineTotalAfterUserMove(userInputMove, currentGameGrid); // ToDo: move to new class?
 
             return userInputMove;
         }
