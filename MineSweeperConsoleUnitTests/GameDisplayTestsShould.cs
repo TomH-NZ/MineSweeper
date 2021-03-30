@@ -14,7 +14,7 @@ namespace MineSweeperConsoleUnitTests
         {
             public List<Cell> MineLocations(int gridSize)
             {
-                var output = new List<Cell> {new Cell(0, 0), new Cell(1, 0)};
+                var output = new List<Cell> {new Cell(1, 1), new Cell(2, 1)};
 
                 return output;
             }
@@ -24,14 +24,14 @@ namespace MineSweeperConsoleUnitTests
         public void ShowTheCorrectGameLosingMessageWhenAPlayerHitsAMine()
         {
             //Arrange
-            var gridSize = 2;
+            var gridSize = 3;
             var newMessageDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
             var mineStub = new StubForTwoMineLocations();
-            var userMove = new PlayerMove(0, 0);
+            var userMove = new PlayerMove(1, 1);
             var expected =
-                $"* 2 {Environment.NewLine}* 2 {Environment.NewLine}Sorry, you have lost.{Environment.NewLine}Game over!";
+                $"0 1 2 {Environment.NewLine}1 * 2 {Environment.NewLine}2 * 2 {Environment.NewLine}Sorry, you have lost.{Environment.NewLine}Game over!";
 
             //Act
             mineUpdater.UpdateCellWithMineStatus(mineStub.MineLocations(gridSize), gameGrid);
@@ -45,14 +45,14 @@ namespace MineSweeperConsoleUnitTests
         public void ShowTheCorrectGameWinningMessageWhenAPlayerCompletesAGridWithoutHittingAMine()
         {
             //Arrange
-            var gridSize = 2;
+            var gridSize = 3;
             var newMessageDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
             var mineStub = new StubForTwoMineLocations();
-            var userMove = new PlayerMove(0, 1);
+            var userMove = new PlayerMove(1, 2);
             var expected =
-                $"* 2 {Environment.NewLine}* 2 {Environment.NewLine}Congrats!{Environment.NewLine}You have won!";
+                $"0 1 2 {Environment.NewLine}1 * 2 {Environment.NewLine}2 * 2 {Environment.NewLine}Congrats!{Environment.NewLine}You have won!";
 
             //Act
             mineUpdater.UpdateCellWithMineStatus(mineStub.MineLocations(gridSize), gameGrid);

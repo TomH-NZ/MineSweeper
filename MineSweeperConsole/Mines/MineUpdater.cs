@@ -9,9 +9,9 @@ namespace MineSweeper.Mines
     {
         public void UpdateCellWithMineStatus(List<Cell> mineLocations, IGameGrid gameGrid)
         {
-            for (var row = 0; row < gameGrid.Size; row++)
+            for (var row = 1; row < gameGrid.Size; row++)
             {
-                for (var column = 0; column < gameGrid.Size; column++)
+                for (var column = 1; column < gameGrid.Size; column++)
                 {
                     if (mineLocations.Contains(gameGrid.GeneratedGameCell[row,column]))
                     {
@@ -46,7 +46,7 @@ namespace MineSweeper.Mines
 
         private bool GreaterThanLowerGridBoundary(int row, int column)
         {
-            return row >= 0 && column >= 0;
+            return row > 0 && column > 0;
         }
 
         private bool LesserThanUpperGridBoundary(int row, int column, IGameGrid gameGrid)

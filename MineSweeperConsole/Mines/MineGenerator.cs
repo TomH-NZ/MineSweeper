@@ -13,9 +13,9 @@ namespace MineSweeper.Mines
             var generatedMineList = new List<Cell>();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
 
-            for (var row = 0; row < gameGrid.Size; row++)
+            for (var row = 1; row < gameGrid.Size; row++)
             {
-                for (var column = 0; column < gameGrid.Size; column++)
+                for (var column = 1; column < gameGrid.Size; column++)
                 {
                     generatedMineList.Add(gameGrid.GeneratedGameCell[row, column]);
                     gameGrid.GeneratedGameCell[row, column].IsMine = true;
@@ -24,7 +24,7 @@ namespace MineSweeper.Mines
 
             var convertedMineList = new List<Cell>(); 
 
-            for (var cell = 0; cell < gameGrid.Size; cell++)
+            for (var cell = 1; cell < gameGrid.Size; cell++)
             {
                 var rnd = new Random();
                 var randomMine = generatedMineList.Count;

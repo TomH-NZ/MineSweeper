@@ -17,12 +17,12 @@ namespace MineSweeper.Validation
             var rowConversion = int.TryParse(individualUserMoves[0], out var row);
             var columnConversion = int.TryParse(individualUserMoves[1], out var column);
                
-            if (rowConversion && row >= 0 && row < gridSize)
+            if (rowConversion && row > 0 && row < gridSize)
             {
                 rowValidation = true;
             }
                
-            if (columnConversion && column >= 0 && column < gridSize)
+            if (columnConversion && column > 0 && column < gridSize)
             {
                 columnValidation = true;
             }
@@ -37,7 +37,7 @@ namespace MineSweeper.Validation
 
         public bool IsInitialGridSizeValid(string userGridSize, out int size )
         {
-            var isValid = !int.TryParse(userGridSize, out var gridSize) || gridSize < 2 || gridSize > 10;
+            var isValid = !int.TryParse(userGridSize, out var gridSize) || gridSize < 2 || gridSize > 11;
             if (isValid)
             {
                 size = 0;

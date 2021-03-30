@@ -24,14 +24,26 @@ namespace MineSweeper.Grid
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch
+                    if (row == 0)
                     {
-                        CellDisplayStatus.NotRevealed when initialGameGrid.GeneratedGameCell[row, column].IsMine =>
-                            demonstrationStatus ? demonstrationMine : _unrevealedCell,
-                        CellDisplayStatus.Revealed when !initialGameGrid.GeneratedGameCell[row, column].IsMine =>
-                            initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + _blankSpace,
-                        _ => _unrevealedCell
-                    };
+                        outputGrid += column + " ";
+                    }
+                    else if (column == 0)
+                    {
+                        outputGrid += row + " ";
+                    }
+                    else
+                    {
+                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].DisplayStatus switch
+                        {
+                            CellDisplayStatus.NotRevealed when initialGameGrid.GeneratedGameCell[row, column].IsMine =>
+                                demonstrationStatus ? demonstrationMine : _unrevealedCell,
+                            CellDisplayStatus.Revealed when !initialGameGrid.GeneratedGameCell[row, column].IsMine =>
+                                initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + _blankSpace,
+                            _ => _unrevealedCell
+                        };
+                    }
+                    
                 }
                 outputGrid += Environment.NewLine;
             }
@@ -48,17 +60,29 @@ namespace MineSweeper.Grid
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    if (initialGameGrid.GeneratedGameCell[row,column].IsMine)
+                    if (row == 0)
                     {
-                        outputGrid += revealedMine;
+                        outputGrid += column + " ";
+                    }
+                    else if (column == 0)
+                    {
+                        outputGrid += row + " ";
                     }
                     else
                     {
-                        var userInputMove = new PlayerMove(row, column);
-                        initialGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal = 
-                            mineUpdater.CalculateAdjacentMineTotal(initialGameGrid, userInputMove);
-                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + _blankSpace;
+                        if (initialGameGrid.GeneratedGameCell[row,column].IsMine)
+                        {
+                            outputGrid += revealedMine;
+                        }
+                        else
+                        {
+                            var userInputMove = new PlayerMove(row, column);
+                            initialGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal = 
+                                mineUpdater.CalculateAdjacentMineTotal(initialGameGrid, userInputMove);
+                            outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + _blankSpace;
+                        }
                     }
+                    
                 }
                 outputGrid += Environment.NewLine;
             }

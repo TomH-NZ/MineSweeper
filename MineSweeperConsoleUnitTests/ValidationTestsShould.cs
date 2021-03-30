@@ -15,13 +15,13 @@ namespace MineSweeperConsoleUnitTests
         {
             public List<Cell> MineLocations(int gridSize)
             {
-                var output = new List<Cell> {new Cell(0,0)};
+                var output = new List<Cell> {new Cell(1,1)};
                 return output;
             }
         }
 
         [Fact]
-        public void ReturnTrueForAUserInputNumberBetweenZeroAndGridSize()
+        public void ReturnTrueForAUserInputNumberBetweenOneAndGridSize()
         {
             //Arrange
             var validateTest = new Validate();
@@ -29,7 +29,7 @@ namespace MineSweeperConsoleUnitTests
             //Act
 
             //Assert
-            Assert.True(validateTest.IsUserMoveValid("0,0", 2));
+            Assert.True(validateTest.IsUserMoveValid("1,1", 2));
         }
 
         [Theory]
@@ -72,9 +72,9 @@ namespace MineSweeperConsoleUnitTests
         [InlineData("", 0)]
         [InlineData("a", 0)]
         [InlineData("9a", 0)]
-        [InlineData("11", 0)]
+        [InlineData("12", 0)]
         [InlineData("-3", 0)]
-        public void ReturnFalseForUserInputGridSizeNotANumberOrOutsideZeroAndTen(string input, int size)
+        public void ReturnFalseForUserInputGridSizeNotANumberOrOutsideZeroAndEleven(string input, int size)
         {
             //Arrange
             var validateTest = new Validate();
@@ -93,7 +93,7 @@ namespace MineSweeperConsoleUnitTests
             var size = 2;
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
-            var userInput = new PlayerMove(0,0);
+            var userInput = new PlayerMove(1,1);
             var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
 
@@ -108,10 +108,10 @@ namespace MineSweeperConsoleUnitTests
         public void ReturnFalseIfPlayerHasNotSelectedAMine()
         {
             //Arrange
-            var size = 2;
+            var size = 3;
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
-            var userInput = new PlayerMove(0,1);
+            var userInput = new PlayerMove(1,2);
             var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
 
