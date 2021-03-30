@@ -11,18 +11,19 @@ namespace MineSweeper.Validation
             var output = false;
             var rowValidation = false;
             var columnValidation = false;
+            var maxUsableGridSize = gridSize + 1;
 
             var individualUserMoves = userMove.Split(',');
             if (individualUserMoves.Length != 2) return output;
             var rowConversion = int.TryParse(individualUserMoves[0], out var row);
             var columnConversion = int.TryParse(individualUserMoves[1], out var column);
                
-            if (rowConversion && row > 0 && row < gridSize)
+            if (rowConversion && row > 0 && row < maxUsableGridSize)
             {
                 rowValidation = true;
             }
                
-            if (columnConversion && column > 0 && column < gridSize)
+            if (columnConversion && column > 0 && column < maxUsableGridSize)
             {
                 columnValidation = true;
             }

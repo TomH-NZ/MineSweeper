@@ -33,7 +33,7 @@ namespace MineSweeperConsoleUnitTests
         public void UpdateTheStatusOfACellToRecordAMineAsTrue()
         {
             //Arrange
-            var gridSize = 3;
+            var gridSize = 2;
             var newGameGrid = GridFactory.NewGameGrid(gridSize);
             var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
@@ -49,7 +49,7 @@ namespace MineSweeperConsoleUnitTests
         public void UpdateTheStatusOfACellToRecordAMineAsFalse()
         {
             //Arrange
-            var gridSize = 3;
+            var gridSize = 2;
             var newGame = GridFactory.NewGameGrid(gridSize);
             var updateMineStatus = new MineUpdater();
             var mineStub = new StubForMineLocationZeroZero();
@@ -65,7 +65,7 @@ namespace MineSweeperConsoleUnitTests
         public void ReturnTwoAdjacentMinesOnASizeThreeGridAfterAPlayerMove()
         {
             //Arrange
-            var newGameGrid = GridFactory.NewGameGrid(3);
+            var newGameGrid = GridFactory.NewGameGrid(2);
             var updateMineStatus = new MineUpdater();
             var mineStub = new StubForTwoMineLocations();
             var userInputMove = new PlayerMove(1, 1);
@@ -82,7 +82,7 @@ namespace MineSweeperConsoleUnitTests
         public void ReturnTwoAdjacentMinesOnASizeTwoGridAfterAPlayerMove()
         {
             //Arrange
-            var newGameGrid = GridFactory.NewGameGrid(3);
+            var newGameGrid = GridFactory.NewGameGrid(2);
             var updateMineStatus = new MineUpdater();
             var mineStub = new StubForTwoMineLocations();
             var userInputMove = new PlayerMove(1, 2);

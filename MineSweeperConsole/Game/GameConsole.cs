@@ -19,8 +19,7 @@ namespace MineSweeper.Game
             var currentGameGrid = GridFactory.NewGameGrid(gridSize);
             
             var userInputMove = new PlayerMove(0, 0);
-            var usableGridSize = gridSize - 1;
-            var maxNonMineCells = usableGridSize * usableGridSize - usableGridSize;
+            var maxNonMineCells = gridSize * gridSize - gridSize;
             var turnCount = 0;
             
             
@@ -75,8 +74,7 @@ namespace MineSweeper.Game
                 userInputGridSize = Console.ReadLine();
             }
 
-            var overSize = size + 1;
-            return overSize;
+            return size;
         }
     }
 }

@@ -108,7 +108,7 @@ namespace MineSweeperConsoleUnitTests
         public void ReturnFalseIfPlayerHasNotSelectedAMine()
         {
             //Arrange
-            var size = 3;
+            var size = 2;
             var newValidation = Factory.NewUserInputValidation();
             var gameGrid = GridFactory.NewGameGrid(size);
             var userInput = new PlayerMove(1,2);

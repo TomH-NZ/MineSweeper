@@ -11,7 +11,8 @@ namespace MineSweeper.Mines
         public List<Cell> MineLocations(int gridSize)
         {
             var generatedMineList = new List<Cell>();
-            var gameGrid = GridFactory.NewGameGrid(gridSize);
+            var displayedGridSize = gridSize - 1;
+            var gameGrid = GridFactory.NewGameGrid(displayedGridSize);
 
             for (var row = 1; row < gameGrid.Size; row++)
             {

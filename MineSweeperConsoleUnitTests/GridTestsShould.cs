@@ -19,10 +19,10 @@ namespace MineSweeperConsoleUnitTests
         }
         
         [Theory]
-        [InlineData(2, 2)]
-        [InlineData(4, 4)]
-        [InlineData(10, 10)]
-        [InlineData(5, 5)]
+        [InlineData(2, 3)]
+        [InlineData(4, 5)]
+        [InlineData(10, 11)]
+        [InlineData(5, 6)]
         public void GenerateABoardOfTheCorrectSize(int size, int expected)
         {
             //Arrange
@@ -35,10 +35,10 @@ namespace MineSweeperConsoleUnitTests
         }
 
         [Theory]
-        [InlineData(3, "0 1 2 \n1 . . \n2 . . \n")]
-        [InlineData(4, "0 1 2 3 \n1 . . . \n2 . . . \n3 . . . \n")]
-        [InlineData(5, "0 1 2 3 4 \n1 . . . . \n2 . . . . \n3 . . . . \n4 . . . . \n")]
-        [InlineData(6, "0 1 2 3 4 5 \n1 . . . . . \n2 . . . . . \n3 . . . . . \n4 . . . . . \n5 . . . . . \n")]
+        [InlineData(2, "0 1 2 \n1 . . \n2 . . \n")]
+        [InlineData(3, "0 1 2 3 \n1 . . . \n2 . . . \n3 . . . \n")]
+        [InlineData(4, "0 1 2 3 4 \n1 . . . . \n2 . . . . \n3 . . . . \n4 . . . . \n")]
+        [InlineData(5, "0 1 2 3 4 5 \n1 . . . . . \n2 . . . . . \n3 . . . . . \n4 . . . . . \n5 . . . . . \n")]
         public void DisplayABoardWithTheCorrectDimensions(int size, string expected)
         {
             //Arrange
@@ -56,7 +56,7 @@ namespace MineSweeperConsoleUnitTests
         public void DisplayBoardWithGeneratedMinesCorrectly()
         {
             //Arrange
-            var gridSize = 3;
+            var gridSize = 2;
             var newGrid = GridFactory.NewGameGrid(gridSize);
             var gameDisplay = GridFactory.NewDisplayGrid();
             var mineLogic = MineFactory.NewMineChecker();

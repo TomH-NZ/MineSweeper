@@ -24,7 +24,7 @@ namespace MineSweeperConsoleUnitTests
         public void ShowTheCorrectGameLosingMessageWhenAPlayerHitsAMine()
         {
             //Arrange
-            var gridSize = 3;
+            var gridSize = 2;
             var newMessageDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();
@@ -45,7 +45,7 @@ namespace MineSweeperConsoleUnitTests
         public void ShowTheCorrectGameWinningMessageWhenAPlayerCompletesAGridWithoutHittingAMine()
         {
             //Arrange
-            var gridSize = 3;
+            var gridSize = 2;
             var newMessageDisplay = Factory.NewMessageDisplay();
             var gameGrid = GridFactory.NewGameGrid(gridSize);
             var mineUpdater = MineFactory.NewMineChecker();

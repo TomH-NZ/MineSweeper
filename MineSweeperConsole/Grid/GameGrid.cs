@@ -11,7 +11,7 @@ namespace MineSweeper.Grid
 
         public GameGrid(int size)
         {
-            Size = size;
+            Size = size + 1;
             GeneratedGameCell = GenerateGrid();
         }
 
