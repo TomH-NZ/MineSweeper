@@ -34,7 +34,7 @@ namespace MineSweeper.Game
             Console.WriteLine(_gameMessageDisplay.EndGameMessage(currentGameGrid, userInputMove));
         }
         
-        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool runAtGameStart) // ToDo: Move to separate class?
+        private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool runAtGameStart)
         {
             var cellUpdater = Factory.NewCellUpdater();
             var mineUpdater = MineFactory.NewMineChecker();
