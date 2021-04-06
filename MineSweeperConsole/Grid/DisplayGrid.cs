@@ -1,8 +1,6 @@
 using System;
 using MineSweeper.Enums;
-using MineSweeper.Factories;
 using MineSweeper.Interfaces;
-using MineSweeper.Player;
 
 namespace MineSweeper.Grid
 {
@@ -42,23 +40,14 @@ namespace MineSweeper.Grid
         {
             var outputGrid = "";
             var revealedMine = "* ";
-            var mineUpdater = MineFactory.NewMineChecker();
 
             for (var row = 0; row < initialGameGrid.Size; row++)
             {
                 for (var column = 0; column < initialGameGrid.Size; column++)
                 {
-                    if (initialGameGrid.GeneratedGameCell[row,column].IsMine)
-                    {
-                        outputGrid += revealedMine;
-                    }
-                    else
-                    {
-                        var userInputMove = new PlayerMove(row, column);
-                        initialGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column].AdjacentMinesTotal = 
-                            mineUpdater.CalculateAdjacentMineTotal(initialGameGrid, userInputMove);
-                        outputGrid += initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + _blankSpace;
-                    }
+                    outputGrid += initialGameGrid.GeneratedGameCell[row,column].IsMine 
+                        ? revealedMine 
+                        : initialGameGrid.GeneratedGameCell[row, column].AdjacentMinesTotal + _blankSpace;
                 }
                 outputGrid += Environment.NewLine;
             }
