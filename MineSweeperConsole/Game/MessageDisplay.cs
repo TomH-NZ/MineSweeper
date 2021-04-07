@@ -7,12 +7,10 @@ namespace MineSweeper.Game
 {
     public class MessageDisplay : IMessageDisplay
     {
-        private readonly IValidate _userInputValidation = Factory.NewUserInputValidation();
-        private readonly IDisplayGrid _gameGridDisplay = GridFactory.NewDisplayGrid();
-        
         public string ShowUserInputMessage(int gridSize)
         {
             string inputMove;
+            var userInputValidation = Factory.NewUserInputValidation();
             var maxUsableGridSize = gridSize - 1;
 
             do
@@ -20,14 +18,15 @@ namespace MineSweeper.Game
                 Console.WriteLine(
                     $"Please enter grid coordinates (row,column) between 0 - {maxUsableGridSize}: ");
                 inputMove = Console.ReadLine();
-            } while (!_userInputValidation.IsUserMoveValid(inputMove, gridSize));
+            } while (!userInputValidation.IsUserMoveValid(inputMove, gridSize));
 
             return inputMove;
         }
         
         public string EndGameMessage(IGameGrid currentGameGrid, PlayerMove userInputMove)
         { 
-            var revealedGameGrid =_gameGridDisplay.GameOverGridDisplay(currentGameGrid);
+            var gameGridDisplay = GridFactory.NewDisplayGrid();
+            var revealedGameGrid =gameGridDisplay.GameOverGridDisplay(currentGameGrid);
             
             var message = currentGameGrid.GeneratedGameCell[userInputMove.Row, userInputMove.Column]
                     .IsMine
