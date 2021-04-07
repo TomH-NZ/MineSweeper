@@ -22,18 +22,18 @@ namespace MineSweeper.Mines
                 }
             }
 
-            var convertedMineList = new List<Cell>(); 
+            var selectedMineLocations = new List<Cell>(); 
 
             for (var cell = 0; cell < gameGrid.Size; cell++)
             {
                 var rnd = new Random();
                 var randomMine = generatedMineList.Count;
                 var mine = rnd.Next(randomMine);
-                convertedMineList.Add(generatedMineList[mine]);
+                selectedMineLocations.Add(generatedMineList[mine]);
                 generatedMineList.Remove(generatedMineList[mine]);
             }
             
-            return convertedMineList;
+            return selectedMineLocations;
         }
     }
 }
