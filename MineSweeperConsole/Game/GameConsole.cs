@@ -41,12 +41,6 @@ namespace MineSweeper.Game
         
         private PlayerMove RunGame(PlayerMove userInputMove, IGameGrid currentGameGrid, bool runAtGameStart)
         {
-            /*var cellUpdater = Factory.NewCellUpdater();
-            var mineUpdater = MineFactory.NewMineChecker();
-            var mineGeneration = MineFactory.NewMineLocations();
-            var gameGridDisplay = GridFactory.NewDisplayGrid();
-            var convertUserInput = Factory.NewUserInputConverter();*/
-            
             if (runAtGameStart) 
             {
                 _mineUpdater.UpdateCellWithMineStatus(_mineGeneration.MineLocations(currentGameGrid.Size), currentGameGrid);
