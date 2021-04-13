@@ -13,5 +13,5 @@ namespace MineSweeper
             var game = new GameConsole();
             game.NewGame();
         }
-    }
+    } // ToDo: Add code to be able to have settings in a json file. Have demo status and grid size in settings file.
 }
